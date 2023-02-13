@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC39E299A398100B8CF78 /* AppDelegate.swift */; };
+		344DC3A3299A398100B8CF78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3A2299A398100B8CF78 /* ViewController.swift */; };
+		344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A7299A398400B8CF78 /* Assets.xcassets */; };
+		344DC3AB299A398400B8CF78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */; };
+		344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3B8299A39D600B8CF78 /* WidgetKit.framework */; };
+		344DC3BB299A39D600B8CF78 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3BA299A39D600B8CF78 /* SwiftUI.framework */; };
+		344DC3BE299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3BD299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift */; };
+		344DC3C0299A39D600B8CF78 /* DailyBookKeepingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3BF299A39D600B8CF78 /* DailyBookKeepingWidget.swift */; };
+		344DC3C2299A39D800B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3C1299A39D800B8CF78 /* Assets.xcassets */; };
+		344DC3C6299A39D800B8CF78 /* DailyBookKeepingWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		344DC3CD299A3C6500B8CF78 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */; };
+		344DC3CF299A3CB000B8CF78 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3CE299A3CB000B8CF78 /* Release.xcconfig */; };
+		B09A0EAAB5DE2A6AEC80692D /* Pods_DailyBookKeeping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */; };
+		D4F3FF4010444E54D742FA11 /* Pods_DailyBookKeepingWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		344DC3C4299A39D800B8CF78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344DC393299A398100B8CF78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 344DC3B5299A39D600B8CF78;
+			remoteInfo = DailyBookKeepingWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		344DC3CA299A39D800B8CF78 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				344DC3C6299A39D800B8CF78 /* DailyBookKeepingWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyBookKeeping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		344DC39B299A398100B8CF78 /* DailyBookKeeping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyBookKeeping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		344DC39E299A398100B8CF78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		344DC3A2299A398100B8CF78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		344DC3A7299A398400B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		344DC3AA299A398400B8CF78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		344DC3AC299A398400B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyBookKeepingWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		344DC3B8299A39D600B8CF78 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		344DC3BA299A39D600B8CF78 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		344DC3BD299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBookKeepingWidgetBundle.swift; sourceTree = "<group>"; };
+		344DC3BF299A39D600B8CF78 /* DailyBookKeepingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBookKeepingWidget.swift; sourceTree = "<group>"; };
+		344DC3C1299A39D800B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		344DC3C3299A39D800B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		344DC3CE299A3CB000B8CF78 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.debug.xcconfig"; sourceTree = "<group>"; };
+		B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.release.xcconfig"; sourceTree = "<group>"; };
+		ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyBookKeepingWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		344DC398299A398100B8CF78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B09A0EAAB5DE2A6AEC80692D /* Pods_DailyBookKeeping.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344DC3B3299A39D600B8CF78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344DC3BB299A39D600B8CF78 /* SwiftUI.framework in Frameworks */,
+				344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */,
+				D4F3FF4010444E54D742FA11 /* Pods_DailyBookKeepingWidgetExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		344DC392299A398100B8CF78 = {
+			isa = PBXGroup;
+			children = (
+				344DC39D299A398100B8CF78 /* DailyBookKeeping */,
+				344DC3BC299A39D600B8CF78 /* DailyBookKeepingWidget */,
+				344DC3B7299A39D600B8CF78 /* Frameworks */,
+				344DC39C299A398100B8CF78 /* Products */,
+				7EDC17DAD97186F83B7EEC13 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		344DC39C299A398100B8CF78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				344DC39B299A398100B8CF78 /* DailyBookKeeping.app */,
+				344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		344DC39D299A398100B8CF78 /* DailyBookKeeping */ = {
+			isa = PBXGroup;
+			children = (
+				344DC3CB299A3C4F00B8CF78 /* Config */,
+				344DC39E299A398100B8CF78 /* AppDelegate.swift */,
+				344DC3A2299A398100B8CF78 /* ViewController.swift */,
+				344DC3A7299A398400B8CF78 /* Assets.xcassets */,
+				344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */,
+				344DC3AC299A398400B8CF78 /* Info.plist */,
+			);
+			path = DailyBookKeeping;
+			sourceTree = "<group>";
+		};
+		344DC3B7299A39D600B8CF78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				344DC3B8299A39D600B8CF78 /* WidgetKit.framework */,
+				344DC3BA299A39D600B8CF78 /* SwiftUI.framework */,
+				12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */,
+				ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		344DC3BC299A39D600B8CF78 /* DailyBookKeepingWidget */ = {
+			isa = PBXGroup;
+			children = (
+				344DC3BD299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift */,
+				344DC3BF299A39D600B8CF78 /* DailyBookKeepingWidget.swift */,
+				344DC3C1299A39D800B8CF78 /* Assets.xcassets */,
+				344DC3C3299A39D800B8CF78 /* Info.plist */,
+			);
+			path = DailyBookKeepingWidget;
+			sourceTree = "<group>";
+		};
+		344DC3CB299A3C4F00B8CF78 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */,
+				344DC3CE299A3CB000B8CF78 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		7EDC17DAD97186F83B7EEC13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */,
+				B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */,
+				F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */,
+				445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		344DC39A299A398100B8CF78 /* DailyBookKeeping */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344DC3AF299A398400B8CF78 /* Build configuration list for PBXNativeTarget "DailyBookKeeping" */;
+			buildPhases = (
+				8C1844DC50E1B85787FDC9C4 /* [CP] Check Pods Manifest.lock */,
+				344DC397299A398100B8CF78 /* Sources */,
+				344DC398299A398100B8CF78 /* Frameworks */,
+				344DC399299A398100B8CF78 /* Resources */,
+				344DC3CA299A39D800B8CF78 /* Embed Foundation Extensions */,
+				CD487AF6E8603598FD22EEEE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				344DC3C5299A39D800B8CF78 /* PBXTargetDependency */,
+			);
+			name = DailyBookKeeping;
+			productName = DailyBookKeeping;
+			productReference = 344DC39B299A398100B8CF78 /* DailyBookKeeping.app */;
+			productType = "com.apple.product-type.application";
+		};
+		344DC3B5299A39D600B8CF78 /* DailyBookKeepingWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 344DC3C7299A39D800B8CF78 /* Build configuration list for PBXNativeTarget "DailyBookKeepingWidgetExtension" */;
+			buildPhases = (
+				FF96E28FB6D28791E9CE843C /* [CP] Check Pods Manifest.lock */,
+				344DC3B2299A39D600B8CF78 /* Sources */,
+				344DC3B3299A39D600B8CF78 /* Frameworks */,
+				344DC3B4299A39D600B8CF78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyBookKeepingWidgetExtension;
+			productName = DailyBookKeepingWidgetExtension;
+			productReference = 344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		344DC393299A398100B8CF78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					344DC39A299A398100B8CF78 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					344DC3B5299A39D600B8CF78 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 344DC396299A398100B8CF78 /* Build configuration list for PBXProject "DailyBookKeeping" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 344DC392299A398100B8CF78;
+			productRefGroup = 344DC39C299A398100B8CF78 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				344DC39A299A398100B8CF78 /* DailyBookKeeping */,
+				344DC3B5299A39D600B8CF78 /* DailyBookKeepingWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		344DC399299A398100B8CF78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344DC3CF299A3CB000B8CF78 /* Release.xcconfig in Resources */,
+				344DC3AB299A398400B8CF78 /* LaunchScreen.storyboard in Resources */,
+				344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */,
+				344DC3CD299A3C6500B8CF78 /* Debug.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344DC3B4299A39D600B8CF78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344DC3C2299A39D800B8CF78 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C1844DC50E1B85787FDC9C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyBookKeeping-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD487AF6E8603598FD22EEEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF96E28FB6D28791E9CE843C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyBookKeepingWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		344DC397299A398100B8CF78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344DC3A3299A398100B8CF78 /* ViewController.swift in Sources */,
+				344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		344DC3B2299A39D600B8CF78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344DC3C0299A39D600B8CF78 /* DailyBookKeepingWidget.swift in Sources */,
+				344DC3BE299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		344DC3C5299A39D800B8CF78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 344DC3B5299A39D600B8CF78 /* DailyBookKeepingWidgetExtension */;
+			targetProxy = 344DC3C4299A39D800B8CF78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				344DC3AA299A398400B8CF78 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		344DC3AD299A398400B8CF78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		344DC3AE299A398400B8CF78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 344DC3CE299A3CB000B8CF78 /* Release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		344DC3B0299A398400B8CF78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$BUILD_NUMBER";
+				DEVELOPMENT_TEAM = 6664853H9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyBookKeeping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$BUNDLE_DISPLAY_NAME";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "$VERSION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION = "$VERSION";
+			};
+			name = Debug;
+		};
+		344DC3B1299A398400B8CF78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$BUILD_NUMBER";
+				DEVELOPMENT_TEAM = 6664853H9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyBookKeeping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$BUNDLE_DISPLAY_NAME";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "$VERSION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION = "$VERSION";
+			};
+			name = Release;
+		};
+		344DC3C8299A39D800B8CF78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$WIDGET_BUILD_NUMBER";
+				DEVELOPMENT_TEAM = 6664853H9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyBookKeepingWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$WIDGET_VERSION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping.DailyBookKeepingWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		344DC3C9299A39D800B8CF78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "$WIDGET_BUILD_NUMBER";
+				DEVELOPMENT_TEAM = 6664853H9Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyBookKeepingWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = "$WIDGET_VERSION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping.DailyBookKeepingWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		344DC396299A398100B8CF78 /* Build configuration list for PBXProject "DailyBookKeeping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344DC3AD299A398400B8CF78 /* Debug */,
+				344DC3AE299A398400B8CF78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		344DC3AF299A398400B8CF78 /* Build configuration list for PBXNativeTarget "DailyBookKeeping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344DC3B0299A398400B8CF78 /* Debug */,
+				344DC3B1299A398400B8CF78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		344DC3C7299A39D800B8CF78 /* Build configuration list for PBXNativeTarget "DailyBookKeepingWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				344DC3C8299A39D800B8CF78 /* Debug */,
+				344DC3C9299A39D800B8CF78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 344DC393299A398100B8CF78 /* Project object */;
+}

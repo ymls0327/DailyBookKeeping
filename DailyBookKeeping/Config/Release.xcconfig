@@ -1,0 +1,22 @@
+//
+//  Release.xcconfig
+//  DailyBookKeeping
+//
+//  Created by ext.jiayaning1 on 2023/2/13.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Release
+
+// 应用名称
+BUNDLE_DISPLAY_NAME=迷你记账
+// 版本号
+VERSION=1.0.0
+// Build号
+BUILD_NUMBER=1
+// 小组件版本号
+WIDGET_VERSION=$VERSION
+// 小组件Build号
+WIDGET_BUILD_NUMBER=$BUILD_NUMBER
