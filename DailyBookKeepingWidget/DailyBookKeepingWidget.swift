@@ -40,9 +40,46 @@ struct SimpleEntry: TimelineEntry {
 
 struct DailyBookKeepingWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
+    @Environment(\.widgetFamily) var family: WidgetFamily;
+    
     var body: some View {
-        Text(entry.date, style: .time)
+        switch(family) {
+        case .systemMedium:
+            VStack{
+                HStack(spacing: 0) {
+                    Text("本年")
+                        .font(Font.system(size: 14))
+                        .foregroundColor(Color.white)
+                        .fontWeight(Font.Weight.semibold)
+                    Spacer()
+                    Text("支")
+                        .font(Font.system(size: 10, weight: Font.Weight.semibold))
+                        .foregroundColor(Color.white)
+                        .frame(height: 10, alignment: .top)
+                    HStack(alignment: .lastTextBaseline, spacing: 0){
+                        Text("￥")
+                            .font(Font.system(size: 11, weight: Font.Weight.semibold))
+                            .foregroundColor(Color.white)
+                        Text("2381")
+                            .font(Font.system(size: 16, weight: Font.Weight.semibold))
+                            .foregroundColor(Color.white)
+                        Text(".36")
+                            .font(Font.system(size: 11, weight: Font.Weight.semibold))
+                            .foregroundColor(Color.white)
+                    }
+                }
+                Spacer()
+                HStack{
+                    Text("支￥2381.11")
+                }
+                Spacer()
+            }
+            .padding(EdgeInsets.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+            .background(Color.orange)
+        default:
+            Text("")
+        }
     }
 }
 
@@ -55,5 +92,6 @@ struct DailyBookKeepingWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
     }
 }
