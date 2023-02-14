@@ -17,8 +17,12 @@
 		344DC3C0299A39D600B8CF78 /* DailyBookKeepingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3BF299A39D600B8CF78 /* DailyBookKeepingWidget.swift */; };
 		344DC3C2299A39D800B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3C1299A39D800B8CF78 /* Assets.xcassets */; };
 		344DC3C6299A39D800B8CF78 /* DailyBookKeepingWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		344DC3CD299A3C6500B8CF78 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */; };
-		344DC3CF299A3CB000B8CF78 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3CE299A3CB000B8CF78 /* Release.xcconfig */; };
+		34B4919D299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */; };
+		34B4919E299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */; };
+		34B491A6299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */; };
+		34B491A7299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */; };
+		34B491A8299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */; };
+		34B491A9299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */; };
 		B09A0EAAB5DE2A6AEC80692D /* Pods_DailyBookKeeping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */; };
 		D4F3FF4010444E54D742FA11 /* Pods_DailyBookKeepingWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +68,9 @@
 		344DC3C3299A39D800B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		344DC3CE299A3CB000B8CF78 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TsukushiBRoundGothicBold.otf; sourceTree = "<group>"; };
+		34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JDLangZhengTi-Semibold.ttf"; sourceTree = "<group>"; };
+		34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JDZhengHT-Regular.ttf"; sourceTree = "<group>"; };
 		445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.debug.xcconfig"; sourceTree = "<group>"; };
 		B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,9 +126,8 @@
 				344DC3CB299A3C4F00B8CF78 /* Config */,
 				344DC39E299A398100B8CF78 /* AppDelegate.swift */,
 				344DC3A2299A398100B8CF78 /* ViewController.swift */,
-				344DC3A7299A398400B8CF78 /* Assets.xcassets */,
-				344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */,
-				344DC3AC299A398400B8CF78 /* Info.plist */,
+				34B491A0299B5AE000F8605F /* Untils */,
+				34B4919F299B5AB100F8605F /* Supporting Files */,
 			);
 			path = DailyBookKeeping;
 			sourceTree = "<group>";
@@ -157,6 +163,34 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		34B4918B299B50B900F8605F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */,
+				34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */,
+				34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		34B4919F299B5AB100F8605F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34B4918B299B50B900F8605F /* Fonts */,
+				344DC3A7299A398400B8CF78 /* Assets.xcassets */,
+				344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */,
+				344DC3AC299A398400B8CF78 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34B491A0299B5AE000F8605F /* Untils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Untils;
+			sourceTree = "<group>";
+		};
 		7EDC17DAD97186F83B7EEC13 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +199,6 @@
 				F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */,
 				445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -253,10 +286,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				344DC3CF299A3CB000B8CF78 /* Release.xcconfig in Resources */,
 				344DC3AB299A398400B8CF78 /* LaunchScreen.storyboard in Resources */,
+				34B4919D299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */,
 				344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */,
-				344DC3CD299A3C6500B8CF78 /* Debug.xcconfig in Resources */,
+				34B491A6299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */,
+				34B491A8299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +298,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B4919E299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */,
+				34B491A7299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */,
+				34B491A9299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */,
 				344DC3C2299A39D800B8CF78 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,15 +532,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$BUILD_NUMBER";
+				CURRENT_PROJECT_VERSION = $BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 6664853H9Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = DailyBookKeeping/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$BUNDLE_DISPLAY_NAME";
+				INFOPLIST_KEY_CFBundleDisplayName = $BUNDLE_DISPLAY_NAME;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -513,7 +558,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "$VERSION";
+				MARKETING_VERSION = $VERSION;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SnapKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -522,7 +572,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VERSION = "$VERSION";
+				VERSION = $VERSION;
 			};
 			name = Debug;
 		};
@@ -530,15 +580,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$BUILD_NUMBER";
+				CURRENT_PROJECT_VERSION = $BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 6664853H9Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = DailyBookKeeping/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$BUNDLE_DISPLAY_NAME";
+				INFOPLIST_KEY_CFBundleDisplayName = $BUNDLE_DISPLAY_NAME;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -548,7 +606,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "$VERSION";
+				MARKETING_VERSION = $VERSION;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SnapKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -557,7 +620,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VERSION = "$VERSION";
+				VERSION = $VERSION;
 			};
 			name = Release;
 		};
@@ -565,10 +628,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$WIDGET_BUILD_NUMBER";
+				CURRENT_PROJECT_VERSION = $BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 6664853H9Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
@@ -580,7 +644,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "$WIDGET_VERSION";
+				MARKETING_VERSION = $VERSION;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping.DailyBookKeepingWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -594,10 +658,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$WIDGET_BUILD_NUMBER";
+				CURRENT_PROJECT_VERSION = $BUILD_NUMBER;
 				DEVELOPMENT_TEAM = 6664853H9Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
@@ -609,7 +674,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "$WIDGET_VERSION";
+				MARKETING_VERSION = $VERSION;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayaning.DailyBookKeeping.DailyBookKeepingWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
