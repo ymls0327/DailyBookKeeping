@@ -9,6 +9,7 @@ target 'DailyBookKeeping' do
   # Pods for DailyBookKeeping
 
   pod 'SnapKit', '~> 5.6.0'
+  pod 'RTRootNavigationController', '~> 0.8.0'
 
 end
 
