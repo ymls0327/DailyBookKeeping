@@ -7,6 +7,15 @@
 
 import UIKit
 
+struct NSObject_Extension {
+    static let kScreenWidth: CGFloat = UIScreen.main.bounds.size.width
+    static let kScreenHeight: CGFloat = UIScreen.main.bounds.size.height
+}
+
+extension UIView {
+    
+}
+
 extension UIImage {
     
     // 颜色转为图片
@@ -58,6 +67,24 @@ extension UIFont {
     static let f_r_23 = UIFont.systemFont(ofSize: 23)
     static let f_r_24 = UIFont.systemFont(ofSize: 24)
     static let f_r_25 = UIFont.systemFont(ofSize: 25)
+    
+    static let f_l_9 = UIFont.systemFont(ofSize: 9, weight: .light)
+    static let f_l_10 = UIFont.systemFont(ofSize: 10, weight: .light)
+    static let f_l_11 = UIFont.systemFont(ofSize: 11, weight: .light)
+    static let f_l_12 = UIFont.systemFont(ofSize: 12, weight: .light)
+    static let f_l_13 = UIFont.systemFont(ofSize: 13, weight: .light)
+    static let f_l_14 = UIFont.systemFont(ofSize: 14, weight: .light)
+    static let f_l_15 = UIFont.systemFont(ofSize: 15, weight: .light)
+    static let f_l_16 = UIFont.systemFont(ofSize: 16, weight: .light)
+    static let f_l_17 = UIFont.systemFont(ofSize: 17, weight: .light)
+    static let f_l_18 = UIFont.systemFont(ofSize: 18, weight: .light)
+    static let f_l_19 = UIFont.systemFont(ofSize: 19, weight: .light)
+    static let f_l_20 = UIFont.systemFont(ofSize: 20, weight: .light)
+    static let f_l_21 = UIFont.systemFont(ofSize: 21, weight: .light)
+    static let f_l_22 = UIFont.systemFont(ofSize: 22, weight: .light)
+    static let f_l_23 = UIFont.systemFont(ofSize: 23, weight: .light)
+    static let f_l_24 = UIFont.systemFont(ofSize: 24, weight: .light)
+    static let f_l_25 = UIFont.systemFont(ofSize: 25, weight: .light)
     
     static let f_m_9 = UIFont.systemFont(ofSize: 9, weight: .medium)
     static let f_m_10 = UIFont.systemFont(ofSize: 10, weight: .medium)

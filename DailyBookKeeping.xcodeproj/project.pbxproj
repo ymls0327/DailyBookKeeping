@@ -10,13 +10,13 @@
 		344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC39E299A398100B8CF78 /* AppDelegate.swift */; };
 		344DC3A3299A398100B8CF78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3A2299A398100B8CF78 /* ViewController.swift */; };
 		344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A7299A398400B8CF78 /* Assets.xcassets */; };
-		344DC3AB299A398400B8CF78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */; };
 		344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3B8299A39D600B8CF78 /* WidgetKit.framework */; };
 		344DC3BB299A39D600B8CF78 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3BA299A39D600B8CF78 /* SwiftUI.framework */; };
 		344DC3BE299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3BD299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift */; };
 		344DC3C0299A39D600B8CF78 /* DailyBookKeepingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3BF299A39D600B8CF78 /* DailyBookKeepingWidget.swift */; };
 		344DC3C2299A39D800B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3C1299A39D800B8CF78 /* Assets.xcassets */; };
 		344DC3C6299A39D800B8CF78 /* DailyBookKeepingWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		345860EE299DE971007AB54E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 345860ED299DE971007AB54E /* LaunchScreen.storyboard */; };
 		34B4919D299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */; };
 		34B4919E299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */; };
 		34B491A6299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */; };
@@ -61,7 +61,6 @@
 		344DC39E299A398100B8CF78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		344DC3A2299A398100B8CF78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		344DC3A7299A398400B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		344DC3AA299A398400B8CF78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		344DC3AC299A398400B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyBookKeepingWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DC3B8299A39D600B8CF78 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -72,6 +71,7 @@
 		344DC3C3299A39D800B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344DC3CC299A3C6500B8CF78 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		344DC3CE299A3CB000B8CF78 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		345860ED299DE971007AB54E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34B4919C299B590400F8605F /* TsukushiBRoundGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TsukushiBRoundGothicBold.otf; sourceTree = "<group>"; };
 		34B491A4299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JDLangZhengTi-Semibold.ttf"; sourceTree = "<group>"; };
 		34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JDZhengHT-Regular.ttf"; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 			children = (
 				849E6F6E299BC50400562FC5 /* DailyBookKeeping.entitlements */,
 				344DC3CB299A3C4F00B8CF78 /* Config */,
+				345860EF299DE9F9007AB54E /* Base */,
 				344DC39E299A398100B8CF78 /* AppDelegate.swift */,
-				849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */,
 				344DC3A2299A398100B8CF78 /* ViewController.swift */,
 				849E6F7A299D346600562FC5 /* NextViewController.swift */,
 				849E6F78299D336900562FC5 /* CollectionViewCell.swift */,
@@ -178,6 +178,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		345860EF299DE9F9007AB54E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		34B4918B299B50B900F8605F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +201,7 @@
 			children = (
 				34B4918B299B50B900F8605F /* Fonts */,
 				344DC3A7299A398400B8CF78 /* Assets.xcassets */,
-				344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */,
+				345860ED299DE971007AB54E /* LaunchScreen.storyboard */,
 				344DC3AC299A398400B8CF78 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -302,10 +310,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				344DC3AB299A398400B8CF78 /* LaunchScreen.storyboard in Resources */,
 				34B4919D299B590400F8605F /* TsukushiBRoundGothicBold.otf in Resources */,
 				344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */,
 				34B491A6299B6DA500F8605F /* JDLangZhengTi-Semibold.ttf in Resources */,
+				345860EE299DE971007AB54E /* LaunchScreen.storyboard in Resources */,
 				34B491A8299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,17 +427,6 @@
 			targetProxy = 344DC3C4299A39D800B8CF78 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		344DC3A9299A398400B8CF78 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				344DC3AA299A398400B8CF78 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		344DC3AD299A398400B8CF78 /* Debug */ = {

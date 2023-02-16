@@ -14,7 +14,7 @@ class NextViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor
+        self.view.backgroundColor = .white
     }
     
 
