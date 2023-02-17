@@ -7,15 +7,6 @@
 
 import UIKit
 
-struct NSObject_Extension {
-    static let kScreenWidth: CGFloat = UIScreen.main.bounds.size.width
-    static let kScreenHeight: CGFloat = UIScreen.main.bounds.size.height
-}
-
-extension UIView {
-    
-}
-
 extension UIImage {
     
     // 颜色转为图片

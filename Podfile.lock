@@ -1,26 +1,28 @@
 PODS:
-  - Masonry (1.1.0)
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
   - SnapKit (5.6.0)
+  - SQLite.swift (0.14.1):
+    - SQLite.swift/standard (= 0.14.1)
+  - SQLite.swift/standard (0.14.1)
 
 DEPENDENCIES:
-  - Masonry (~> 1.1.0)
   - RTRootNavigationController (~> 0.8.0)
   - SnapKit (~> 5.6.0)
+  - SQLite.swift (~> 0.14.1)
 
 SPEC REPOS:
   https://github.com/Cocoapods/Specs.git:
-    - Masonry
     - RTRootNavigationController
     - SnapKit
+    - SQLite.swift
 
 SPEC CHECKSUMS:
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SQLite.swift: 2992550ebf3c5b268bf4352603e3df87d2a4ed72
 
-PODFILE CHECKSUM: 6b5379f86c8d167a0055a6f4e3136d674cbc966a
+PODFILE CHECKSUM: a8db8045e4a2aae2a2a6214d788ee55e77ad058b
 
 COCOAPODS: 1.11.3

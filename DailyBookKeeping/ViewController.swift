@@ -8,14 +8,20 @@
 import UIKit
 import WidgetKit
 import SnapKit
+import SQLite
 
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     var navBar: UIView?
     var leftButton: UIButton?
     var centerButton: UIButton?
     var rightButton: UIButton?
     var collectionView: UICollectionView?
+    var addButton: UIButton!
+    lazy var list: Array<Any> = {
+        let list = Array<Any>()
+        return list
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,15 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.view.backgroundColor = .mainColor
         
         initializeUI()
+        
+        initData()
+        
+    }
+    
+    func initData() {
+        if list.count == 0 {
+            addButton.isHidden = false
+        }
     }
     
     func initializeUI() {
@@ -68,7 +83,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         })
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width-100)/4, height: (UIScreen.main.bounds.size.width-100)/4*1.5)
+        layout.itemSize = CGSize(width: (kScreenWidth-100)/4, height: (kScreenWidth-100)/4*1.5)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
@@ -88,6 +103,30 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 make.bottom.equalTo(self.view.snp.bottom)
             }
         })
+        
+        addButton = UIButton()
+        addButton.layer.cornerRadius = 30
+        addButton.layer.masksToBounds = true
+        addButton.setTitle("+", for: .normal)
+        addButton.backgroundColor = .white
+        addButton.isHidden = true
+        addButton.addTarget(self, action: #selector(addButtonTap(_ :)), for: .touchUpInside)
+        self.view.addSubview(addButton)
+        addButton.snp.makeConstraints { make in
+            make.right.equalTo(self.view.snp.right).offset(-20)
+            make.width.height.equalTo(60)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-50)
+            }else {
+                make.bottom.equalTo(self.view.snp.bottom).offset(-20)
+            }
+        }
+    }
+    
+    @objc func addButtonTap(_ sender: UIButton) {
+        let addvc = AddCategoryViewController()
+        
+        self.present(addvc, animated: true)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -95,12 +134,16 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        8
+        list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
 
