@@ -35,9 +35,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func initData() {
+        
+        list = CategoryTable.share.getAllCategory()!
+        
         if list.count == 0 {
             addButton.isHidden = false
         }
+        
+        collectionView?.reloadData()
     }
     
     func initializeUI() {
@@ -54,6 +59,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         centerButton?.titleLabel?.font = .f_m_16
         centerButton?.setTitleColor(.white, for: .normal)
         centerButton?.setTitle("今年", for: .normal)
+        centerButton?.addTarget(self, action: #selector(addButtonTap(_ :)), for: .touchUpInside)
         navBar?.addSubview(centerButton!)
         centerButton?.snp.makeConstraints({ make in
             make.centerX.bottom.equalTo(navBar!)
@@ -125,7 +131,11 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     @objc func addButtonTap(_ sender: UIButton) {
         let addvc = AddCategoryViewController()
-        
+        addvc.closure = { [self] text1, text2 in
+            if CategoryTable.share.add(name: text1, icon: text2) {
+                initData()
+            }
+        }
         self.present(addvc, animated: true)
     }
     
@@ -139,6 +149,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        cell.item = list[indexPath.item]
         return cell
     }
     

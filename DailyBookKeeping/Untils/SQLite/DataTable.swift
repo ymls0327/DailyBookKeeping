@@ -35,8 +35,14 @@ class DataTable: NSObject {
 
 extension DataTable {
     // 增加类目
-    func add(name: String) -> Bool {
-        return DBManager.share.insert(table: table, values: [categoryId <- "2", money <- "345.45"])
+    func add(name: String, block: ((_ error: NSError?) -> ())) {
+        let result = DBManager.share.insert(table: table, values: [categoryId <- "2", money <- "345.45"])
+        if result {
+            block(nil)
+        }else {
+            block(NSError.init(domain: "", code: -1))
+        }
+        
     }
     // 获取所有类目
     func getAllCategory() -> [Row]? {

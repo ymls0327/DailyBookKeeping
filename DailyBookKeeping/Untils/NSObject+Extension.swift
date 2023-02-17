@@ -27,6 +27,8 @@ extension UIColor {
     static let mainColor = UIColor.rgbColor(r: 61, g: 63, b: 96)
     // 主题色+1
     static let main1Color = UIColor.rgbColor(r: 53, g: 55, b: 83)
+    // 主题色-10
+    static let main2Color = UIColor.rgbColor(r: 101, g: 103, b: 136)
     // 默认背景色
     static let backgroundColor = UIColor.rgbColor(r: 243, g: 245, b: 247)
     // 自定义RGB

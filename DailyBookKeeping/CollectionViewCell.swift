@@ -53,12 +53,12 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: Getter & Setter
-    private var model: Row!
-    var item: Row {
+    private var model: Any!
+    var item: Any {
         set {
             model = newValue
-            titleLabel.text = try? model.get(CategoryTable.share.categoryName)
-            iconLabel.text = try? model.get(CategoryTable.share.iconUrl)
+            titleLabel.text = try? (model as! Row).get(CategoryTable.share.categoryName)
+            iconLabel.text = try? (model as! Row).get(CategoryTable.share.iconUrl)
         }
         get {
             model

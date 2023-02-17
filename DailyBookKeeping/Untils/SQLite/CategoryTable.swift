@@ -32,7 +32,11 @@ class CategoryTable: NSObject {
 extension CategoryTable {
     // 增加类目
     func add(name: String, icon: String) -> Bool {
-        return DBManager.share.insert(table: table, values: [categoryName <- name, iconUrl <- icon])
+        let result = DBManager.share.select(table: table, filter: categoryName == name)
+        if result?.count == 0 {
+            return DBManager.share.insert(table: table, values: [categoryName <- name, iconUrl <- icon])
+        }
+        return false
     }
     // 获取所有类目
     func getAllCategory() -> [Row]? {

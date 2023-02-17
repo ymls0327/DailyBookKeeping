@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DBManager.share.prepare()
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = .main2Color
         let nav = RTRootNavigationController(rootViewController: ViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
