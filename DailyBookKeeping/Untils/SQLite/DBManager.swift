@@ -10,11 +10,11 @@ import SQLite
 
 class DBManager: NSObject {
 
+    private let db_file_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!+"/dailybook.sqlite"
     static let share = DBManager()
     private var db: Connection?
     
     func prepare() {
-        let db_file_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!+"/dailybook.sqlite"
         // 连接数据库
         db = try? Connection(db_file_path)
         db?.busyTimeout = 5.0
@@ -43,12 +43,12 @@ extension DBManager {
 
 extension DBManager {
     // 增
-    func insert(table: Table?, values: [Setter]) -> Bool {
-        guard let t = table else {
+    @discardableResult func insert(table: Table?, values: [Setter]) -> Bool {
+        guard let tab = table else {
             return false
         }
         do {
-            try db?.run(t.insert(values))
+            try db?.run(tab.insert(values))
             return true
         }catch {
             debugPrint("❌" + error.localizedDescription)
@@ -56,29 +56,44 @@ extension DBManager {
         }
     }
     // 删
+    @discardableResult func delete(table: Table?, filter: Expression<Bool>? = nil) -> Bool {
+        guard var tab = table else {
+            return false
+        }
+        do {
+            if let filterTemp = filter  {
+                tab = tab.filter(filterTemp)
+            }
+            try db?.run(tab.delete())
+            return true
+        } catch let error {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+    }
     
     // 查
     func select(table: Table?, select: [Expressible] = [], filter: Expression<Bool>? = nil, order: [Expressible] = [], limit: Int? = nil, offset: Int? = nil) -> [Row]? {
-        guard var queryTable = table else {
+        guard var tab = table else {
             return nil
         }
         do {
             if select.count != 0 {
-                queryTable = queryTable.select(select).order(order)
+                tab = tab.select(select).order(order)
             }else {
-                queryTable = queryTable.order(order)
+                tab = tab.order(order)
             }
             if let filterTemp = filter {
-                queryTable = queryTable.filter(filterTemp)
+                tab = tab.filter(filterTemp)
             }
             if let lim = limit{
                 if let off = offset {
-                    queryTable = queryTable.limit(lim, offset: off)
+                    tab = tab.limit(lim, offset: off)
                 }else{
-                    queryTable = queryTable.limit(lim)
+                    tab = tab.limit(lim)
                 }
             }
-            guard let result = try db?.prepare(queryTable) else { return nil }
+            guard let result = try db?.prepare(tab) else { return nil }
             
             return Array.init(result)
             

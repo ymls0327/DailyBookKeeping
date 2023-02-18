@@ -38,5 +38,11 @@ class BaseViewController: UIViewController {
         }
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        self.placeSubViews()
+    }
+    
+    func placeSubViews() {
+        
     }
 }

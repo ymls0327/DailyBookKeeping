@@ -26,7 +26,7 @@ extension UIColor {
     // 主题色
     static let mainColor = UIColor.rgbColor(r: 61, g: 63, b: 96)
     // 主题色+1
-    static let main1Color = UIColor.rgbColor(r: 53, g: 55, b: 83)
+    static let main1Color = UIColor.rgbColor(r: 51, g: 53, b: 86)
     // 主题色-10
     static let main2Color = UIColor.rgbColor(r: 101, g: 103, b: 136)
     // 默认背景色
@@ -36,8 +36,53 @@ extension UIColor {
         self.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
     }
     // 自定义16进制
-    static func hexColor(_ hex: UInt) -> UIColor {
+    static func color(fromHex hex: UInt) -> UIColor {
         self.init(red: CGFloat((hex & 0xFF0000) >> 16) / 255, green: CGFloat((hex & 0x00FF00) >> 8) / 255, blue: CGFloat(hex & 0x0000FF) / 255, alpha: 1.0)
+    }
+    // 自定义16进制
+    static func color(fromHexString hex: NSString?) -> UIColor {
+        guard var cString = hex else { return .clear }
+        guard cString.length >= 6 else { return .clear }
+        cString = cString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased() as NSString
+        if cString.hasPrefix("0X") {
+            cString = cString.substring(from: 2) as NSString
+        }
+        if cString.hasPrefix("#") {
+            cString = cString.substring(from: 1) as NSString
+        }
+        guard cString.length == 6 else { return .clear }
+        var range = NSRange()
+        range.location = 0
+        range.length = 2
+        let rString = cString.substring(with: range)
+        range.location = 2
+        let gString = cString.substring(with: range)
+        range.location = 4
+        let bString = cString.substring(with: range)
+        let r, g, b : UInt
+        r = strtoul(rString, nil, 16)
+        g = strtoul(gString, nil, 16)
+        b = strtoul(bString, nil, 16)
+        return UIColor.rgbColor(r: CGFloat(r), g: CGFloat(g), b: CGFloat(b))
+    }
+    // 获取16进制
+    func hex() -> String? {
+        var r : CGFloat = 0
+        var g : CGFloat = 0
+        var b : CGFloat = 0
+        var a : CGFloat = 0
+        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+            if r > 1 { r = 1 }
+            if r < 0 { r = 0 }
+            if g > 1 { g = 1 }
+            if g < 0 { g = 0 }
+            if b > 1 { b = 1 }
+            if b < 0 { b = 0 }
+            let rgb = (Int(r * 255.0) << 16) + (Int(g * 255.0) << 8) + Int(b * 255.0)
+            return NSString.init(format: "#%x", rgb) as String
+        } else {
+            return nil
+        }
     }
 }
  

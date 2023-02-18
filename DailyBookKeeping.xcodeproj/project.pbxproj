@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC39E299A398100B8CF78 /* AppDelegate.swift */; };
-		344DC3A3299A398100B8CF78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC3A2299A398100B8CF78 /* ViewController.swift */; };
 		344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A7299A398400B8CF78 /* Assets.xcassets */; };
 		344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3B8299A39D600B8CF78 /* WidgetKit.framework */; };
 		344DC3BB299A39D600B8CF78 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3BA299A39D600B8CF78 /* SwiftUI.framework */; };
@@ -27,12 +26,15 @@
 		34F8034E299F48840087829A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8034D299F48840087829A /* DBManager.swift */; };
 		34F80351299F5B860087829A /* CategoryTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80350299F5B860087829A /* CategoryTable.swift */; };
 		34F80353299F5B940087829A /* DataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80352299F5B940087829A /* DataTable.swift */; };
-		34F80355299F768B0087829A /* HomeListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80354299F768B0087829A /* HomeListItemModel.swift */; };
 		34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80356299F785E0087829A /* AddCategoryViewController.swift */; };
+		840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */; };
+		840FC6BC29A08F4600505E56 /* CommonNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6BB29A08F4600505E56 /* CommonNavBarView.swift */; };
 		849E6F70299D1FEB00562FC5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */; };
 		849E6F77299D2AA800562FC5 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */; };
-		849E6F79299D336900562FC5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F78299D336900562FC5 /* CollectionViewCell.swift */; };
-		849E6F7B299D346600562FC5 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F7A299D346600562FC5 /* NextViewController.swift */; };
+		849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F82299FBC0300562FC5 /* HomeViewController.swift */; };
+		849E6F85299FBF6200562FC5 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F84299FBF6200562FC5 /* HomeCollectionViewCell.swift */; };
+		849E6F87299FC82800562FC5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F86299FC82800562FC5 /* HomeViewModel.swift */; };
+		849E6F8C29A07E5A00562FC5 /* HomeCategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F8B29A07E5A00562FC5 /* HomeCategoryItemModel.swift */; };
 		B09A0EAAB5DE2A6AEC80692D /* Pods_DailyBookKeeping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */; };
 		D4F3FF4010444E54D742FA11 /* Pods_DailyBookKeepingWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +67,6 @@
 		12EDB6CC05E9A47F3F0B92B6 /* Pods_DailyBookKeeping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyBookKeeping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DC39B299A398100B8CF78 /* DailyBookKeeping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyBookKeeping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DC39E299A398100B8CF78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		344DC3A2299A398100B8CF78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		344DC3A7299A398400B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		344DC3AC299A398400B8CF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344DC3B6299A39D600B8CF78 /* DailyBookKeepingWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyBookKeepingWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,16 +86,19 @@
 		34F8034D299F48840087829A /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		34F80350299F5B860087829A /* CategoryTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTable.swift; sourceTree = "<group>"; };
 		34F80352299F5B940087829A /* DataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTable.swift; sourceTree = "<group>"; };
-		34F80354299F768B0087829A /* HomeListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListItemModel.swift; sourceTree = "<group>"; };
 		34F80356299F785E0087829A /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.debug.xcconfig"; sourceTree = "<group>"; };
+		840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExpensesViewController.swift; sourceTree = "<group>"; };
+		840FC6BB29A08F4600505E56 /* CommonNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNavBarView.swift; sourceTree = "<group>"; };
 		849E6F6D299BC47F00562FC5 /* DailyBookKeepingWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyBookKeepingWidgetExtension.entitlements; sourceTree = "<group>"; };
 		849E6F6E299BC50400562FC5 /* DailyBookKeeping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyBookKeeping.entitlements; sourceTree = "<group>"; };
 		849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
-		849E6F78299D336900562FC5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		849E6F7A299D346600562FC5 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		849E6F82299FBC0300562FC5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		849E6F84299FBF6200562FC5 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		849E6F86299FC82800562FC5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		849E6F8B29A07E5A00562FC5 /* HomeCategoryItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryItemModel.swift; sourceTree = "<group>"; };
 		B14554E1460EC8B68ABB5DA3 /* Pods-DailyBookKeeping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.release.xcconfig"; sourceTree = "<group>"; };
 		ED113611843FEBB1AB602A20 /* Pods_DailyBookKeepingWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyBookKeepingWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C2870473D24DB9071CA979 /* Pods-DailyBookKeepingWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,14 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				849E6F6E299BC50400562FC5 /* DailyBookKeeping.entitlements */,
+				344DC39E299A398100B8CF78 /* AppDelegate.swift */,
 				344DC3CB299A3C4F00B8CF78 /* Config */,
 				345860EF299DE9F9007AB54E /* Base */,
-				344DC39E299A398100B8CF78 /* AppDelegate.swift */,
-				344DC3A2299A398100B8CF78 /* ViewController.swift */,
-				34F80356299F785E0087829A /* AddCategoryViewController.swift */,
-				34F80354299F768B0087829A /* HomeListItemModel.swift */,
-				849E6F7A299D346600562FC5 /* NextViewController.swift */,
-				849E6F78299D336900562FC5 /* CollectionViewCell.swift */,
+				849E6F81299FBBE700562FC5 /* Classes */,
 				849E6F71299D21BD00562FC5 /* Untils */,
 				34B4919F299B5AB100F8605F /* Supporting Files */,
 			);
@@ -196,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */,
+				840FC6BB29A08F4600505E56 /* CommonNavBarView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -242,6 +243,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		840FC6B729A08DE500505E56 /* RecordExpenses  */ = {
+			isa = PBXGroup;
+			children = (
+				840FC6B829A08E0900505E56 /* Controller */,
+			);
+			path = "RecordExpenses ";
+			sourceTree = "<group>";
+		};
+		840FC6B829A08E0900505E56 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		849E6F71299D21BD00562FC5 /* Untils */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +267,67 @@
 				34F8034B299F26790087829A /* PrefixHeader.swift */,
 			);
 			path = Untils;
+			sourceTree = "<group>";
+		};
+		849E6F7E299FBBAE00562FC5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F82299FBC0300562FC5 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		849E6F7F299FBBD300562FC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F86299FC82800562FC5 /* HomeViewModel.swift */,
+				849E6F8B29A07E5A00562FC5 /* HomeCategoryItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		849E6F80299FBBDA00562FC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F84299FBF6200562FC5 /* HomeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		849E6F81299FBBE700562FC5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				840FC6B729A08DE500505E56 /* RecordExpenses  */,
+				849E6F88299FC8BD00562FC5 /* Home */,
+				849E6F89299FC8C900562FC5 /* AddCategory */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		849E6F88299FC8BD00562FC5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F7E299FBBAE00562FC5 /* Controller */,
+				849E6F80299FBBDA00562FC5 /* View */,
+				849E6F7F299FBBD300562FC5 /* Model */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		849E6F89299FC8C900562FC5 /* AddCategory */ = {
+			isa = PBXGroup;
+			children = (
+				849E6F8A299FC8D900562FC5 /* Controller */,
+			);
+			path = AddCategory;
+			sourceTree = "<group>";
+		};
+		849E6F8A299FC8D900562FC5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				34F80356299F785E0087829A /* AddCategoryViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,17 +504,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849E6F79299D336900562FC5 /* CollectionViewCell.swift in Sources */,
 				34F8034C299F26790087829A /* PrefixHeader.swift in Sources */,
+				840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */,
 				34F80353299F5B940087829A /* DataTable.swift in Sources */,
-				849E6F7B299D346600562FC5 /* NextViewController.swift in Sources */,
+				840FC6BC29A08F4600505E56 /* CommonNavBarView.swift in Sources */,
 				34F8034E299F48840087829A /* DBManager.swift in Sources */,
-				344DC3A3299A398100B8CF78 /* ViewController.swift in Sources */,
 				344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */,
-				34F80355299F768B0087829A /* HomeListItemModel.swift in Sources */,
+				849E6F85299FBF6200562FC5 /* HomeCollectionViewCell.swift in Sources */,
 				34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */,
 				34F80351299F5B860087829A /* CategoryTable.swift in Sources */,
 				849E6F70299D1FEB00562FC5 /* BaseViewController.swift in Sources */,
+				849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */,
+				849E6F87299FC82800562FC5 /* HomeViewModel.swift in Sources */,
+				849E6F8C29A07E5A00562FC5 /* HomeCategoryItemModel.swift in Sources */,
 				849E6F77299D2AA800562FC5 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

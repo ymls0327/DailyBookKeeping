@@ -12,7 +12,7 @@ class DataTable: NSObject {
 
     // 表中的字段
     let dataId = Expression<Int64>.init("id")
-    let categoryId = Expression<String>.init("category_id")
+    let categoryId = Expression<Int64>.init("category_id")
     let money = Expression<String>.init("money")
     let createTime = Expression<Date>.init("create_time")
     let updateTime = Expression<Date>.init("update_time")
@@ -35,17 +35,13 @@ class DataTable: NSObject {
 
 extension DataTable {
     // 增加类目
-    func add(name: String, block: ((_ error: NSError?) -> ())) {
-        let result = DBManager.share.insert(table: table, values: [categoryId <- "2", money <- "345.45"])
-        if result {
-            block(nil)
-        }else {
-            block(NSError.init(domain: "", code: -1))
-        }
-        
+    @discardableResult func insert(imoney: String, icategory: Int64) -> Bool {
+        let result = DBManager.share.insert(table: table, values: [categoryId <- icategory, money <- imoney])
+        return result
     }
+    
     // 获取所有类目
-    func getAllCategory() -> [Row]? {
-        return DBManager.share.select(table: table)
+    func getAllCategory(select: [Expressible] = [], filter: Expression<Bool>? = nil) -> [Row]? {
+        return DBManager.share.select(table: table, select: select, filter: filter)
     }
 }

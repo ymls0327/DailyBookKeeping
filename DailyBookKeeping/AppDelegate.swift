@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = .main2Color
-        let nav = RTRootNavigationController(rootViewController: ViewController())
+        let nav = RTRootNavigationController(rootViewController: HomeViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
