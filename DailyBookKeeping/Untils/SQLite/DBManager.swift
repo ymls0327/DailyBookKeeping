@@ -39,6 +39,19 @@ extension DBManager {
     
     // 修改表
     
+    // 添加索引
+    @discardableResult func createTableIndex(table: Table?, _ columns: Expressible..., unique: Bool = false, ifNotExists: Bool = false) -> Bool {
+        do {
+            guard let tab = table else { return false }
+            for column in columns {
+                try db?.run(tab.createIndex(column, unique: unique, ifNotExists: ifNotExists))
+            }
+            return true
+        }catch {
+            debugPrint("❌" + error.localizedDescription)
+            return false
+        }
+    }
 }
 
 extension DBManager {

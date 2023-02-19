@@ -29,20 +29,20 @@ class HomeViewModel: NSObject {
         var map = Dictionary<String, Any>()
         for item in categorys ?? [] {
             let model = HomeCategoryItemModel()
-            model.categoryId = try? item.get(CategoryTable.share.categoryId)
-            model.categoryIcon = try? item.get(CategoryTable.share.iconUrl)
-            model.categoryName = try? item.get(CategoryTable.share.categoryName)
-            model.categoryColor = try? item.get(CategoryTable.share.categoryColor)
+            model.categoryId = item[CategoryTable.share.categoryId]
+            model.categoryIcon = item[CategoryTable.share.iconUrl]
+            model.categoryName = item[CategoryTable.share.categoryName]
+            model.categoryColor = item[CategoryTable.share.categoryColor]
             map["categoryId"] = NSString.init(format: "%ld", model.categoryId!) as String
             map["categoryIcon"] = model.categoryIcon ?? ""
             map["categoryName"] = model.categoryName ?? ""
             map["categoryColor"] = model.categoryColor ?? ""
             // 查询类目下符合条件的数据
-            let datas = DataTable.share.getAllCategory(select: [DataTable.share.money], filter: DataTable.share.categoryId == model.categoryId!)
+            let datas = DataTable.share.select(select: [DataTable.share.money], filter: DataTable.share.categoryId == model.categoryId!)
             var totalMoney = 0.0
             if datas?.count != 0 {
                 for data in datas ?? [] {
-                    let money = (try? data.get(DataTable.share.money) as NSString)!.floatValue
+                    let money = Float(data[DataTable.share.money])!
                     totalMoney += Double(money)
                     total += Double(money)
                 }

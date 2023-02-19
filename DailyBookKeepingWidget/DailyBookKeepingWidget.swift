@@ -102,7 +102,7 @@ struct ItemView: View {
             Spacer()
                 .frame(minHeight: 0)
             Text(infoDic!["categoryIcon"]!)
-                .font(Font.chineseFont(size: 26))
+                .font(Font.system(size: 22))
             Spacer()
                 .frame(minHeight: 0)
             MoneyView(money: infoDic!["money"]!, font1: 9, font2: 12, font3: 9)

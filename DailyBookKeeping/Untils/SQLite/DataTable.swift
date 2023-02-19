@@ -30,18 +30,25 @@ class DataTable: NSObject {
             builder.column(createTime, defaultValue: Date())
             builder.column(updateTime, defaultValue: Date())
         }
+        // 给dataId、categoryId、createTime创建索引
+        DBManager.share.createTableIndex(table: table, dataId, categoryId, createTime, ifNotExists: true)
     }
 }
 
 extension DataTable {
-    // 增加类目
+    // 添加记录
     @discardableResult func insert(imoney: String, icategory: Int64) -> Bool {
         let result = DBManager.share.insert(table: table, values: [categoryId <- icategory, money <- imoney])
         return result
     }
     
-    // 获取所有类目
-    func getAllCategory(select: [Expressible] = [], filter: Expression<Bool>? = nil) -> [Row]? {
+    // 查询记录
+    func select(select: [Expressible] = [], filter: Expression<Bool>? = nil) -> [Row]? {
         return DBManager.share.select(table: table, select: select, filter: filter)
+    }
+    
+    // 删除记录
+    @discardableResult func delete(filter: Expression<Bool>? = nil) -> Bool {
+        return DBManager.share.delete(table: table, filter: filter)
     }
 }

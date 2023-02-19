@@ -74,7 +74,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyContainerView() -> UIView {
         let view = UIView()
         view.backgroundColor = .main1Color
-        view.layer.cornerRadius = 6
+        view.layer.cornerRadius = 12
         view.layer.shadowColor = UIColor.rgbColor(r: 0, g: 0, b: 0, a: 0.8).cgColor
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 1
