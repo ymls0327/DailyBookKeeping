@@ -14,6 +14,7 @@ class RecordExpensesViewController: BaseViewController {
     var refreshBlock: (() -> Void)?
     
     lazy var titleBar: CommonNavBarView = lazyTitleBar()
+    lazy var moneyLabel: UILabel = lazyMoneyLabel()
     lazy var moneyTF: UITextField = lazyMoneyTextField()
     
     override func placeSubViews() {
@@ -21,19 +22,28 @@ class RecordExpensesViewController: BaseViewController {
         
         self.view.addSubview(titleBar)
         self.view.addSubview(moneyTF)
+        self.view.addSubview(moneyLabel)
         titleBar.snp.makeConstraints { make in
             make.top.left.right.equalTo(self.view)
             make.height.equalTo(50)
         }
         moneyTF.snp.makeConstraints { make in
-            make.top.equalTo(titleBar.snp.bottom).offset(10)
-            make.left.equalTo(20)
+            make.top.equalTo(titleBar.snp.bottom).offset(30)
+            make.left.equalTo(moneyLabel.snp.right)
             make.right.equalTo(-20)
             make.height.equalTo(50)
+        }
+        moneyLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(moneyTF.snp.bottom).offset(-6)
+            make.left.equalTo(20)
+            make.width.height.equalTo(30)
         }
     }
     
     func save() {
+        let money = Float(moneyTF.text!)
+        guard let m = money else { return }
+        if m <= 0 { return }
         let result = DataTable.share.insert(imoney: moneyTF.text!, icategory: (model?.categoryId)!)
         if result && refreshBlock != nil {
             refreshBlock!()
@@ -56,12 +66,22 @@ class RecordExpensesViewController: BaseViewController {
         }
         return view
     }
+    
+    private func lazyMoneyLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "￥"
+        label.font = .f_m_22
+        label.textColor = .main2Color
+        return label
+    }
 
     private func lazyMoneyTextField() -> UITextField {
         let textField = UITextField()
-        textField.font = .f_m_14
+        textField.font = .systemFont(ofSize: 30, weight: .semibold)
         textField.textColor = .white
-        textField.attributedPlaceholder = NSAttributedString.init(string: "请输入金额", attributes: [.font: UIFont.f_l_14, .foregroundColor: UIColor.main2Color])
+        textField.keyboardType = .decimalPad
+        textField.tintColor = .white
+        textField.attributedPlaceholder = NSAttributedString.init(string: "请输入金额", attributes: [.font: UIFont.systemFont(ofSize: 30), .foregroundColor: UIColor.main2Color])
         return textField
     }
 }

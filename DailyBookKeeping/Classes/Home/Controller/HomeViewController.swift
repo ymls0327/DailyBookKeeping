@@ -9,6 +9,7 @@ import UIKit
 import WidgetKit
 import SnapKit
 import SQLite
+import MJExtension
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -107,6 +108,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         dataList = viewModel.requestDatas()
         addCategoryButton.isHidden = dataList.count > 0
         navAddButton.isHidden = !addCategoryButton.isHidden
+        let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
+        userDefault?.setValue(viewModel.totalMoney ?? "", forKey: "totalMoney")
+        userDefault?.setValue(viewModel.widgetList ?? [], forKey: "items")
+        userDefault?.synchronize()
+        WidgetCenter.shared.reloadAllTimelines()
         collectionView.reloadData()
     }
     
@@ -191,6 +197,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = true
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.bounces = true
         if #available(iOS 11.0, *) {

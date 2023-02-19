@@ -29,6 +29,7 @@
 		34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80356299F785E0087829A /* AddCategoryViewController.swift */; };
 		840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */; };
 		840FC6BC29A08F4600505E56 /* CommonNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6BB29A08F4600505E56 /* CommonNavBarView.swift */; };
+		840FC6D629A1CCC000505E56 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */; };
 		849E6F70299D1FEB00562FC5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F6F299D1FEB00562FC5 /* BaseViewController.swift */; };
 		849E6F77299D2AA800562FC5 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */; };
 		849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F82299FBC0300562FC5 /* HomeViewController.swift */; };
@@ -527,6 +528,7 @@
 			files = (
 				344DC3C0299A39D600B8CF78 /* DailyBookKeepingWidget.swift in Sources */,
 				344DC3BE299A39D600B8CF78 /* DailyBookKeepingWidgetBundle.swift in Sources */,
+				840FC6D629A1CCC000505E56 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,7 +772,7 @@
 				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DailyBookKeepingWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -801,7 +803,7 @@
 				INFOPLIST_FILE = DailyBookKeepingWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DailyBookKeepingWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

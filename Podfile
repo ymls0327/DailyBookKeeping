@@ -11,6 +11,7 @@ target 'DailyBookKeeping' do
   pod 'SnapKit', '~> 5.6.0'
   pod 'RTRootNavigationController', '~> 0.8.0'
   pod 'SQLite.swift', '~> 0.14.1'
+  pod 'MJExtension', '~> 3.4.1'
 
 end
 

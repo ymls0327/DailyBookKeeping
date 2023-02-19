@@ -7,6 +7,31 @@
 
 import UIKit
 
+extension String {
+    func formatterMoneyStyle() -> NSAttributedString? {
+        if self.count <= 0 {
+            return nil
+        }
+        let array = self.components(separatedBy: ".")
+        var first = "", last = ""
+        if array.count == 2 {
+            first = array[0]
+            last = "." + array[1]
+        }else if array.count == 1 {
+            first = array[0]
+            last = ".00"
+        }
+        let newString = first+last
+        let attributeString = NSMutableAttributedString()
+        attributeString.append(NSAttributedString.init(string: "￥", attributes: [.font: UIFont.jdBoldFont(size: 8)]))
+        let attri = NSMutableAttributedString.init(string: newString)
+        attri.addAttributes([.font: UIFont.jdBoldFont(size: 13)], range: NSMakeRange(0, first.count))
+        attri.addAttributes([.font: UIFont.jdBoldFont(size: 9)], range: NSMakeRange(first.count, last.count))
+        attributeString.append(attri)
+        return attributeString
+    }
+}
+
 extension UIImage {
     
     // 颜色转为图片

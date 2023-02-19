@@ -1,4 +1,5 @@
 PODS:
+  - MJExtension (3.4.1)
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
@@ -8,21 +9,24 @@ PODS:
   - SQLite.swift/standard (0.14.1)
 
 DEPENDENCIES:
+  - MJExtension (~> 3.4.1)
   - RTRootNavigationController (~> 0.8.0)
   - SnapKit (~> 5.6.0)
   - SQLite.swift (~> 0.14.1)
 
 SPEC REPOS:
   https://github.com/Cocoapods/Specs.git:
+    - MJExtension
     - RTRootNavigationController
     - SnapKit
     - SQLite.swift
 
 SPEC CHECKSUMS:
+  MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SQLite.swift: 2992550ebf3c5b268bf4352603e3df87d2a4ed72
 
-PODFILE CHECKSUM: a8db8045e4a2aae2a2a6214d788ee55e77ad058b
+PODFILE CHECKSUM: 742e29e41bc3a16e302dd0a038b45429f635c26a
 
 COCOAPODS: 1.11.3

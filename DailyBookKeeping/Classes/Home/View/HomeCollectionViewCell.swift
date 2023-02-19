@@ -47,12 +47,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(20)
         }
         iconLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.left.right.equalTo(centerView)
-            make.height.equalTo(20)
+            make.height.equalTo(30)
         }
         moneyLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconLabel.snp.bottom).offset(10)
+            make.top.equalTo(iconLabel.snp.bottom).offset(5)
             make.left.right.bottom.equalTo(centerView)
             make.height.equalTo(20)
         }
@@ -66,7 +66,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         itemModel = model
         titleLabel.text = model.categoryName
         iconLabel.text = model.categoryIcon
-        moneyLabel.text = model.money
+        moneyLabel.attributedText = model.money!.formatterMoneyStyle()
         containerView.backgroundColor = .color(fromHexString: model.categoryColor as NSString?)
     }
     
@@ -97,7 +97,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func lazyIconLabel() -> UILabel {
         let label = UILabel()
-        label.font = .f_m_16
+        label.font = .f_r_25
         label.textAlignment = .center
         return label
     }
@@ -105,7 +105,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyMoneyLabel() -> UILabel {
         let label = UILabel()
         label.textColor = .white
-        label.font = .jdBoldFont(size: 13)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         
