@@ -41,8 +41,24 @@ extension CategoryTable {
         return false
     }
     // 获取所有类目
-    func getAllCategory() -> [Row]? {
-        return DBManager.share.select(table: table)
+    func getAllCategory() -> Array<[String: Any]> {
+        guard let rows = DBManager.share.select(table: table) else {
+            return []
+        }
+        var datas: Array<[String: Any]> = []
+        do {
+            for row in rows {
+                var dictionary: [String: Any] = [:]
+                dictionary["categoryId"] = try row.get(categoryId)
+                dictionary["categoryName"] = try row.get(categoryName)
+                dictionary["categoryIcon"] = try row.get(iconUrl)
+                dictionary["categoryColor"] = try row.get(categoryColor)
+                datas.append(dictionary)
+            }
+            return datas
+        }catch {
+            return datas
+        }
     }
     // 删除所有类目
     @discardableResult func deleteAll() -> Bool {

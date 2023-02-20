@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import HandyJSON
 
 struct DailyBookProvider: TimelineProvider {
     func placeholder(in context: Context) -> DailyBookEntry {
@@ -21,10 +22,18 @@ struct DailyBookProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
         let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
-        let items = userDefault?.object(forKey: "items") as! Array<Dictionary<String, String>>
+        let items = userDefault?.object(forKey: "items") as! Array<[String : Any]>
         let totalMoney = userDefault?.object(forKey: "totalMoney") as! String
         
-        let entry = DailyBookEntry(date: Date(), money: totalMoney, items: items)
+        var models: [HomeCategoryItemModel] = []
+        
+        for item in items {
+            if let model = HomeCategoryItemModel.deserialize(from: item) {
+                models.append(model)
+            }
+        }
+        
+        let entry = DailyBookEntry(date: Date(), money: totalMoney, items: models)
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
             completion(timeline)
@@ -35,7 +44,7 @@ struct DailyBookProvider: TimelineProvider {
 struct DailyBookEntry: TimelineEntry {
     let date: Date
     var money: String = ""
-    var items: Array<Dictionary<String, String>> = []
+    var items: [HomeCategoryItemModel] = []
 }
 
 struct DailyBookKeepingWidgetEntryView : View {
@@ -60,22 +69,22 @@ struct DailyBookKeepingWidgetEntryView : View {
                     .frame(maxHeight: 15)
                 HStack(spacing: 10) {
                     if entry.items.count >= 4 {
-                        ItemView(infoDic: entry.items[0])
-                        ItemView(infoDic: entry.items[1])
-                        ItemView(infoDic: entry.items[2])
-                        ItemView(infoDic: entry.items[3])
+                        ItemView(model: entry.items[0])
+                        ItemView(model: entry.items[1])
+                        ItemView(model: entry.items[2])
+                        ItemView(model: entry.items[3])
                     }
                     if entry.items.count == 3 {
-                        ItemView(infoDic: entry.items[0])
-                        ItemView(infoDic: entry.items[1])
-                        ItemView(infoDic: entry.items[2])
+                        ItemView(model: entry.items[0])
+                        ItemView(model: entry.items[1])
+                        ItemView(model: entry.items[2])
                     }
                     if entry.items.count == 2 {
-                        ItemView(infoDic: entry.items[0])
-                        ItemView(infoDic: entry.items[1])
+                        ItemView(model: entry.items[0])
+                        ItemView(model: entry.items[1])
                     }
                     if entry.items.count == 1 {
-                        ItemView(infoDic: entry.items[0])
+                        ItemView(model: entry.items[0])
                     }
                 }
                 .shadow(color: Color.init(white: 0, opacity: 0.2), radius: 1)
@@ -93,23 +102,23 @@ struct DailyBookKeepingWidgetEntryView : View {
 // item视图
 struct ItemView: View {
     
-    var infoDic: Dictionary<String, String>?
+    var model = HomeCategoryItemModel()
     
     var body: some View {
         VStack() {
-            Text(infoDic!["categoryName"]!)
+            Text(model.categoryName ?? "")
                 .font(Font.chineseFont(size: 14))
             Spacer()
                 .frame(minHeight: 0)
-            Text(infoDic!["categoryIcon"]!)
+            Text(model.categoryIcon ?? "")
                 .font(Font.system(size: 22))
             Spacer()
                 .frame(minHeight: 0)
-            MoneyView(money: infoDic!["money"]!, font1: 9, font2: 12, font3: 9)
+            MoneyView(money: model.money, font1: 9, font2: 12, font3: 9)
         }
         .frame(width: 70, height: 78)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-        .background(Color(uiColor: UIColor.color(fromHexString: infoDic!["categoryColor"]! as NSString?)))
+//        .background(Color.init(uiColor: UIColor.color(fromHexString: model?.categoryColor)))
         .cornerRadius(12)
     }
 }

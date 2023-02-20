@@ -9,7 +9,6 @@ import UIKit
 import WidgetKit
 import SnapKit
 import SQLite
-import MJExtension
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -109,8 +108,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         addCategoryButton.isHidden = dataList.count > 0
         navAddButton.isHidden = !addCategoryButton.isHidden
         let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
-        userDefault?.setValue(viewModel.totalMoney ?? "", forKey: "totalMoney")
-        userDefault?.setValue(viewModel.widgetList ?? [], forKey: "items")
+        userDefault?.setValue(viewModel.totalMoney, forKey: "totalMoney")
+        userDefault?.setValue(viewModel.categorys, forKey: "items")
         userDefault?.synchronize()
         WidgetCenter.shared.reloadAllTimelines()
         collectionView.reloadData()

@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HomeCategoryItemModel: NSObject {
+class HomeCategoryItemModel: HandyJSON {
 
     var categoryId: Int64?
     var categoryName: String?
     var categoryIcon: String?
     var categoryColor: String?
     var money: String?
+    
+    required init() {}
 }

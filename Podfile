@@ -14,6 +14,7 @@ target 'DailyBookKeeping' do
   pod 'IQKeyboardManagerSwift', '~> 6.5.11'
   pod 'RxSwift', '~> 6.5.0'
   pod 'SwifterSwift', '~> 5.2.0'
+  pod 'HandyJSON', '~> 5.0.2'
   
   # OC库
   pod 'RTRootNavigationController', '~> 0.8.0'
@@ -26,6 +27,7 @@ target 'DailyBookKeepingWidgetExtension' do
   use_frameworks!
 
   # Pods for DailyBookKeepingWidgetExtension
+  pod 'HandyJSON', '~> 5.0.2'
 
 end
 

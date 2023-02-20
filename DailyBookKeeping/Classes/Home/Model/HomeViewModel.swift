@@ -7,11 +7,12 @@
 
 import UIKit
 import SQLite
+import HandyJSON
 
 class HomeViewModel: NSObject {
     
     var totalMoney: String?
-    var widgetList: Array<Dictionary<String, Any>>?
+    var categorys: Array<[String: Any]> = []
     
     override init() {
         super.init()
@@ -21,40 +22,22 @@ class HomeViewModel: NSObject {
     // 获取数据
     func requestDatas() -> Array<HomeCategoryItemModel> {
         // 先查出所有的分类
-        let categorys = CategoryTable.share.getAllCategory()
+        categorys = CategoryTable.share.getAllCategory()
         // 根据分类查所有该分类数据的总值
-        var array = Array<HomeCategoryItemModel>()
-        var array1 = Array<Dictionary<String, Any>>()
+        var array: [HomeCategoryItemModel] = []
         var total = 0.0
-        var map = Dictionary<String, Any>()
-        for item in categorys ?? [] {
-            let model = HomeCategoryItemModel()
-            model.categoryId = item[CategoryTable.share.categoryId]
-            model.categoryIcon = item[CategoryTable.share.iconUrl]
-            model.categoryName = item[CategoryTable.share.categoryName]
-            model.categoryColor = item[CategoryTable.share.categoryColor]
-            map["categoryId"] = NSString.init(format: "%ld", model.categoryId!) as String
-            map["categoryIcon"] = model.categoryIcon ?? ""
-            map["categoryName"] = model.categoryName ?? ""
-            map["categoryColor"] = model.categoryColor ?? ""
+        for dictionary in categorys {
+            let model = HomeCategoryItemModel.deserialize(from: dictionary, designatedPath: "")!
             // 查询类目下符合条件的数据
-            let datas = DataTable.share.select(select: [DataTable.share.money], filter: DataTable.share.categoryId == model.categoryId!)
+            let datas = DataTable.share.selectMoney(with: model.categoryId)
             var totalMoney = 0.0
-            if datas?.count != 0 {
-                for data in datas ?? [] {
-                    let money = Float(data[DataTable.share.money])!
-                    totalMoney += Double(money)
-                    total += Double(money)
-                }
+            for data in datas {
+                totalMoney = totalMoney + Double(data)!
             }
+            total = total + totalMoney
             model.money = NSString.init(format: "%0.2lf", totalMoney) as String
-            map["money"] = model.money ?? ""
-            if model.categoryId != nil {
-                array.append(model)
-                array1.append(map)
-            }
+            array.append(model)
         }
-        widgetList = array1
         totalMoney = NSString.init(format: "%0.2lf", total) as String
         return array
     }

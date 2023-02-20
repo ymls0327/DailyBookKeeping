@@ -1,32 +1,72 @@
 PODS:
-  - MJExtension (3.4.1)
+  - HandyJSON (5.0.2)
+  - IQKeyboardManagerSwift (6.5.11)
+  - MBProgressHUD (1.2.0)
   - RTRootNavigationController (0.8.0):
     - RTRootNavigationController/Core (= 0.8.0)
   - RTRootNavigationController/Core (0.8.0)
+  - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - SQLite.swift (0.14.1):
     - SQLite.swift/standard (= 0.14.1)
   - SQLite.swift/standard (0.14.1)
+  - SwifterSwift (5.2.0):
+    - SwifterSwift/AppKit (= 5.2.0)
+    - SwifterSwift/CoreAnimation (= 5.2.0)
+    - SwifterSwift/CoreGraphics (= 5.2.0)
+    - SwifterSwift/CoreLocation (= 5.2.0)
+    - SwifterSwift/Dispatch (= 5.2.0)
+    - SwifterSwift/Foundation (= 5.2.0)
+    - SwifterSwift/MapKit (= 5.2.0)
+    - SwifterSwift/SceneKit (= 5.2.0)
+    - SwifterSwift/SpriteKit (= 5.2.0)
+    - SwifterSwift/StoreKit (= 5.2.0)
+    - SwifterSwift/SwiftStdlib (= 5.2.0)
+    - SwifterSwift/UIKit (= 5.2.0)
+  - SwifterSwift/AppKit (5.2.0)
+  - SwifterSwift/CoreAnimation (5.2.0)
+  - SwifterSwift/CoreGraphics (5.2.0)
+  - SwifterSwift/CoreLocation (5.2.0)
+  - SwifterSwift/Dispatch (5.2.0)
+  - SwifterSwift/Foundation (5.2.0)
+  - SwifterSwift/MapKit (5.2.0)
+  - SwifterSwift/SceneKit (5.2.0)
+  - SwifterSwift/SpriteKit (5.2.0)
+  - SwifterSwift/StoreKit (5.2.0)
+  - SwifterSwift/SwiftStdlib (5.2.0)
+  - SwifterSwift/UIKit (5.2.0)
 
 DEPENDENCIES:
-  - MJExtension (~> 3.4.1)
+  - HandyJSON (~> 5.0.2)
+  - IQKeyboardManagerSwift (~> 6.5.11)
+  - MBProgressHUD (~> 1.2.0)
   - RTRootNavigationController (~> 0.8.0)
+  - RxSwift (~> 6.5.0)
   - SnapKit (~> 5.6.0)
   - SQLite.swift (~> 0.14.1)
+  - SwifterSwift (~> 5.2.0)
 
 SPEC REPOS:
   https://github.com/Cocoapods/Specs.git:
-    - MJExtension
+    - HandyJSON
+    - IQKeyboardManagerSwift
+    - MBProgressHUD
     - RTRootNavigationController
+    - RxSwift
     - SnapKit
     - SQLite.swift
+    - SwifterSwift
 
 SPEC CHECKSUMS:
-  MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   RTRootNavigationController: 36c6301870f0467f89d69f4286795340b537d473
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SQLite.swift: 2992550ebf3c5b268bf4352603e3df87d2a4ed72
+  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: 742e29e41bc3a16e302dd0a038b45429f635c26a
+PODFILE CHECKSUM: ef74cd29809520ee10c3d3692f43d084dd75e8bf
 
 COCOAPODS: 1.11.3

@@ -47,6 +47,25 @@ extension DataTable {
         return DBManager.share.select(table: table, select: select, filter: filter)
     }
     
+    // 查询money
+    func selectMoney(with categoryId: Int64?) -> [String] {
+        guard let categoryId = categoryId, let rows = DBManager.share.select(table: table, select: [money], filter: self.categoryId == categoryId) else {
+            return []
+        }
+        var moneyList: [String] = []
+        do {
+            for row in rows {
+                let money = try row.get(money)
+                if !money.isEmpty {
+                    moneyList.append(money)
+                }
+            }
+            return moneyList
+        }catch {
+            return moneyList
+        }
+    }
+    
     // 删除记录
     @discardableResult func delete(filter: Expression<Bool>? = nil) -> Bool {
         return DBManager.share.delete(table: table, filter: filter)
