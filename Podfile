@@ -8,10 +8,16 @@ target 'DailyBookKeeping' do
 
   # Pods for DailyBookKeeping
 
+  # Swift库
   pod 'SnapKit', '~> 5.6.0'
-  pod 'RTRootNavigationController', '~> 0.8.0'
   pod 'SQLite.swift', '~> 0.14.1'
-  pod 'MJExtension', '~> 3.4.1'
+  pod 'IQKeyboardManagerSwift', '~> 6.5.11'
+  pod 'RxSwift', '~> 6.5.0'
+  pod 'SwifterSwift', '~> 5.2.0'
+  
+  # OC库
+  pod 'RTRootNavigationController', '~> 0.8.0'
+  pod 'MBProgressHUD', '~> 1.2.0'
 
 end
 
