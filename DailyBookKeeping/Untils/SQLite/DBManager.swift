@@ -28,7 +28,9 @@ class DBManager: NSObject {
         // 创建表&索引
         creatTables()
         
-        select()
+        update(categroyName: "2卧槽11222311asasdasdasdasdd23", categoryId: 1)
+        
+//        select()
         
 //        _ = insert(categoryName: "完2", color: "", icon: "")
     }
@@ -54,6 +56,24 @@ extension DBManager {
     }
     
     /**
+     * 修改
+     */
+    func update(categroyName name: String, categoryId: Int64) {
+        let sql = """
+        UPDATE `\(category_table)` SET `color` = '\(name)' WHERE `id` = \(categoryId);
+        """
+        guard let database = db else { return }
+        do{
+            let result = try database.prepare(sql)
+            for row in result {
+                debugPrint(row)
+            }
+        }catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
+    /**
      * 查询
      */
     func select() {
@@ -62,7 +82,8 @@ extension DBManager {
         """
         guard let database = db else { return }
         do{
-            for row in try database.prepare(sql) {
+            let result = try database.prepare(sql)
+            for row in result {
                 debugPrint(row)
             }
         }catch {
