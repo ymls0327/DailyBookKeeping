@@ -10,11 +10,11 @@ import HandyJSON
 
 class HomeCategoryItemModel: HandyJSON {
 
-    var categoryId: Int64?
-    var categoryName: String?
-    var categoryIcon: String?
-    var categoryColor: String?
-    var money: String?
+    var id: Int64 = 0
+    var name: String = ""
+    var icon: String = ""
+    var color: String = ""
+    var money: String = ""
     
     required init() {}
 }

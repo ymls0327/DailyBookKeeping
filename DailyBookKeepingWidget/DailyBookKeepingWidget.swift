@@ -106,11 +106,11 @@ struct ItemView: View {
     
     var body: some View {
         VStack() {
-            Text(model.categoryName ?? "")
+            Text(model.name)
                 .font(Font.chineseFont(size: 14))
             Spacer()
                 .frame(minHeight: 0)
-            Text(model.categoryIcon ?? "")
+            Text(model.icon)
                 .font(Font.system(size: 22))
             Spacer()
                 .frame(minHeight: 0)
@@ -118,7 +118,7 @@ struct ItemView: View {
         }
         .frame(width: 70, height: 78)
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-//        .background(Color.init(uiColor: UIColor.color(fromHexString: model?.categoryColor)))
+        .background(Color.init(uiColor: UIColor.color(fromHexString: model.color as NSString)))
         .cornerRadius(12)
     }
 }

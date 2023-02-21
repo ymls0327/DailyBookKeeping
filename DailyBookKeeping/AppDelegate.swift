@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 import RTRootNavigationController
 import SQLite
 
@@ -19,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 连接数据库
         DBManager.share.prepare()
+        
+        // 启动IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = .main2Color

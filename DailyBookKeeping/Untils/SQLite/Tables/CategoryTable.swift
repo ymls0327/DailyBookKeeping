@@ -40,26 +40,15 @@ extension CategoryTable {
         }
         return false
     }
-    // 获取所有类目
-    func getAllCategory() -> Array<[String: Any]> {
-        guard let rows = DBManager.share.select(table: table) else {
+    
+    // 查询类目
+    func selectaa(select: [Expressible] = [], filter: Expression<Bool>? = nil, order: [Expressible] = [], limit: Int? = nil, offset: Int? = nil) -> [Row]? {
+        guard let rows = DBManager.share.select(table: table, select: select, filter: filter, order: order, limit: limit, offset: offset) else {
             return []
         }
-        var datas: Array<[String: Any]> = []
-        do {
-            for row in rows {
-                var dictionary: [String: Any] = [:]
-                dictionary["categoryId"] = try row.get(categoryId)
-                dictionary["categoryName"] = try row.get(categoryName)
-                dictionary["categoryIcon"] = try row.get(iconUrl)
-                dictionary["categoryColor"] = try row.get(categoryColor)
-                datas.append(dictionary)
-            }
-            return datas
-        }catch {
-            return datas
-        }
+        return rows
     }
+    
     // 删除所有类目
     @discardableResult func deleteAll() -> Bool {
         return DBManager.share.delete(table: table)

@@ -64,10 +64,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     func refreshCellWithModel(_ model: HomeCategoryItemModel) {
         itemModel = model
-        titleLabel.text = model.categoryName
-        iconLabel.text = model.categoryIcon
-        moneyLabel.attributedText = model.money!.formatterMoneyStyle()
-        containerView.backgroundColor = .color(fromHexString: model.categoryColor as NSString?)
+        titleLabel.text = model.name
+        iconLabel.text = model.icon
+        moneyLabel.attributedText = model.money.formatterMoneyStyle()
+        containerView.backgroundColor = .color(fromHexString: model.color as NSString?)
     }
     
     // MARK: - Lazy

@@ -12,12 +12,21 @@ class DBManager: NSObject {
 
     private let db_file_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!+"/dailybook.sqlite"
     static let share = DBManager()
-    private var db: Connection?
+    var db: Connection?
     
     func prepare() {
         // 连接数据库
         db = try? Connection(db_file_path)
         db?.busyTimeout = 5.0
+        
+        let sql =
+"""
+        CREATE TABLE IF NOT EXISTS `my_table` (
+        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `name` VARCHAR(30)
+        )ENGINE=INNODB DEFAULT CHARSET = utf8;
+"""
+        try? db?.run(sql)
     }
 }
 
@@ -85,12 +94,29 @@ extension DBManager {
         }
     }
     
+    func sum(table: Table?, select: Expression<Int64>) {
+        guard let tab = table else {
+            return
+        }
+        do{
+            let sum = try db?.scalar(tab.select(select.sum))
+            debugPrint(sum)
+        }catch {
+            debugPrint(error.localizedDescription)
+        }
+    }
+    
     // 查
     func select(table: Table?, select: [Expressible] = [], filter: Expression<Bool>? = nil, order: [Expressible] = [], limit: Int? = nil, offset: Int? = nil) -> [Row]? {
         guard var tab = table else {
             return nil
         }
         do {
+            
+            let sql = "select * from data_table"
+            
+            let data = try! db?.execute(sql)
+            
             if select.count != 0 {
                 tab = tab.select(select).order(order)
             }else {

@@ -8,7 +8,7 @@
 import UIKit
 import SQLite
 
-class DataTable: NSObject {
+class record_data_table: NSObject {
 
     // 表中的字段
     let dataId = Expression<Int64>.init("id")
@@ -17,7 +17,6 @@ class DataTable: NSObject {
     let createTime = Expression<Date>.init("create_time")
     let updateTime = Expression<Date>.init("update_time")
     
-    static let share = DataTable()
     var table: Table?
     
     override init() {

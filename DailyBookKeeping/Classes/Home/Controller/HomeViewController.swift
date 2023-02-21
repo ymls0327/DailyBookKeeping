@@ -9,6 +9,7 @@ import UIKit
 import WidgetKit
 import SnapKit
 import SQLite
+import HandyJSON
 
 class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -20,9 +21,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     lazy var addCategoryButton: UIControl = lazyAddCategoryButton()
     lazy var navAddButton: UIControl = lazyNavAddButtonButton()
     lazy var dataList = Array<HomeCategoryItemModel>()
-    
-    private lazy var viewModel = HomeViewModel()
-    
+        
     // MARK: - page life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,15 +103,31 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     private func requestNewDatas() {
-        dataList = viewModel.requestDatas()
-        addCategoryButton.isHidden = dataList.count > 0
-        navAddButton.isHidden = !addCategoryButton.isHidden
-        let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
-        userDefault?.setValue(viewModel.totalMoney, forKey: "totalMoney")
-        userDefault?.setValue(viewModel.categorys, forKey: "items")
-        userDefault?.synchronize()
-        WidgetCenter.shared.reloadAllTimelines()
-        collectionView.reloadData()
+                
+        DataManager.share.getHomeDatas { [self] responseData, error in
+            DispatchQueue.main.async { [self] in
+                guard error == nil else { return }
+                let data = responseData["data"] as AnyObject
+                if data.isKind(of: NSArray.self) {
+                    dataList = []
+                    let array = data as! NSArray
+                    
+                    let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
+                    userDefault?.setValue(DataManager.share.totalMoney, forKey: "totalMoney")
+                    userDefault?.setValue(array, forKey: "items")
+                    userDefault?.synchronize()
+                    WidgetCenter.shared.reloadAllTimelines()
+                    
+                    for item in array {
+                        let model = HomeCategoryItemModel.deserialize(from: (item as? NSDictionary))
+                        dataList.append(model!)
+                    }
+                }
+                addCategoryButton.isHidden = dataList.count > 0
+                navAddButton.isHidden = !addCategoryButton.isHidden
+                collectionView.reloadData()
+            }
+        }
     }
     
     @objc private func addCategoryButtonTap(_ sender: UIButton) {

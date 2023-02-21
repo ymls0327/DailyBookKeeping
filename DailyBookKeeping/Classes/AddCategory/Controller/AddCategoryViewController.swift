@@ -64,8 +64,8 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             debugPrint("请选择一个图标")
             return
         }
-        let result = CategoryTable.share.add(name: categoryNameTF.text!, icon: categoryIconTF.text!, color: (categoryColorButton.selectedColor?.hex())!)
-        if (result && refreshBlock != nil) {
+        DataManager.share.addRecord(name: categoryNameTF.text!, icon: categoryIconTF.text!, color: (categoryColorButton.selectedColor?.hex())!)
+        if (refreshBlock != nil) {
             refreshBlock!()
         }
         self.dismiss(animated: true)
