@@ -103,31 +103,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     private func requestNewDatas() {
-                
-        DataManager.share.getHomeDatas { [self] responseData, error in
-            DispatchQueue.main.async { [self] in
-                guard error == nil else { return }
-                let data = responseData["data"] as AnyObject
-                if data.isKind(of: NSArray.self) {
-                    dataList = []
-                    let array = data as! NSArray
-                    
-                    let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
-                    userDefault?.setValue(DataManager.share.totalMoney, forKey: "totalMoney")
-                    userDefault?.setValue(array, forKey: "items")
-                    userDefault?.synchronize()
-                    WidgetCenter.shared.reloadAllTimelines()
-                    
-                    for item in array {
-                        let model = HomeCategoryItemModel.deserialize(from: (item as? NSDictionary))
-                        dataList.append(model!)
-                    }
-                }
-                addCategoryButton.isHidden = dataList.count > 0
-                navAddButton.isHidden = !addCategoryButton.isHidden
-                collectionView.reloadData()
-            }
-        }
+        
     }
     
     @objc private func addCategoryButtonTap(_ sender: UIButton) {

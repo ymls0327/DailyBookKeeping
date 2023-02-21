@@ -18,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // 连接数据库
-        DBManager.share.prepare()
-        
         // 启动IQKeyboardManager
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
@@ -32,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = RTRootNavigationController(rootViewController: HomeViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
+        
+        // 连接数据库
+        DBManager.share.prepare()
         
         return true
     }

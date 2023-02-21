@@ -41,13 +41,6 @@ class RecordExpensesViewController: BaseViewController {
     }
     
     func save() {
-        let money = Float(moneyTF.text!)
-        guard let m = money else { return }
-        if m <= 0 { return }
-        let result = RecordDataTable.share.insert(imoney: moneyTF.text!, icategory: model!.id)
-        if result && refreshBlock != nil {
-            refreshBlock!()
-        }
         self.dismiss(animated: true)
     }
     

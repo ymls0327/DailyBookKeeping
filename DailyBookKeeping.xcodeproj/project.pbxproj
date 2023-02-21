@@ -24,10 +24,7 @@
 		34B491A9299B6DA500F8605F /* JDZhengHT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */; };
 		34F8034C299F26790087829A /* PrefixHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8034B299F26790087829A /* PrefixHeader.swift */; };
 		34F8034E299F48840087829A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8034D299F48840087829A /* DBManager.swift */; };
-		34F80351299F5B860087829A /* CategoryTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80350299F5B860087829A /* CategoryTable.swift */; };
-		34F80353299F5B940087829A /* RecordDataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80352299F5B940087829A /* RecordDataTable.swift */; };
 		34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F80356299F785E0087829A /* AddCategoryViewController.swift */; };
-		34F8036929A450D90087829A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F8036829A450D90087829A /* DataManager.swift */; };
 		840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */; };
 		840FC6BC29A08F4600505E56 /* CommonNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FC6BB29A08F4600505E56 /* CommonNavBarView.swift */; };
 		840FC6D629A1CCC000505E56 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */; };
@@ -86,10 +83,7 @@
 		34B491A5299B6DA500F8605F /* JDZhengHT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JDZhengHT-Regular.ttf"; sourceTree = "<group>"; };
 		34F8034B299F26790087829A /* PrefixHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixHeader.swift; sourceTree = "<group>"; };
 		34F8034D299F48840087829A /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		34F80350299F5B860087829A /* CategoryTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTable.swift; sourceTree = "<group>"; };
-		34F80352299F5B940087829A /* RecordDataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDataTable.swift; sourceTree = "<group>"; };
 		34F80356299F785E0087829A /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
-		34F8036829A450D90087829A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		445D0B03A1D6E5B94F359AF6 /* Pods-DailyBookKeepingWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyBookKeepingWidgetExtension/Pods-DailyBookKeepingWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		6D220D4CB14CEE6B3BBAD10D /* Pods-DailyBookKeeping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyBookKeeping.debug.xcconfig"; path = "Target Support Files/Pods-DailyBookKeeping/Pods-DailyBookKeeping.debug.xcconfig"; sourceTree = "<group>"; };
 		840FC6B929A08E2200505E56 /* RecordExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExpensesViewController.swift; sourceTree = "<group>"; };
@@ -227,20 +221,9 @@
 		34F8034F299F5B680087829A /* SQLite */ = {
 			isa = PBXGroup;
 			children = (
-				34F8036A29A451CE0087829A /* Tables */,
 				34F8034D299F48840087829A /* DBManager.swift */,
-				34F8036829A450D90087829A /* DataManager.swift */,
 			);
 			path = SQLite;
-			sourceTree = "<group>";
-		};
-		34F8036A29A451CE0087829A /* Tables */ = {
-			isa = PBXGroup;
-			children = (
-				34F80350299F5B860087829A /* CategoryTable.swift */,
-				34F80352299F5B940087829A /* RecordDataTable.swift */,
-			);
-			path = Tables;
 			sourceTree = "<group>";
 		};
 		7EDC17DAD97186F83B7EEC13 /* Pods */ = {
@@ -515,15 +498,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F8034C299F26790087829A /* PrefixHeader.swift in Sources */,
-				34F8036929A450D90087829A /* DataManager.swift in Sources */,
 				840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */,
-				34F80353299F5B940087829A /* RecordDataTable.swift in Sources */,
 				840FC6BC29A08F4600505E56 /* CommonNavBarView.swift in Sources */,
 				34F8034E299F48840087829A /* DBManager.swift in Sources */,
 				344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */,
 				849E6F85299FBF6200562FC5 /* HomeCollectionViewCell.swift in Sources */,
 				34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */,
-				34F80351299F5B860087829A /* CategoryTable.swift in Sources */,
 				849E6F70299D1FEB00562FC5 /* BaseViewController.swift in Sources */,
 				849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */,
 				849E6F8C29A07E5A00562FC5 /* HomeCategoryItemModel.swift in Sources */,

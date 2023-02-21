@@ -7,10 +7,16 @@
 
 import UIKit
 import SQLite
+import MBProgressHUD
+import SwifterSwift
 
 class DBManager: NSObject {
 
+    private let record_table = "record_table"
+    private let category_table = "category_table"
+    private let current_date = Date().string(withFormat: "YYYY-MM-dd HH:mm:ss")
     private let db_file_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!+"/dailybook.sqlite"
+    
     static let share = DBManager()
     var db: Connection?
     
@@ -19,126 +25,89 @@ class DBManager: NSObject {
         db = try? Connection(db_file_path)
         db?.busyTimeout = 5.0
         
-        let sql =
-"""
-        CREATE TABLE IF NOT EXISTS `my_table` (
-        `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `name` VARCHAR(30)
-        )ENGINE=INNODB DEFAULT CHARSET = utf8;
-"""
-        try? db?.run(sql)
+        // 创建表&索引
+        creatTables()
+        
+        select()
+        
+//        _ = insert(categoryName: "完2", color: "", icon: "")
     }
 }
 
+// MARK: - CRUD
 extension DBManager {
-    
-    // 创建表
-    func createTable(tableName: String, block: (TableBuilder) -> Void) -> Table? {
+    /**
+     * 增加一个分类
+     */
+    func insert(categoryName name: String, color: String, icon: String) -> Bool {
+        let sql = """
+        INSERT INTO `\(category_table)` (`name`, `color`, `icon`, `create_t`)
+        VALUES ('\(name)', '\(color)', '\(icon)', '\(current_date)');
+        """
+        guard let database = db else { return false }
         do{
-            let table = Table.init(tableName)
-            try db?.run(table.create(temporary: false, ifNotExists: true, withoutRowid: false, block: { (builder) in
-                block(builder)
-            }))
-            return table
-        }catch(let error){
-            debugPrint("❌" + error.localizedDescription)
-            return nil
-        }
-    }
-    
-    // 修改表
-    
-    // 添加索引
-    @discardableResult func createTableIndex(table: Table?, _ columns: Expressible..., unique: Bool = false, ifNotExists: Bool = false) -> Bool {
-        do {
-            guard let tab = table else { return false }
-            for column in columns {
-                try db?.run(tab.createIndex(column, unique: unique, ifNotExists: ifNotExists))
-            }
+            try database.execute(sql)
             return true
         }catch {
-            debugPrint("❌" + error.localizedDescription)
-            return false
-        }
-    }
-}
-
-extension DBManager {
-    // 增
-    @discardableResult func insert(table: Table?, values: [Setter]) -> Bool {
-        guard let tab = table else {
-            return false
-        }
-        do {
-            try db?.run(tab.insert(values))
-            return true
-        }catch {
-            debugPrint("❌" + error.localizedDescription)
-            return false
-        }
-    }
-    // 删
-    @discardableResult func delete(table: Table?, filter: Expression<Bool>? = nil) -> Bool {
-        guard var tab = table else {
-            return false
-        }
-        do {
-            if let filterTemp = filter  {
-                tab = tab.filter(filterTemp)
-            }
-            try db?.run(tab.delete())
-            return true
-        } catch let error {
-            debugPrint(error.localizedDescription)
             return false
         }
     }
     
-    func sum(table: Table?, select: Expression<Int64>) {
-        guard let tab = table else {
-            return
-        }
+    /**
+     * 查询
+     */
+    func select() {
+        let sql = """
+        SELECT * FROM `\(category_table)`;
+        """
+        guard let database = db else { return }
         do{
-            let sum = try db?.scalar(tab.select(select.sum))
-            debugPrint(sum)
+            for row in try database.prepare(sql) {
+                debugPrint(row)
+            }
         }catch {
             debugPrint(error.localizedDescription)
         }
     }
-    
-    // 查
-    func select(table: Table?, select: [Expressible] = [], filter: Expression<Bool>? = nil, order: [Expressible] = [], limit: Int? = nil, offset: Int? = nil) -> [Row]? {
-        guard var tab = table else {
-            return nil
-        }
-        do {
-            
-            let sql = "select * from data_table"
-            
-            let data = try! db?.execute(sql)
-            
-            if select.count != 0 {
-                tab = tab.select(select).order(order)
-            }else {
-                tab = tab.order(order)
-            }
-            if let filterTemp = filter {
-                tab = tab.filter(filterTemp)
-            }
-            if let lim = limit{
-                if let off = offset {
-                    tab = tab.limit(lim, offset: off)
-                }else{
-                    tab = tab.limit(lim)
-                }
-            }
-            guard let result = try db?.prepare(tab) else { return nil }
-            
-            return Array.init(result)
-            
+}
+
+// MARK: - 表相关
+extension DBManager {
+    // 创建数据表
+    func creatTables() {
+        let sql = """
+        CREATE TABLE IF NOT EXISTS `\(record_table)` (
+            `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            `money` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+            `category_id` INTEGER NOT NULL ON CONFLICT ROLLBACK DEFAULT 0,
+            `create_t` TEXT NOT NULL ON CONFLICT ROLLBACK
+        );
+        CREATE INDEX IF NOT EXISTS `\(record_table)_index` ON `\(record_table)` (
+            `category_id` ASC
+        );
+        CREATE TABLE IF NOT EXISTS `\(category_table)` (
+            `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            `name` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+            `color` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+            `icon` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+            `create_t` TEXT NOT NULL ON CONFLICT ROLLBACK
+        );
+        """
+        guard let database = db else { return }
+        do{
+            try database.execute(sql)
+            let hud = MBProgressHUD.showAdded(to: (UIApplication.shared.delegate?.window!!)!, animated: true)
+            hud.mode = .text
+            hud.label.text = "创建成功"
+            hud.minShowTime = 2
+            hud.hide(animated: true)
         }catch {
-            debugPrint("❌" + error.localizedDescription)
-            return nil
+            let hud = MBProgressHUD.showAdded(to: (UIApplication.shared.delegate?.window)!!, animated: true)
+            hud.mode = .text
+            hud.label.text = error.localizedDescription
+            hud.minShowTime = 2
+            hud.hide(animated: true)
+            debugPrint(error.localizedDescription)
         }
     }
 }
