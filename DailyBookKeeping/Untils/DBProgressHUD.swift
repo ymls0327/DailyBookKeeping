@@ -23,7 +23,19 @@ class DBProgressHUD: NSObject {
         }else {
             hud.offset = .init(x: 0, y: kScreenHeight*0.5 - 30)
         }
-        hud.bezelView.cornerRadius = 20
+        hud.bezelView.layer.cornerRadius = 20
+        common_shadow_hud_config(hud: hud)
         hud.hide(animated: true)
+    }
+    
+    private static func common_shadow_hud_config(hud: MBProgressHUD) {
+        hud.label.textColor = .white
+        hud.bezelView.style = .solidColor
+        hud.bezelView.backgroundColor = .mainColor
+        hud.bezelView.layer.masksToBounds = false
+        hud.bezelView.layer.shadowColor = UIColor.black.cgColor
+        hud.bezelView.layer.shadowOffset = .zero
+        hud.bezelView.layer.shadowRadius = 1
+        hud.bezelView.layer.shadowOpacity = 0.6
     }
 }

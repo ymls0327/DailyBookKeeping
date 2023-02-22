@@ -52,10 +52,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     // MARK: - inner method
     override func placeSubViews() {
-        
-        self.view.backgroundColor = .mainColor
-        self.navigationController?.navigationBar.isHidden = true
-        
+                
         self.view.addSubview(navBar)
         self.navBar.addSubview(leftButton)
         self.navBar.addSubview(centerButton)

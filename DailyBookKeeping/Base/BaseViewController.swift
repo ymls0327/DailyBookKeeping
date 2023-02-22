@@ -21,15 +21,15 @@ class BaseViewController: UIViewController {
         
         self.view.backgroundColor = .backgroundColor
         // 设置状态栏
-        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
         
         // 设置导航栏
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.backgroundImage = .imageWithColor(.mainColor)
+            appearance.backgroundImage = .imageWithColor(.white)
             appearance.shadowColor = nil
             appearance.backgroundEffect = nil;
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.f_m_17];
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainColor, NSAttributedString.Key.font: UIFont.f_m_17];
             self.navigationController?.navigationBar.standardAppearance = appearance;
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance;
             if #available(iOS 15.0, *) {
@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
             }
         }
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = .mainColor
         
         self.placeSubViews()
     }
