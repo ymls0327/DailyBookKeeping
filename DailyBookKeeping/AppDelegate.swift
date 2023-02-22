@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.backgroundColor = .main2Color
+        window?.backgroundColor = .backgroundColor
         let nav = RTRootNavigationController(rootViewController: HomeViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
