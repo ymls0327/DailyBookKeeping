@@ -272,7 +272,14 @@ extension DBManager {
         guard let database = db else { return }
         do{
             try database.execute(sql)
-            DBProgressHUD.show(message: "创建成功")
+            
+            let is_first = UserDefaults.standard.bool(forKey: "launch_is_first")
+            if is_first {
+                DBProgressHUD.show(message: "欢迎回来👏🏻👏🏻")
+            }else {
+                UserDefaults.standard.set(true, forKey: "launch_is_first")
+                DBProgressHUD.show(message: "欢迎使用👏🏻👏🏻")
+            }
         }catch {
             DBProgressHUD.show(message: error.localizedDescription)
         }

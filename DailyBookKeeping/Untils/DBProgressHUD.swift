@@ -15,9 +15,15 @@ class DBProgressHUD: NSObject {
         let hud = MBProgressHUD.showAdded(to: view!, animated: true)
         hud.mode = .text
         hud.label.text = string
-        hud.label.font = .chineseFont(size: 14)
+        hud.label.font = .f_m_14
         hud.minShowTime = duration
         hud.margin = 12
+        if isIPhoneX() {
+            hud.offset = .init(x: 0, y: kScreenHeight*0.5 - 64)
+        }else {
+            hud.offset = .init(x: 0, y: kScreenHeight*0.5 - 30)
+        }
+        hud.bezelView.cornerRadius = 20
         hud.hide(animated: true)
     }
 }
