@@ -41,7 +41,19 @@ class RecordExpensesViewController: BaseViewController {
     }
     
     func save() {
-        self.dismiss(animated: true)
+        if let money = moneyTF.text, !money.isEmpty, let model = model {
+            let result = DBManager.share.insert_into_data_table_with(categoryId: model.categoryId, money: money, remark: "")
+            if result {
+                if let block = refreshBlock {
+                    block()
+                }
+                self.dismiss(animated: true)
+            }else {
+                DBProgressHUD.show(message: "写入失败")
+            }
+        }else {
+            DBProgressHUD.show(message: "请输入正确的金额")
+        }
     }
     
     func close() {

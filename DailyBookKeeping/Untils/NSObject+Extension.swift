@@ -9,10 +9,11 @@ import UIKit
 
 extension String {
     func formatterMoneyStyle() -> NSAttributedString? {
+        var string = self
         if self.count <= 0 {
-            return nil
+            string = "0.00"
         }
-        let array = self.components(separatedBy: ".")
+        let array = string.components(separatedBy: ".")
         var first = "", last = ""
         if array.count == 2 {
             first = array[0]
@@ -91,7 +92,7 @@ extension UIColor {
         return UIColor.rgbColor(r: CGFloat(r), g: CGFloat(g), b: CGFloat(b))
     }
     // 获取16进制
-    func hex() -> String? {
+    func hex() -> String {
         var r : CGFloat = 0
         var g : CGFloat = 0
         var b : CGFloat = 0
@@ -106,7 +107,7 @@ extension UIColor {
             let rgb = (Int(r * 255.0) << 16) + (Int(g * 255.0) << 8) + Int(b * 255.0)
             return NSString.init(format: "#%x", rgb) as String
         } else {
-            return nil
+            return ""
         }
     }
 }

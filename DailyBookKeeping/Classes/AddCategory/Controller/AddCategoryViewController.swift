@@ -64,7 +64,8 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             debugPrint("请选择一个图标")
             return
         }
-        if (refreshBlock != nil) {
+        let result = DBManager.share.insert_into_category_table_with(name: categoryNameTF.text!, color: (categoryColorButton.selectedColor?.hex())!, icon: categoryIconTF.text!)
+        if (result && refreshBlock != nil) {
             refreshBlock!()
         }
         self.dismiss(animated: true)

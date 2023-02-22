@@ -21,19 +21,22 @@ struct DailyBookProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
-        let userDefault = UserDefaults.init(suiteName: "group.com.dailybook")
-        let items = userDefault?.object(forKey: "items") as! Array<[String : Any]>
-        let totalMoney = userDefault?.object(forKey: "totalMoney") as! String
-        
         var models: [HomeCategoryItemModel] = []
+        var money = ""
         
-        for item in items {
-            if let model = HomeCategoryItemModel.deserialize(from: item) {
-                models.append(model)
+        if let userDefault = UserDefaults.init(suiteName: "group.com.rileytestut.AltStore.6664853H9Q") {
+            if let items = userDefault.object(forKey: "items"), items is [[String: Any]], let totalMoney = userDefault.object(forKey: "totalMoney"), totalMoney is String {
+                let list = items as! [[String: Any]]
+                money = totalMoney as! String
+                for item in list {
+                    if let model = HomeCategoryItemModel.deserialize(from: item) {
+                        models.append(model)
+                    }
+                }
             }
         }
         
-        let entry = DailyBookEntry(date: Date(), money: totalMoney, items: models)
+        let entry = DailyBookEntry(date: Date(), money: money, items: models)
         let timeline = Timeline(entries: [entry], policy: .atEnd)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
             completion(timeline)

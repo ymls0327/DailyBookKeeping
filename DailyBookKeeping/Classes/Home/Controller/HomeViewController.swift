@@ -103,7 +103,30 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     private func requestNewDatas() {
-        
+        if let dictionary = DBManager.share.request_home_datas() {
+            let totalMoney = dictionary["totalMoney"] as! String
+            let list = dictionary["list"] as! [[String: String]]
+            dataList = []
+            for dictionary in list {
+                if let model = HomeCategoryItemModel.deserialize(from: dictionary) {
+                    dataList.append(model)
+                }
+            }
+            addCategoryButton.isHidden = !dataList.isEmpty
+            navAddButton.isHidden = dataList.isEmpty
+            
+            if let userdefault = UserDefaults.init(suiteName: "group.com.rileytestut.AltStore.6664853H9Q") {
+                
+                userdefault.set(list, forKey: "items")
+                userdefault.set(totalMoney, forKey: "totalMoney")
+                userdefault.synchronize()
+                
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+            
+            
+            collectionView.reloadData()
+        }
     }
     
     @objc private func addCategoryButtonTap(_ sender: UIButton) {
