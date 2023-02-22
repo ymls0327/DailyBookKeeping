@@ -13,65 +13,12 @@ class RecordExpensesViewController: BaseViewController {
     var model: HomeCategoryItemModel?
     var refreshBlock: (() -> Void)?
     
-    lazy var titleBar: CommonNavBarView = lazyTitleBar()
-    lazy var moneyLabel: UILabel = lazyMoneyLabel()
-    lazy var moneyTF: UITextField = lazyMoneyTextField()
-    
     override func placeSubViews() {
-        self.view.backgroundColor = .mainColor
+        title = model?.name
         
-        self.view.addSubview(titleBar)
-        self.view.addSubview(moneyTF)
-        self.view.addSubview(moneyLabel)
-        titleBar.snp.makeConstraints { make in
-            make.top.left.right.equalTo(self.view)
-            make.height.equalTo(50)
-        }
-        moneyTF.snp.makeConstraints { make in
-            make.top.equalTo(titleBar.snp.bottom).offset(30)
-            make.left.equalTo(moneyLabel.snp.right)
-            make.right.equalTo(-20)
-            make.height.equalTo(50)
-        }
-        moneyLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(moneyTF.snp.bottom).offset(-6)
-            make.left.equalTo(20)
-            make.width.height.equalTo(30)
-        }
-    }
-    
-    func save() {
-        if let money = moneyTF.text, !money.isEmpty, let model = model {
-            let result = DBManager.share.insert_into_data_table_with(categoryId: model.categoryId, money: money, remark: "")
-            if result {
-                if let block = refreshBlock {
-                    block()
-                }
-                self.dismiss(animated: true)
-            }else {
-                DBProgressHUD.show(message: "写入失败")
-            }
-        }else {
-            DBProgressHUD.show(message: "请输入正确的金额")
-        }
-    }
-    
-    func close() {
-        self.dismiss(animated: true)
     }
 
     // MARK: - Lazy
-    private func lazyTitleBar() -> CommonNavBarView {
-        let view = CommonNavBarView(frame: .zero, title: "记账")
-        view.saveBlock = {
-            self.save()
-        }
-        view.closeBlock = {
-            self.close()
-        }
-        return view
-    }
-    
     private func lazyMoneyLabel() -> UILabel {
         let label = UILabel()
         label.text = "￥"

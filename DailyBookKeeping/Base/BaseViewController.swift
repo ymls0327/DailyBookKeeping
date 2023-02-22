@@ -9,6 +9,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    private var backButton: UIControl?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,7 +20,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.view.backgroundColor = .backgroundColor
+        view.backgroundColor = .backgroundColor
         // 设置状态栏
         UIApplication.shared.setStatusBarHidden(false, with: .none)
         
@@ -29,20 +30,54 @@ class BaseViewController: UIViewController {
             appearance.backgroundImage = .imageWithColor(.white)
             appearance.shadowColor = nil
             appearance.backgroundEffect = nil;
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainColor, NSAttributedString.Key.font: UIFont.f_m_17];
-            self.navigationController?.navigationBar.standardAppearance = appearance;
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance;
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.title_color, NSAttributedString.Key.font: UIFont.f_sb_(18)];
+            navigationController?.navigationBar.standardAppearance = appearance;
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance;
             if #available(iOS 15.0, *) {
-                self.navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
+                navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
             }
+        }else {
+            navigationController?.navigationBar.setBackgroundImage(.imageWithColor(.white), for: .default)
+            navigationController?.navigationBar.shadowImage = nil
         }
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = .mainColor
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.tintColor = .mainColor
         
-        self.placeSubViews()
+        placeSubViews()
     }
     
     func placeSubViews() {
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // 自定义返回按钮
+        customNavigationBarBackItem()
+    }
+    
+    private func customNavigationBarBackItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: UIView())
+        if let controller = navigationController?.viewControllers.first, controller != self {
+            if let backButton = backButton {
+                backButton.removeFromSuperview()
+            }
+            backButton = customBackButton()
+            navigationController?.navigationBar.addSubview(backButton!)
+        }
+    }
+    
+    @objc func back() {
+        navigationController?.popViewController()
+    }
+    
+    // MARK: - Lazy
+    private func customBackButton() -> UIControl {
+        let control = UIControl.init(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        control.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let shaperLayer = CALayer.arrowLayer(width: 18, lineWidth: 2)
+        shaperLayer.origin(x: 13, y: 13)
+        control.layer.addSublayer(shaperLayer)
+        return control
     }
 }

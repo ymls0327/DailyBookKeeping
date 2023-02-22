@@ -7,8 +7,6 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import RTRootNavigationController
-import SQLite
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.backgroundColor = .backgroundColor
-        let nav = RTRootNavigationController(rootViewController: HomeViewController())
+        window?.backgroundColor = .black
+        let nav = RootNavigationController(rootViewController: HomeViewController())
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         

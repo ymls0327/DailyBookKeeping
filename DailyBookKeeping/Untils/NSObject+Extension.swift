@@ -8,7 +8,7 @@
 import UIKit
 
 extension String {
-    func formatterMoneyStyle() -> NSAttributedString? {
+    func formatterMoneyStyle() -> NSAttributedString {
         var string = self
         if self.count <= 0 {
             string = "0.00"
@@ -33,6 +33,40 @@ extension String {
     }
 }
 
+extension CALayer {
+    
+    // 箭头公共的layer
+    static func arrowLayer(width: CGFloat, lineWidth: CGFloat, isLeft: Bool = true) -> CALayer {
+        let shaperLayer = CAShapeLayer()
+        shaperLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        shaperLayer.strokeColor = UIColor.title_color.cgColor
+        shaperLayer.fillColor = UIColor.clear.cgColor
+        shaperLayer.lineWidth = lineWidth
+        shaperLayer.lineCap = .round
+        let bezierPath = UIBezierPath()
+        if isLeft {
+            bezierPath.move(to: CGPoint(x: width*0.6, y: 0))
+            bezierPath.addLine(to: CGPoint(x: width*0.38, y: width*0.4))
+            bezierPath.addQuadCurve(to: CGPoint(x: width*0.38, y: width*0.6), controlPoint: CGPoint(x: width*0.32, y: width*0.5))
+            bezierPath.addLine(to: CGPoint(x: width*0.6, y: width))
+        }else {
+            bezierPath.move(to: CGPoint(x: width*0.4, y: 0))
+            bezierPath.addLine(to: CGPoint(x: width*0.62, y: width*0.4))
+            bezierPath.addQuadCurve(to: CGPoint(x: width*0.62, y: width*0.6), controlPoint: CGPoint(x: width*0.68, y: width*0.5))
+            bezierPath.addLine(to: CGPoint(x: width*0.4, y: width))
+        }
+        shaperLayer.path = bezierPath.cgPath
+        return shaperLayer
+    }
+    
+    func origin(x: CGFloat, y: CGFloat) {
+        var rect = frame
+        rect.origin = CGPoint(x: x, y: y)
+        frame = rect
+    }
+    
+}
+
 extension UIImage {
     
     // 颜色转为图片
@@ -49,6 +83,14 @@ extension UIImage {
 }
 
 extension UIColor {
+    
+    // 标题颜色
+    static let title_color = color(fromHex: 0x3D3F60)
+    // 副标题颜色
+    static let sub_title_color = color(fromHex: 0x797B9C)
+    // 分割线颜色
+    static let separator_color = color(fromHex: 0xDCDCDC)
+    
     // 主题色
     static let mainColor = UIColor.rgbColor(r: 61, g: 63, b: 96)
     // 主题色+1
@@ -113,6 +155,22 @@ extension UIColor {
 }
  
 extension UIFont {
+    
+    static func f_l_(_ size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .light)
+    }
+    static func f_r_(_ size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .regular)
+    }
+    static func f_m_(_ size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .medium)
+    }
+    static func f_b_(_ size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .bold)
+    }
+    static func f_sb_(_ size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .semibold)
+    }
     
     static let f_r_9 = UIFont.systemFont(ofSize: 9)
     static let f_r_10 = UIFont.systemFont(ofSize: 10)

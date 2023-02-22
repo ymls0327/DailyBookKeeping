@@ -13,80 +13,16 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
     // 刷新回调
     var refreshBlock: (() -> Void)?
     
-    lazy var titleBar: CommonNavBarView = lazyTitleBar()
-    lazy var nameBox: UIView = lazyNameBox()
-    lazy var iconBox: UIView = lazyIconBox()
-    lazy var colorBox: UIView = lazyColorBox()
-    
-    var categoryNameTF: UITextField!
-    var categoryIconTF: UITextField!
-    var categoryColorButton: UIColorWell!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .mainColor
     }
     
     override func placeSubViews() {
-        self.view.addSubview(titleBar)
-        self.view.addSubview(nameBox)
-        self.view.addSubview(iconBox)
-        self.view.addSubview(colorBox)
-        
-        titleBar.snp.makeConstraints { make in
-            make.top.left.right.equalTo(self.view)
-            make.height.equalTo(50)
-        }
-        nameBox.snp.makeConstraints { make in
-            make.left.right.equalTo(self.view)
-            make.top.equalTo(titleBar.snp.bottom).offset(10)
-            make.height.equalTo(50)
-        }
-        iconBox.snp.makeConstraints { make in
-            make.left.right.equalTo(self.view)
-            make.top.equalTo(nameBox.snp.bottom).offset(10)
-            make.height.equalTo(50)
-        }
-        colorBox.snp.makeConstraints { make in
-            make.left.right.equalTo(self.view)
-            make.top.equalTo(iconBox.snp.bottom).offset(10)
-            make.height.equalTo(50)
-        }
-    }
-    
-    func save() {
-        guard categoryNameTF.text!.count > 0 else {
-            debugPrint("名称必须填写")
-            return
-        }
-        guard categoryIconTF.text!.count > 0 else {
-            debugPrint("请选择一个图标")
-            return
-        }
-        let result = DBManager.share.insert_into_category_table_with(name: categoryNameTF.text!, color: (categoryColorButton.selectedColor?.hex())!, icon: categoryIconTF.text!)
-        if (result && refreshBlock != nil) {
-            refreshBlock!()
-        }
-        self.dismiss(animated: true)
-    }
-    
-    func close() {
-        self.dismiss(animated: true)
+       
     }
     
     // MARK: - Lazy
-    private func lazyTitleBar() -> CommonNavBarView {
-        let view = CommonNavBarView(frame: .zero, title: "分类")
-        view.saveBlock = {
-            self.save()
-        }
-        view.closeBlock = {
-            self.close()
-        }
-        return view
-    }
-    
     private func lazyNameBox() -> UIView {
         let view = UIView()
         
@@ -102,7 +38,6 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         textField.textAlignment = .right
         textField.delegate = self
         view.addSubview(textField)
-        categoryNameTF = textField
         
         let attributePlaceHodler = NSAttributedString.init(string: "请输入分类名称", attributes: [.font: UIFont.f_l_14, .foregroundColor: UIColor.main2Color])
         textField.attributedPlaceholder = attributePlaceHodler
@@ -144,7 +79,6 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         textField.textAlignment = .right
         view.addSubview(textField)
         
-        categoryIconTF = textField
         
         let attributePlaceHodler = NSAttributedString.init(string: "请输入emoji图标", attributes: [.font: UIFont.f_l_14, .foregroundColor: UIColor.main2Color])
         textField.attributedPlaceholder = attributePlaceHodler
@@ -158,7 +92,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             make.left.equalTo(18)
             make.width.equalTo(80)
         }
-        categoryIconTF.snp.makeConstraints { make in
+        textField.snp.makeConstraints { make in
             make.top.bottom.equalTo(view)
             make.right.equalTo(-20)
             make.left.equalTo(label.snp.right)
@@ -187,7 +121,6 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         button.selectedColor = .main1Color
         view.addSubview(button)
         
-        categoryColorButton = button
         
         let line = UIView()
         line.backgroundColor = .main2Color
