@@ -67,6 +67,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
                     dataList.append(model)
                 }
             }
+            if isEditing {
+                dataList.append(addModel())
+            }
 //            addCategoryButton.isHidden = !dataList.isEmpty
 //            navAddButton.isHidden = dataList.isEmpty
             
@@ -91,18 +94,24 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCollectionViewCell
-        cell.refreshCellWithModel(dataList[indexPath.item])
+        cell.model = dataList[indexPath.item]
+        cell.isEditing = isEditing
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataList[indexPath.item]
         if isEditing {
             // 进入编辑
-            
+            if model.isAdd {
+                debugPrint("添加页面")
+            }else {
+                debugPrint("编辑页面")
+            }
         }else {
             // 添加记录
             let recordExpenses = RecordExpensesViewController()
-            recordExpenses.model = dataList[indexPath.item]
+            recordExpenses.model = model
             navigationController?.pushViewController(recordExpenses, animated: true)
         }
     }
@@ -117,15 +126,25 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     func controlViewDidClickEdit() {
+        dataList.append(addModel())
+        collectionView.reloadData()
         controlView.isHidden = true
         editView.isHidden = false
         isEditing = true
     }
     
     func controlViewDidClickFinish() {
+        dataList.remove(at: dataList.count-1)
+        collectionView.reloadData()
         controlView.isHidden = false
         editView.isHidden = true
         isEditing = false
+    }
+    
+    private func addModel() -> HomeCategoryItemModel {
+        let addModel = HomeCategoryItemModel()
+        addModel.isAdd = true
+        return addModel
     }
     
     // MARK: - Lazy

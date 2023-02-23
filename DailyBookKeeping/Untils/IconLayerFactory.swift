@@ -62,6 +62,18 @@ extension CALayer {
         return layer
     }
     
+    // + 号
+    static func addLayer(width: CGFloat, lineWidth: CGFloat = 1.5, lineColor: UIColor = .title_color) -> CALayer {
+        let addLayer = _get_common_shaplayer(width: width, lineWidth: lineWidth, lineColor: lineColor)
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: width*0.5, y: 0))
+        bezierPath.addLine(to: CGPoint(x: width*0.5, y: width))
+        bezierPath.move(to: CGPoint(x: 0, y: width*0.5))
+        bezierPath.addLine(to: CGPoint(x: width, y: width*0.5))
+        addLayer.path = bezierPath.cgPath
+        return addLayer
+    }
+    
     // 完成
     static func finishLayer(width: CGFloat, lineWidth: CGFloat = 1.5, tickWidth: CGFloat = 2, circleColor: UIColor = .title_color, tickColor: UIColor = .red_color) -> CALayer {
         let layer = CALayer()
@@ -75,9 +87,10 @@ extension CALayer {
         // 对勾
         let tickLayer = _get_common_shaplayer(width: width, lineWidth: tickWidth, lineColor: tickColor)
         let tickPath = UIBezierPath()
-        tickPath.move(to: CGPoint(x: width*0.3, y: width*0.53))
-        tickPath.addLine(to: CGPoint(x: width*0.46, y: width*0.69))
-        tickPath.addLine(to: CGPoint(x: width*0.72, y: width*0.38))
+        tickPath.move(to: CGPoint(x: width*17/60, y: width*31/60))
+        tickPath.addLine(to: CGPoint(x: width*22/60, y: width*36/60))
+        tickPath.addQuadCurve(to: CGPoint(x: width*32/60, y: width*36/60), controlPoint: CGPoint(x: width*27/60, y: width*41/60))
+        tickPath.addLine(to: CGPoint(x: width*44/60, y: width*25/60))
         tickLayer.path = tickPath.cgPath
         
         layer.addSublayer(circleLayer)

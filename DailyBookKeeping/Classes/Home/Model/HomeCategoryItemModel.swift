@@ -16,5 +16,8 @@ class HomeCategoryItemModel: HandyJSON {
     var color: String = ""
     var money: String = ""
     
+    var isAdd: Bool = false
+    var isEidt: Bool = false
+    
     required init() {}
 }
