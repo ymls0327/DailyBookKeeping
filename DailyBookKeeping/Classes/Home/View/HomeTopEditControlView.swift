@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol HomeTopEditControlViewDelegate: AnyObject {
+    
+    // 点击了完成按钮
+    func controlViewDidClickFinish()
+}
+
 class HomeTopEditControlView: UIView {
 
+    weak var delegate: HomeTopEditControlViewDelegate?
+    
     private lazy var titleLabel: UILabel = lazyTitleLabel()
     private lazy var finishControl: UIControl = lazyFinishControl()
     
@@ -35,6 +43,10 @@ class HomeTopEditControlView: UIView {
         }
     }
     
+    @objc func finishControlTap(control: UIControl) {
+        delegate?.controlViewDidClickFinish()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -50,6 +62,7 @@ class HomeTopEditControlView: UIView {
     
     private func lazyFinishControl() -> UIControl {
         let control = UIControl()
+        control.addTarget(self, action: #selector(finishControlTap), for: .touchUpInside)
         let shaperLayer = CALayer.finishLayer(width: 20)
         shaperLayer.origin(x: 10, y: 15)
         control.layer.addSublayer(shaperLayer)

@@ -65,7 +65,7 @@ class HomeTopControlView: UIView {
         }
         historyControl.snp.makeConstraints { make in
             make.top.equalTo(0)
-            make.right.equalTo(editControl.snp.left)
+            make.right.equalTo(editControl.snp.left).offset(-5)
             make.bottom.equalTo(0)
             make.width.equalTo(40)
         }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import WidgetKit
 
-class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, HomeTopControlViewDelegate {
+class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, HomeTopControlViewDelegate, HomeTopEditControlViewDelegate {
     
     private lazy var navBar: UIView = lazyNavBar()
     private lazy var controlView: HomeTopControlView = lazyControlView()
@@ -55,34 +55,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             make.top.equalTo(navBar.snp.bottom)
             make.left.right.bottom.equalTo(view)
         }
-        
-        
-        
-        let layer = CALayer()
-        
-        let width = 100.0
-        
-        layer.frame = CGRect(x: 100, y: 100, width: width, height: width)
-        // 圆环
-        let circleLayer = CALayer._get_common_shaplayer(width: width, lineWidth: 2, lineColor: .title_color)
-        let circlePath = UIBezierPath()
-        circlePath.addArc(withCenter: CGPoint(x: width*0.5, y: width*0.5), radius: (width-2*2)*0.5, startAngle: 0, endAngle: .pi*2, clockwise: true)
-        circleLayer.path = circlePath.cgPath
-        
-        // 对勾
-        let tickLayer = CALayer._get_common_shaplayer(width: width, lineWidth: 2, lineColor: .red_color)
-        let tickPath = UIBezierPath()
-        tickPath.move(to: CGPoint(x: 30, y: 50))
-        tickPath.addLine(to: CGPoint(x: 45, y: 65))
-//        tickPath.addLine(to: CGPoint(x: 55, y: 64))
-        tickPath.addQuadCurve(to: CGPoint(x: 55, y: 64), controlPoint: CGPoint(x: 51, y: 66))
-        tickPath.addLine(to: CGPoint(x: 80, y: 30))
-        tickLayer.path = tickPath.cgPath
-        
-        layer.addSublayer(circleLayer)
-        layer.addSublayer(tickLayer)
-        
-        view.layer.addSublayer(layer)
     }
     
     private func requestNewDatas() {
@@ -124,9 +96,15 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recordExpenses = RecordExpensesViewController()
-        recordExpenses.model = dataList[indexPath.item]
-        navigationController?.pushViewController(recordExpenses, animated: true)
+        if isEditing {
+            // 进入编辑
+            
+        }else {
+            // 添加记录
+            let recordExpenses = RecordExpensesViewController()
+            recordExpenses.model = dataList[indexPath.item]
+            navigationController?.pushViewController(recordExpenses, animated: true)
+        }
     }
     
     // MARK: - view delegate
@@ -141,6 +119,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     func controlViewDidClickEdit() {
         controlView.isHidden = true
         editView.isHidden = false
+        isEditing = true
+    }
+    
+    func controlViewDidClickFinish() {
+        controlView.isHidden = false
+        editView.isHidden = true
+        isEditing = false
     }
     
     // MARK: - Lazy
@@ -160,6 +145,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     private func lazyEditControlView() -> HomeTopEditControlView {
         let view = HomeTopEditControlView()
+        view.delegate = self
         view.isHidden = true
         return view
     }

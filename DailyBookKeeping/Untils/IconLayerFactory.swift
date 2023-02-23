@@ -75,10 +75,9 @@ extension CALayer {
         // 对勾
         let tickLayer = _get_common_shaplayer(width: width, lineWidth: tickWidth, lineColor: tickColor)
         let tickPath = UIBezierPath()
-        tickPath.move(to: CGPoint(x: 6, y: 8))
-        tickPath.addLine(to: CGPoint(x: 9, y: 12))
-        tickPath.addQuadCurve(to: CGPoint(x: 11, y: 12), controlPoint: CGPoint(x: 10, y: 13))
-        tickPath.addLine(to: CGPoint(x: 20, y: 0))
+        tickPath.move(to: CGPoint(x: width*0.3, y: width*0.53))
+        tickPath.addLine(to: CGPoint(x: width*0.46, y: width*0.69))
+        tickPath.addLine(to: CGPoint(x: width*0.72, y: width*0.38))
         tickLayer.path = tickPath.cgPath
         
         layer.addSublayer(circleLayer)
@@ -120,7 +119,7 @@ extension CALayer {
     }
     
     
-     static func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
+     static private func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
         let shapLayer = CAShapeLayer()
         shapLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
         shapLayer.strokeColor = lineColor.cgColor
