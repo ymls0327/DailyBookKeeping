@@ -14,6 +14,9 @@ protocol HomeTopControlViewDelegate: AnyObject {
     
     // 点击历史
     func controlViewDidClickHistory()
+    
+    // 点击编辑按钮
+    func controlViewDidClickEdit()
 }
 
 class HomeTopControlView: UIView {
@@ -24,6 +27,7 @@ class HomeTopControlView: UIView {
     private lazy var timeArrow: UIView = lazyTimeArrow()
     private lazy var timeLabel: UILabel = lazyTimeLabel()
     private lazy var historyControl: UIControl = lazyHistoryControl()
+    private lazy var editControl: UIControl = lazyEditControl()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +42,7 @@ class HomeTopControlView: UIView {
         timeControl.addSubview(timeLabel)
         timeControl.addSubview(timeArrow)
         addSubview(historyControl)
+        addSubview(editControl)
         
         timeControl.snp.makeConstraints { make in
             make.left.equalTo(15)
@@ -52,11 +57,17 @@ class HomeTopControlView: UIView {
             make.centerY.equalTo(timeControl.snp.centerY);
             make.width.height.equalTo(15)
         }
+        editControl.snp.makeConstraints { make in
+            make.top.equalTo(0)
+            make.right.equalTo(-5)
+            make.bottom.equalTo(0)
+            make.width.equalTo(40)
+        }
         historyControl.snp.makeConstraints { make in
             make.top.equalTo(0)
-            make.right.equalTo(0)
+            make.right.equalTo(editControl.snp.left)
             make.bottom.equalTo(0)
-            make.width.equalTo(50)
+            make.width.equalTo(40)
         }
     }
     
@@ -70,6 +81,10 @@ class HomeTopControlView: UIView {
     
     @objc func historyControlTap(control: UIControl) {
         delegate?.controlViewDidClickHistory()
+    }
+    
+    @objc func editControlTap(control: UIControl) {
+        delegate?.controlViewDidClickEdit()
     }
      
     // MARK: - Lazy
@@ -97,18 +112,17 @@ class HomeTopControlView: UIView {
     private func lazyHistoryControl() -> UIControl {
         let control = UIControl()
         control.addTarget(self, action: #selector(historyControlTap), for: .touchUpInside)
-        let shaperLayer = CAShapeLayer()
-        shaperLayer.frame = CGRect(x: 13, y: 13, width: 24, height: 24)
-        shaperLayer.strokeColor = UIColor.title_color.cgColor
-        shaperLayer.fillColor = UIColor.clear.cgColor
-        shaperLayer.lineWidth = 1.5
-        shaperLayer.lineCap = .round
-        let bezierPath = UIBezierPath()
-        bezierPath.addArc(withCenter: CGPoint(x: 12, y: 12), radius: 8, startAngle: 0, endAngle: .pi*2, clockwise: true)
-        bezierPath.move(to: CGPoint(x: 12, y: 8))
-        bezierPath.addLine(to: CGPoint(x: 12, y: 12))
-        bezierPath.addLine(to: CGPoint(x: 15, y: 13.5))
-        shaperLayer.path = bezierPath.cgPath
+        let shaperLayer = CALayer.lockLayer(width: 20)
+        shaperLayer.origin(x: 10, y: 15)
+        control.layer.addSublayer(shaperLayer)
+        return control
+    }
+    
+    private func lazyEditControl() -> UIControl {
+        let control = UIControl()
+        control.addTarget(self, action: #selector(editControlTap), for: .touchUpInside)
+        let shaperLayer = CALayer.editLayer(width: 18)
+        shaperLayer.origin(x: 11, y: 16)
         control.layer.addSublayer(shaperLayer)
         return control
     }

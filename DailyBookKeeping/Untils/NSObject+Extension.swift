@@ -33,40 +33,6 @@ extension String {
     }
 }
 
-extension CALayer {
-    
-    // 箭头公共的layer
-    static func arrowLayer(width: CGFloat, lineWidth: CGFloat, isLeft: Bool = true) -> CALayer {
-        let shaperLayer = CAShapeLayer()
-        shaperLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
-        shaperLayer.strokeColor = UIColor.title_color.cgColor
-        shaperLayer.fillColor = UIColor.clear.cgColor
-        shaperLayer.lineWidth = lineWidth
-        shaperLayer.lineCap = .round
-        let bezierPath = UIBezierPath()
-        if isLeft {
-            bezierPath.move(to: CGPoint(x: width*0.6, y: 0))
-            bezierPath.addLine(to: CGPoint(x: width*0.38, y: width*0.4))
-            bezierPath.addQuadCurve(to: CGPoint(x: width*0.38, y: width*0.6), controlPoint: CGPoint(x: width*0.32, y: width*0.5))
-            bezierPath.addLine(to: CGPoint(x: width*0.6, y: width))
-        }else {
-            bezierPath.move(to: CGPoint(x: width*0.4, y: 0))
-            bezierPath.addLine(to: CGPoint(x: width*0.62, y: width*0.4))
-            bezierPath.addQuadCurve(to: CGPoint(x: width*0.62, y: width*0.6), controlPoint: CGPoint(x: width*0.68, y: width*0.5))
-            bezierPath.addLine(to: CGPoint(x: width*0.4, y: width))
-        }
-        shaperLayer.path = bezierPath.cgPath
-        return shaperLayer
-    }
-    
-    func origin(x: CGFloat, y: CGFloat) {
-        var rect = frame
-        rect.origin = CGPoint(x: x, y: y)
-        frame = rect
-    }
-    
-}
-
 extension UIImage {
     
     // 颜色转为图片
@@ -90,6 +56,9 @@ extension UIColor {
     static let sub_title_color = color(fromHex: 0x797B9C)
     // 分割线颜色
     static let separator_color = color(fromHex: 0xDCDCDC)
+    
+    // 主红
+    static let red_color = color(fromHex: 0xF22A2A)
     
     // 主题色
     static let mainColor = UIColor.rgbColor(r: 61, g: 63, b: 96)

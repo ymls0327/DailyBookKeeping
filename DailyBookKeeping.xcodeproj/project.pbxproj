@@ -10,6 +10,7 @@
 		3444CE4029A6F63500AEA6E3 /* HomeTopControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE3F29A6F63500AEA6E3 /* HomeTopControlView.swift */; };
 		3444CE4229A6F64F00AEA6E3 /* HomeTopEditControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE4129A6F64F00AEA6E3 /* HomeTopEditControlView.swift */; };
 		3444CE4429A7341800AEA6E3 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE4329A7341800AEA6E3 /* RootNavigationController.swift */; };
+		3444CE4629A7374800AEA6E3 /* IconLayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE4529A7374800AEA6E3 /* IconLayerFactory.swift */; };
 		344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC39E299A398100B8CF78 /* AppDelegate.swift */; };
 		344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A7299A398400B8CF78 /* Assets.xcassets */; };
 		344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3B8299A39D600B8CF78 /* WidgetKit.framework */; };
@@ -70,6 +71,7 @@
 		3444CE3F29A6F63500AEA6E3 /* HomeTopControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopControlView.swift; sourceTree = "<group>"; };
 		3444CE4129A6F64F00AEA6E3 /* HomeTopEditControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopEditControlView.swift; sourceTree = "<group>"; };
 		3444CE4329A7341800AEA6E3 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		3444CE4529A7374800AEA6E3 /* IconLayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLayerFactory.swift; sourceTree = "<group>"; };
 		344DC39B299A398100B8CF78 /* DailyBookKeeping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyBookKeeping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DC39E299A398100B8CF78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		344DC3A7299A398400B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				849E6F76299D2AA800562FC5 /* NSObject+Extension.swift */,
 				34F8034B299F26790087829A /* PrefixHeader.swift */,
 				34F8037129A5AE4C0087829A /* DBProgressHUD.swift */,
+				3444CE4529A7374800AEA6E3 /* IconLayerFactory.swift */,
 			);
 			path = Untils;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				34F80357299F785E0087829A /* AddCategoryViewController.swift in Sources */,
 				3444CE4429A7341800AEA6E3 /* RootNavigationController.swift in Sources */,
 				849E6F70299D1FEB00562FC5 /* BaseViewController.swift in Sources */,
+				3444CE4629A7374800AEA6E3 /* IconLayerFactory.swift in Sources */,
 				849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */,
 				849E6F8C29A07E5A00562FC5 /* HomeCategoryItemModel.swift in Sources */,
 				849E6F77299D2AA800562FC5 /* NSObject+Extension.swift in Sources */,

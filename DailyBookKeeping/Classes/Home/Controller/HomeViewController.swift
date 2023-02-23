@@ -110,6 +110,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         
     }
     
+    func controlViewDidClickEdit() {
+        debugPrint("123")
+    }
+    
     // MARK: - Lazy
     private func lazyNavBar() -> UIView {
         let view = UIView()
