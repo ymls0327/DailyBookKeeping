@@ -111,7 +111,8 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     func controlViewDidClickEdit() {
-        debugPrint("123")
+        controlView.isHidden = true
+        editView.isHidden = false
     }
     
     // MARK: - Lazy
