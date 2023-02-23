@@ -62,6 +62,30 @@ extension CALayer {
         return layer
     }
     
+    // 完成
+    static func finishLayer(width: CGFloat, lineWidth: CGFloat = 1.5, tickWidth: CGFloat = 2, circleColor: UIColor = .title_color, tickColor: UIColor = .red_color) -> CALayer {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        // 圆环
+        let circleLayer = _get_common_shaplayer(width: width, lineWidth: lineWidth, lineColor: circleColor)
+        let circlePath = UIBezierPath()
+        circlePath.addArc(withCenter: CGPoint(x: width*0.5, y: width*0.5), radius: (width-lineWidth*2)*0.5, startAngle: 0, endAngle: .pi*2, clockwise: true)
+        circleLayer.path = circlePath.cgPath
+        
+        // 对勾
+        let tickLayer = _get_common_shaplayer(width: width, lineWidth: tickWidth, lineColor: tickColor)
+        let tickPath = UIBezierPath()
+        tickPath.move(to: CGPoint(x: 6, y: 8))
+        tickPath.addLine(to: CGPoint(x: 9, y: 12))
+        tickPath.addQuadCurve(to: CGPoint(x: 11, y: 12), controlPoint: CGPoint(x: 10, y: 13))
+        tickPath.addLine(to: CGPoint(x: 20, y: 0))
+        tickLayer.path = tickPath.cgPath
+        
+        layer.addSublayer(circleLayer)
+        layer.addSublayer(tickLayer)
+        return layer
+    }
+    
     static func editLayer(width: CGFloat, lineWidth: CGFloat = 1.5, pencilWidth: CGFloat = 2, bookColor: UIColor = .title_color, pencilColor: UIColor = .red_color) -> CALayer {
         let layer = CALayer()
         layer.frame = CGRect(x: 0, y: 0, width: width, height: width)
@@ -96,7 +120,7 @@ extension CALayer {
     }
     
     
-    private static func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
+     static func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
         let shapLayer = CAShapeLayer()
         shapLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
         shapLayer.strokeColor = lineColor.cgColor
