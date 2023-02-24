@@ -18,7 +18,7 @@ class HomeTopEditControlView: UIView {
     weak var delegate: HomeTopEditControlViewDelegate?
     
     private lazy var titleLabel: UILabel = lazyTitleLabel()
-    private lazy var finishControl: UIControl = lazyFinishControl()
+    private lazy var exitEditControl: UIControl = lazyExitEditControl()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,12 +30,12 @@ class HomeTopEditControlView: UIView {
     
     private func placeSubViews() {
         addSubview(titleLabel)
-        addSubview(finishControl)
+        addSubview(exitEditControl)
         titleLabel.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.bottom.top.equalTo(self)
         }
-        finishControl.snp.makeConstraints { make in
+        exitEditControl.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.right.equalTo(-5)
             make.bottom.equalTo(0)
@@ -43,7 +43,7 @@ class HomeTopEditControlView: UIView {
         }
     }
     
-    @objc func finishControlTap(control: UIControl) {
+    @objc func exitEditControlTap(control: UIControl) {
         delegate?.controlViewDidClickFinish()
     }
     
@@ -60,10 +60,10 @@ class HomeTopEditControlView: UIView {
         return label
     }
     
-    private func lazyFinishControl() -> UIControl {
+    private func lazyExitEditControl() -> UIControl {
         let control = UIControl()
-        control.addTarget(self, action: #selector(finishControlTap), for: .touchUpInside)
-        let shaperLayer = CALayer.finishLayer(width: 20)
+        control.addTarget(self, action: #selector(exitEditControlTap), for: .touchUpInside)
+        let shaperLayer = CALayer.exitLayer(width: 20)
         shaperLayer.origin(x: 10, y: 15)
         control.layer.addSublayer(shaperLayer)
         return control

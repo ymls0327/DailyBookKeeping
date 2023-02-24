@@ -90,7 +90,7 @@ extension CALayer {
         tickPath.move(to: CGPoint(x: width*17/60, y: width*31/60))
         tickPath.addLine(to: CGPoint(x: width*22/60, y: width*36/60))
         tickPath.addQuadCurve(to: CGPoint(x: width*32/60, y: width*36/60), controlPoint: CGPoint(x: width*27/60, y: width*41/60))
-        tickPath.addLine(to: CGPoint(x: width*44/60, y: width*25/60))
+        tickPath.addLine(to: CGPoint(x: width*42/60, y: width*22/60))
         tickLayer.path = tickPath.cgPath
         
         layer.addSublayer(circleLayer)
@@ -131,8 +131,45 @@ extension CALayer {
         return layer
     }
     
+    // 退出
+    static func exitLayer(width: CGFloat, lineWidth: CGFloat = 1.5, needleWidth: CGFloat = 2, rectColor: UIColor = .title_color, needleColor: UIColor = .red_color) -> CALayer {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        
+        let realWidth = width - lineWidth*2;
+        let rectLayer = _get_common_shaplayer(width: realWidth, lineWidth: lineWidth, lineColor: rectColor)
+        rectLayer.origin(x: lineWidth, y: lineWidth)
+        
+        let rectPatch = UIBezierPath()
+        rectPatch.move(to: CGPoint(x: realWidth*0.9, y: realWidth*0.2))
+        rectPatch.addQuadCurve(to: CGPoint(x: realWidth*0.7, y: 0), controlPoint: CGPoint(x: realWidth*0.9, y: 0))
+        rectPatch.addLine(to: CGPoint(x: realWidth*0.2, y: 0))
+        rectPatch.addQuadCurve(to: CGPoint(x: 0, y: realWidth*0.2), controlPoint: CGPoint(x: 0, y: 0))
+        rectPatch.addLine(to: CGPoint(x: 0, y: realWidth*0.8))
+        rectPatch.addQuadCurve(to: CGPoint(x: realWidth*0.2, y: realWidth), controlPoint: CGPoint(x: 0, y: realWidth))
+        rectPatch.addLine(to: CGPoint(x: realWidth*0.7, y: realWidth))
+        rectPatch.addQuadCurve(to: CGPoint(x: realWidth*0.9, y: realWidth*0.8), controlPoint: CGPoint(x: realWidth*0.9, y: realWidth))
+        rectLayer.path = rectPatch.cgPath
+        
+        
+        let arrowWidth = width - needleWidth*2;
+        let arrowLayer = _get_common_shaplayer(width: arrowWidth, lineWidth: needleWidth, lineColor: needleColor)
+        arrowLayer.origin(x: needleWidth, y: needleWidth)
+        
+        let arrowPath = UIBezierPath()
+        arrowPath.move(to: CGPoint(x: arrowWidth*0.3, y: arrowWidth*0.5))
+        arrowPath.addLine(to: CGPoint(x: arrowWidth*0.9, y: arrowWidth*0.5))
+        arrowPath.move(to: CGPoint(x: arrowWidth*0.9, y: arrowWidth*0.4))
+        arrowPath.addLine(to: CGPoint(x: arrowWidth, y: arrowWidth*0.5))
+        arrowPath.addLine(to: CGPoint(x: arrowWidth*0.9, y: arrowWidth*0.6))
+        arrowLayer.path = arrowPath.cgPath
+        
+        layer.addSublayer(rectLayer)
+        layer.addSublayer(arrowLayer)
+        return layer
+    }
     
-     static private func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
+    static private func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
         let shapLayer = CAShapeLayer()
         shapLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
         shapLayer.strokeColor = lineColor.cgColor

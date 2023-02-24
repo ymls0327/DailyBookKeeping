@@ -10,19 +10,20 @@ import MBProgressHUD
 
 class DBProgressHUD: NSObject {
 
-    static func show(message string: String, _ view: UIView? = UIApplication.shared.delegate?.window!!, _ duration: TimeInterval = 2) {
+    static func show(message string: String, duration: TimeInterval = 2, overlay: Bool = true) {
         
-        let hud = MBProgressHUD.showAdded(to: view!, animated: true)
+        let hud = MBProgressHUD.showAdded(to: (UIApplication.shared.delegate?.window!!)!, animated: true)
         hud.mode = .text
         hud.label.text = string
-        hud.label.font = .f_m_14
+        hud.label.font = .f_m_(14)
         hud.minShowTime = duration
         hud.margin = 12
         if isIPhoneX() {
-            hud.offset = .init(x: 0, y: kScreenHeight*0.5 - 64)
+            hud.offset = .init(x: 0, y: -(kScreenHeight*0.5 - 64))
         }else {
-            hud.offset = .init(x: 0, y: kScreenHeight*0.5 - 30)
+            hud.offset = .init(x: 0, y: -(kScreenHeight*0.5 - 40))
         }
+        hud.isUserInteractionEnabled = overlay
         hud.bezelView.layer.cornerRadius = 20
         common_shadow_hud_config(hud: hud)
         hud.hide(animated: true)

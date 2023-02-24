@@ -57,15 +57,15 @@ class HomeTopControlView: UIView {
             make.centerY.equalTo(timeControl.snp.centerY);
             make.width.height.equalTo(15)
         }
-        editControl.snp.makeConstraints { make in
+        historyControl.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.right.equalTo(-5)
             make.bottom.equalTo(0)
             make.width.equalTo(40)
         }
-        historyControl.snp.makeConstraints { make in
+        editControl.snp.makeConstraints { make in
             make.top.equalTo(0)
-            make.right.equalTo(editControl.snp.left).offset(-5)
+            make.right.equalTo(historyControl.snp.left).offset(-5)
             make.bottom.equalTo(0)
             make.width.equalTo(40)
         }
@@ -121,8 +121,8 @@ class HomeTopControlView: UIView {
     private func lazyEditControl() -> UIControl {
         let control = UIControl()
         control.addTarget(self, action: #selector(editControlTap), for: .touchUpInside)
-        let shaperLayer = CALayer.editLayer(width: 18)
-        shaperLayer.origin(x: 11, y: 16)
+        let shaperLayer = CALayer.editLayer(width: 20)
+        shaperLayer.origin(x: 10, y: 15)
         control.layer.addSublayer(shaperLayer)
         return control
     }

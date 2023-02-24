@@ -104,7 +104,11 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         if isEditing {
             // 进入编辑
             if model.isAdd {
-                debugPrint("添加页面")
+                let add = AddCategoryViewController()
+                add.refreshBlock = { [weak self] in
+                    self?.requestNewDatas()
+                }
+                navigationController?.pushViewController(add, animated: true)
             }else {
                 debugPrint("编辑页面")
             }

@@ -48,6 +48,18 @@ extension UIImage {
     }
 }
 
+extension UIView {
+    func roundCorners(_ corners: UIRectCorner, rect: CGRect, radius: CGFloat) {
+        let maskPath = UIBezierPath(
+            roundedRect: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height),
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius))
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        layer.mask = shape
+    }
+}
+
 extension UIColor {
     
     // 标题颜色

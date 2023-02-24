@@ -10,6 +10,7 @@ import UIKit
 class HomeCollectionViewCell: UICollectionViewCell {
     
     lazy var containerView: UIView = lazyContainerView()
+    lazy var shadowView: UIView = lazyShadowView()
     lazy var centerView: UIView = lazyCenterView()
     lazy var titleLabel: UILabel = lazyTitleLabel()
     lazy var iconLabel: UILabel = lazyIconLabel()
@@ -26,7 +27,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     private func placeSubViews() {
-        self.contentView.addSubview(containerView)
+        contentView.addSubview(shadowView)
+        contentView.addSubview(containerView)
         containerView.addSubview(centerView)
         centerView.addSubview(titleLabel)
         centerView.addSubview(iconLabel)
@@ -34,10 +36,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         containerView.addSubview(deleteControl)
         containerView.addSubview(addControl)
         
+        shadowView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalTo(contentView)
+        }
         containerView.snp.makeConstraints { make in
-            make.top.equalTo(self.contentView.snp.top)
-            make.left.right.equalTo(self.contentView)
-            make.bottom.equalTo(self.contentView.snp.bottom)
+            make.top.left.right.bottom.equalTo(contentView)
         }
         centerView.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(containerView.snp.top)
@@ -63,7 +66,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         deleteControl.snp.makeConstraints { make in
             make.left.equalTo(10)
             make.right.equalTo(-10)
-            make.bottom.equalTo(-5)
+            make.bottom.equalTo(-8)
             make.height.equalTo(24)
         }
         addControl.snp.makeConstraints { make in
@@ -97,25 +100,34 @@ class HomeCollectionViewCell: UICollectionViewCell {
             containerView.isHidden = false
             addControl.isHidden = !model.isAdd
             centerView.isHidden = model.isAdd
-            if !model.isAdd {
+            if model.isAdd {
+                containerView.backgroundColor = .white
+                shadowView.layer.shadowColor = UIColor.black.withAlphaComponent(0.3).cgColor
+            }else {
                 titleLabel.text = model.name
                 iconLabel.text = model.icon
                 moneyLabel.attributedText = model.money.formatterMoneyStyle()
-                containerView.backgroundColor = .color(fromHexString: model.color as NSString?)
+                containerView.backgroundColor = .color(fromHexString: model.color as NSString?).withAlphaComponent(0.3)
+                shadowView.layer.shadowColor = UIColor.color(fromHexString: model.color as NSString?).withAlphaComponent(0.4).cgColor
             }
         }
     }
     
     
     // MARK: - Lazy
+    private func lazyShadowView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 14
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 2
+        view.layer.shadowOpacity = 0.6
+        return view
+    }
+    
     private func lazyContainerView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .main1Color
-        view.layer.cornerRadius = 12
-        view.layer.shadowColor = UIColor.rgbColor(r: 0, g: 0, b: 0, a: 0.8).cgColor
-        view.layer.shadowOffset = .zero
-        view.layer.shadowRadius = 1
-        view.layer.shadowOpacity = 0.5
+        view.roundCorners(.allCorners, rect: bounds, radius: 14)
         return view
     }
     
@@ -126,22 +138,22 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func lazyTitleLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = .white
-        label.font = .f_m_13
+        label.textColor = .title_color
+        label.font = .f_m_(13)
         label.textAlignment = .center
         return label
     }
     
     private func lazyIconLabel() -> UILabel {
         let label = UILabel()
-        label.font = .f_r_25
+        label.font = .f_r_(25)
         label.textAlignment = .center
         return label
     }
     
     private func lazyMoneyLabel() -> UILabel {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .title_color
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -163,7 +175,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyAddControl() -> UIView {
         let view = UIView()
         view.isHidden = true
-        let shapLayer = CALayer.addLayer(width: 20, lineWidth: 3, lineColor: .white)
+        let shapLayer = CALayer.addLayer(width: 20, lineWidth: 3, lineColor: .title_color)
         view.layer.addSublayer(shapLayer)
         return view
     }
