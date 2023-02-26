@@ -57,15 +57,15 @@ class HomeTopControlView: UIView {
             make.centerY.equalTo(timeControl.snp.centerY);
             make.width.height.equalTo(15)
         }
-        historyControl.snp.makeConstraints { make in
+        editControl.snp.makeConstraints { make in
             make.top.equalTo(0)
             make.right.equalTo(-5)
             make.bottom.equalTo(0)
             make.width.equalTo(40)
         }
-        editControl.snp.makeConstraints { make in
+        historyControl.snp.makeConstraints { make in
             make.top.equalTo(0)
-            make.right.equalTo(historyControl.snp.left).offset(-5)
+            make.right.equalTo(editControl.snp.left).offset(-5)
             make.bottom.equalTo(0)
             make.width.equalTo(40)
         }

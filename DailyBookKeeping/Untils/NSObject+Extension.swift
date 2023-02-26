@@ -115,7 +115,7 @@ extension UIColor {
         return UIColor.rgbColor(r: CGFloat(r), g: CGFloat(g), b: CGFloat(b))
     }
     // 获取16进制
-    func hex() -> String {
+    func hex() -> String? {
         var r : CGFloat = 0
         var g : CGFloat = 0
         var b : CGFloat = 0
@@ -130,7 +130,7 @@ extension UIColor {
             let rgb = (Int(r * 255.0) << 16) + (Int(g * 255.0) << 8) + Int(b * 255.0)
             return NSString.init(format: "#%x", rgb) as String
         } else {
-            return ""
+            return nil
         }
     }
 }

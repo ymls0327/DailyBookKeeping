@@ -100,7 +100,11 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             DBProgressHUD.show(message: "请输入分类名称", overlay: false)
             return
         }
-        guard let color = colorWell.selectedColor?.hex() else {
+        guard let selectColor = colorWell.selectedColor else {
+            DBProgressHUD.show(message: "请选择颜色", overlay: false)
+            return
+        }
+        guard let colorHex = selectColor.hex(), !colorHex.isEmpty else {
             DBProgressHUD.show(message: "颜色转换失败", overlay: false)
             return
         }
@@ -109,7 +113,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             return
         }
         // 存储分类
-        if DBManager.share.insert_into_category_table_with(name: categoryName, color: color, icon: icon) {
+        if DBManager.share.insert_into_category_table_with(name: categoryName, color: colorHex, icon: icon) {
             DBProgressHUD.show(message: "添加成功", overlay: false)
             refreshBlock?()
             reset()
