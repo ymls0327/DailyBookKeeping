@@ -17,8 +17,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
     lazy var shadowView: UIView = lazyShadowView()
     lazy var centerView: UIView = lazyCenterView()
     lazy var titleTextField: UITextField = lazyTitleTextField()
-    lazy var tempTextField: CustomTextField = lazyTempTextField()
-    lazy var iconLabel: UILabel = lazyIconLabel()
+    lazy var emojiControl: AddCategoryEmojiControl = lazyEmojiControl()
     lazy var moneyLabel: UILabel = lazyMoneyLabel()
     lazy var colorWell: UIColorWell = lazyColorWell()
     lazy var finishControl: UIControl = lazyFinishControl()
@@ -37,9 +36,8 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         view.addSubview(shadowView)
         view.addSubview(containerView)
         containerView.addSubview(centerView)
-        containerView.addSubview(tempTextField)
         centerView.addSubview(titleTextField)
-        centerView.addSubview(iconLabel)
+        centerView.addSubview(emojiControl)
         centerView.addSubview(moneyLabel)
         view.addSubview(colorWell)
         
@@ -66,13 +64,13 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             make.top.left.right.equalTo(centerView)
             make.height.equalTo(30)
         }
-        iconLabel.snp.makeConstraints { make in
+        emojiControl.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom).offset(10)
             make.left.right.equalTo(centerView)
             make.height.equalTo(40)
         }
         moneyLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconLabel.snp.bottom).offset(10)
+            make.top.equalTo(emojiControl.snp.bottom).offset(10)
             make.left.right.bottom.equalTo(centerView)
             make.height.equalTo(30)
         }
@@ -90,7 +88,6 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func iconLabelTap() {
         titleTextField.endEditing(false)
-        tempTextField.becomeFirstResponder()
     }
     
     @objc func finishControlTap() {
@@ -108,7 +105,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             DBProgressHUD.show(message: "颜色转换失败", overlay: false)
             return
         }
-        guard let icon = iconLabel.text, !icon.isEmpty else {
+        guard let icon = emojiControl.content, !icon.isEmpty else {
             DBProgressHUD.show(message: "请选择一个心仪的图标", overlay: false)
             return
         }
@@ -123,52 +120,20 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func emojiControlTap() {
+        emojiControl.becomeFirstResponder()
+    }
+    
     private func reset() {
+        emojiControl.reset()
         titleTextField.text = ""
-        iconLabel.text = "😁"
         colorWell.selectedColor = nil
         containerView.backgroundColor = .white
         shadowView.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
     }
     
-    // MARK: !Property
-    private func inputAccessoryView() -> UIView {
-        let accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
-        accessoryView.backgroundColor = .white
-        accessoryView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        accessoryView.layer.shadowOffset = .zero
-        accessoryView.layer.shadowRadius = 3
-        accessoryView.layer.shadowOpacity = 0.6
-        let actionOne = UIAction(title: "图标", handler: { [weak self] action in
-            self?.tempTextField.resignFirstResponder()
-            self?.tempTextField.isCustom = true
-            self?.tempTextField.inputView = self?.iconSelectInputView()
-            self?.tempTextField.becomeFirstResponder()
-        })
-        let actionTwo = UIAction(title: "emoji", handler: { [weak self] action in
-            self?.tempTextField.resignFirstResponder()
-            self?.tempTextField.isCustom = false
-            self?.tempTextField.inputView = nil
-            self?.tempTextField.becomeFirstResponder()
-        })
-        let control = UISegmentedControl.init(frame: .zero, actions: [actionOne, actionTwo])
-        control.selectedSegmentIndex = 0
-        accessoryView.addSubview(control)
-        control.snp.makeConstraints { make in
-            make.centerX.equalTo(accessoryView.snp.centerX)
-            make.top.equalTo(10)
-            make.width.equalTo(200)
-            make.height.equalTo(30)
-        }
-        return accessoryView
-    }
-    
-    private func iconSelectInputView() -> IconSelectInputView {
-        let selectView = IconSelectInputView()
-        selectView.didSelectEmojiWithComplete = { [weak self] emoji in
-            self?.iconLabel.text = emoji
-        }
-        return selectView
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emojiControl.resignFirstResponder()
     }
     
     // MARK: - Lazy
@@ -204,24 +169,10 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         return textField
     }
     
-    private func lazyIconLabel() -> UILabel {
-        let label = UILabel()
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconLabelTap)))
-        label.isUserInteractionEnabled = true
-        label.font = .f_r_(35)
-        label.textAlignment = .center
-        label.text = "😄"
-        return label
-    }
-    
-    private func lazyTempTextField() -> CustomTextField {
-        let textField = CustomTextField()
-        textField.isCustom = true
-        textField.isHidden = true
-        textField.inputView = nil
-        textField.inputAccessoryView = inputAccessoryView()
-        textField.inputView = iconSelectInputView()
-        return textField
+    private func lazyEmojiControl() -> AddCategoryEmojiControl {
+        let control = AddCategoryEmojiControl()
+        control.addTarget(self, action: #selector(emojiControlTap), for: .touchUpInside)
+        return control
     }
     
     private func lazyColorWell() -> UIColorWell {
