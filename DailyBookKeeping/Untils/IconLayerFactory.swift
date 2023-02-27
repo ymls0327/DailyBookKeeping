@@ -98,6 +98,7 @@ extension CALayer {
         return layer
     }
     
+    // 编辑
     static func editLayer(width: CGFloat, lineWidth: CGFloat = 1.5, pencilWidth: CGFloat = 2, bookColor: UIColor = .title_color, pencilColor: UIColor = .red_color) -> CALayer {
         let layer = CALayer()
         layer.frame = CGRect(x: 0, y: 0, width: width, height: width)
@@ -128,6 +129,42 @@ extension CALayer {
         pencilLayer.path = pencilPath.cgPath
         layer.addSublayer(pencilLayer)
         
+        return layer
+    }
+    
+    // 删除
+    static func deleteLayer(width: CGFloat, lineWidth: CGFloat = 1.5, needleWidth: CGFloat = 2, rectColor: UIColor = .title_color, needleColor: UIColor = .red_color) -> CALayer {
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        // 盖子
+        let bookWidth = width - needleWidth*2;
+        let bookLayer = _get_common_shaplayer(width: bookWidth, lineWidth: needleWidth, lineColor: needleColor)
+        bookLayer.origin(x: needleWidth, y: needleWidth)
+        
+        let bookPath = UIBezierPath()
+        bookPath.move(to: CGPoint(x: bookWidth*0.4, y: bookWidth*0.1))
+        bookPath.addLine(to: CGPoint(x: bookWidth*0.6, y: bookWidth*0.1))
+        bookPath.move(to: CGPoint(x: bookWidth*0.15, y: bookWidth*0.25))
+        bookPath.addLine(to: CGPoint(x: bookWidth*0.85, y: bookWidth*0.25))
+        bookLayer.path = bookPath.cgPath
+        
+        // Kuang
+        // 盖子
+        let kuangWidth = width - lineWidth*2;
+        let kaungLayer = _get_common_shaplayer(width: kuangWidth, lineWidth: lineWidth, lineColor: rectColor)
+        kaungLayer.origin(x: lineWidth, y: lineWidth)
+        
+        let kuangPath = UIBezierPath()
+        kuangPath.move(to: CGPoint(x: kuangWidth*0.24, y: kuangWidth*0.4))
+        kuangPath.addLine(to: CGPoint(x: kuangWidth*0.28, y: kuangWidth*0.8))
+        kuangPath.addQuadCurve(to: CGPoint(x: kuangWidth*0.38, y: kuangWidth*0.9), controlPoint: CGPoint(x: kuangWidth*0.29, y: kuangWidth*0.9))
+        kuangPath.addLine(to: CGPoint(x: kuangWidth*0.62, y: kuangWidth*0.9))
+        kuangPath.addQuadCurve(to: CGPoint(x: kuangWidth*0.72, y: kuangWidth*0.8), controlPoint: CGPoint(x: kuangWidth*0.71, y: kuangWidth*0.9))
+        kuangPath.addLine(to: CGPoint(x: kuangWidth*0.76, y: kuangWidth*0.4))
+        kaungLayer.path = kuangPath.cgPath
+        
+        layer.addSublayer(bookLayer)
+        layer.addSublayer(kaungLayer)
         return layer
     }
     
@@ -169,7 +206,7 @@ extension CALayer {
         return layer
     }
     
-    static private func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
+    static func _get_common_shaplayer(width: CGFloat, lineWidth: CGFloat, lineColor: UIColor) -> CAShapeLayer {
         let shapLayer = CAShapeLayer()
         shapLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
         shapLayer.strokeColor = lineColor.cgColor

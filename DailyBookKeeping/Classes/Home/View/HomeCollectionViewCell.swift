@@ -168,6 +168,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         control.layer.shadowOffset = .zero
         control.layer.shadowRadius = 1
         control.layer.shadowOpacity = 0.6
+        
+        let shapLayer = CALayer.deleteLayer(width: 20, lineWidth: 1.5, needleWidth: 1.5, rectColor: .white, needleColor: .white)
+        shapLayer.origin(x: (frame.size.width-40)*0.5, y: 2)
+        control.layer.addSublayer(shapLayer)
+        
         control.isHidden = true
         return control
     }

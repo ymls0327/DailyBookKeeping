@@ -55,6 +55,40 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             make.top.equalTo(navBar.snp.bottom)
             make.left.right.bottom.equalTo(view)
         }
+        
+        
+//        let width = 100.0
+//        let needleWidth = 0.0
+//        let layer = CALayer()
+//        layer.frame = CGRect(x: 100, y: 100, width: width, height: width)
+//        // 盖子
+//        let bookWidth = width - needleWidth*2;
+//        let bookLayer = CALayer._get_common_shaplayer(width: bookWidth, lineWidth: 5, lineColor: .red)
+//        bookLayer.origin(x: needleWidth, y: needleWidth)
+//        
+//        let bookPath = UIBezierPath()
+//        bookPath.move(to: CGPoint(x: bookWidth*0.4, y: bookWidth*0.1))
+//        bookPath.addLine(to: CGPoint(x: bookWidth*0.6, y: bookWidth*0.1))
+//        bookPath.move(to: CGPoint(x: bookWidth*0.15, y: bookWidth*0.25))
+//        bookPath.addLine(to: CGPoint(x: bookWidth*0.85, y: bookWidth*0.25))
+//        
+//        
+//        
+//        
+//        bookPath.move(to: CGPoint(x: 24, y: 40))
+//        bookPath.addLine(to: CGPoint(x: 28, y: 80))
+//        bookPath.addQuadCurve(to: CGPoint(x: 38, y: 90), controlPoint: CGPoint(x: 29, y: 90))
+//        bookPath.addLine(to: CGPoint(x: 62, y: 90))
+//        bookPath.addQuadCurve(to: CGPoint(x: 72, y: 80), controlPoint: CGPoint(x: 71, y: 90))
+//        bookPath.addLine(to: CGPoint(x: 76, y: 40))
+//        
+//        
+//        bookLayer.path = bookPath.cgPath
+//        
+//        layer.addSublayer(bookLayer)
+//        
+//        view.layer.addSublayer(layer)
+        
     }
     
     private func requestNewDatas() {

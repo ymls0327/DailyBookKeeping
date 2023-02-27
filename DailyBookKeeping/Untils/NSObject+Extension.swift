@@ -128,7 +128,7 @@ extension UIColor {
             if b > 1 { b = 1 }
             if b < 0 { b = 0 }
             let rgb = (Int(r * 255.0) << 16) + (Int(g * 255.0) << 8) + Int(b * 255.0)
-            return NSString.init(format: "#%x", rgb) as String
+            return NSString(format: "#%6.x", rgb).replacingOccurrences(of: " ", with: "0") as String
         } else {
             return nil
         }

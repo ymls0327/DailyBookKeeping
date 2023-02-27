@@ -11,6 +11,10 @@ class BaseViewController: UIViewController {
 
     private var backButton: UIControl?
     
+    deinit {
+        debugPrint("🌈🌈🌈🌈\(type(of: self)) 销毁了")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

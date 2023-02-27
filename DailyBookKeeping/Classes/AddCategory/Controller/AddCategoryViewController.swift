@@ -114,9 +114,12 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         }
         // 存储分类
         if DBManager.share.insert_into_category_table_with(name: categoryName, color: colorHex, icon: icon) {
-            DBProgressHUD.show(message: "添加成功", overlay: false)
             refreshBlock?()
-            reset()
+            AlertController.alert(with: self, title: "添加成功", message: "您可以点击”继续添加“，来添加更多分类", cancleTitle: "取消", confirmTitle: "继续添加", confirmBlock: { [weak self] in
+                self?.reset()
+            }, cancleBlock: { [weak self] in
+                self?.navigationController?.popViewController()
+            })
         }
     }
     
