@@ -73,7 +73,7 @@ extension DBManager {
     }
     
     /**
-     * 修改分类名称
+     * 修改分类
      */
     func update_into_category_table_with(name: String = "", color: String = "", icon: String = "", id: Int64) -> Bool {
         
@@ -83,20 +83,45 @@ extension DBManager {
         if !icon.isEmpty { expression += "`icon` = '\(icon)'," }
         expression += "`update_t` = '\(current_date)'"
         
-        if select_category_with(id: id) {
-            let sql = """
-            UPDATE \(category_table)
-            SET \(expression)
-            WHERE `id` = \(id);
-            """
-            guard let database = db else { return false }
-            do{
-                try database.execute(sql)
-                return true
-            }catch {
-                return false
-            }
-        }else {
+        let sql = """
+        UPDATE \(category_table)
+        SET \(expression)
+        WHERE `id` = \(id);
+        """
+        guard let database = db else { return false }
+        do{
+            try database.execute(sql)
+            return true
+        }catch {
+            return false
+        }
+    }
+    
+    /**
+     * 修改+增加
+     */
+    func update_insert_into_category_table_with(id: Int64?, name: String, color: String, icon: String) -> Bool {
+        // 先查，如果查到，则进行修改，否则添加
+        if let id = id, id > 0, select_category_with(id: id) {
+            return update_into_category_table_with(name: name, color: color, icon: icon, id: id)
+        }
+        return insert_into_category_table_with(name: name, color: color, icon: icon)
+    }
+    
+    /**
+     * 删除一条记录
+     */
+    func delete_category_with(id: Int64) -> Bool {
+        let sql = """
+        DELETE FROM \(category_table)
+        WHERE id=\(id);
+        """
+        guard let database = db else { return false }
+        do{
+            try database.execute(sql)
+            return true
+        }catch {
+            debugPrint(error.localizedDescription)
             return false
         }
     }

@@ -14,12 +14,22 @@ class AddCategoryEmojiControl: UIControl, UIKeyInput {
     private lazy var titleLabel: UILabel = lazyTitleLabel()
     
     var content: String? {
+        set {
+            if let text = newValue, !text.isEmpty {
+                titleLabel.text = text
+            }
+        }
         get {
             titleLabel.text
         }
     }
     
-    var hasText: Bool = false
+    var hasText: Bool {
+        if let text = titleLabel.text, !text.isEmpty {
+            return true
+        }
+        return false
+    }
     
     func insertText(_ text: String) {
         if text.containEmoji {

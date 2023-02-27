@@ -9,6 +9,8 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
+    open var deleteCategoryBlockToRefresh:((_ id: Int64, _ name: String) -> Void)?
+    
     lazy var containerView: UIView = lazyContainerView()
     lazy var shadowView: UIView = lazyShadowView()
     lazy var centerView: UIView = lazyCenterView()
@@ -113,6 +115,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    @objc func deleteControlTap() {
+        if let model = model, model.categoryId > 0 {
+            deleteCategoryBlockToRefresh?(model.categoryId, model.name)
+        }
+    }
     
     // MARK: - Lazy
     private func lazyShadowView() -> UIView {
@@ -161,6 +168,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private func lazyDeleteControl() -> UIControl {
         let control = UIControl()
+        control.addTarget(self, action: #selector(deleteControlTap), for: .touchUpInside)
         control.layer.cornerRadius = 12
         control.layer.masksToBounds = false
         control.backgroundColor = .red_color

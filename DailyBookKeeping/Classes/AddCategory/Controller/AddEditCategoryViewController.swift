@@ -1,5 +1,5 @@
 //
-//  AddCategoryViewController.swift
+//  AddEditCategoryViewController.swift
 //  DailyBookKeeping
 //
 //  Created by ext.jiayaning1 on 2023/2/17.
@@ -8,10 +8,11 @@
 import UIKit
 import SnapKit
 
-class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
+class AddEditCategoryViewController: BaseViewController, UITextFieldDelegate {
     
     // 刷新回调
     open var refreshBlock: (() -> Void)?
+    open var categoryModel: HomeCategoryItemModel?
     
     lazy var containerView: UIView = lazyContainerView()
     lazy var shadowView: UIView = lazyShadowView()
@@ -110,7 +111,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
             return
         }
         // 存储分类
-        if DBManager.share.insert_into_category_table_with(name: categoryName, color: colorHex, icon: icon) {
+        if DBManager.share.update_insert_into_category_table_with(id: categoryModel?.categoryId, name: categoryName, color: colorHex, icon: icon) {
             refreshBlock?()
             AlertController.alert(with: self, title: "添加成功", message: "您可以点击”继续添加“，来添加更多分类", cancleTitle: "取消", confirmTitle: "继续添加", confirmBlock: { [weak self] in
                 self?.reset()
@@ -141,16 +142,24 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
-        view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 2
         view.layer.shadowOpacity = 0.6
+        if let model = categoryModel, !model.color.isEmpty {
+            view.layer.shadowColor = UIColor.color(fromHexString: model.color as NSString).withAlphaComponent(0.4).cgColor
+        }else {
+            view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        }
         return view
     }
     
     private func lazyContainerView() -> UIView {
         let view = UIView()
-        view.backgroundColor = .white
+        if let model = categoryModel, !model.color.isEmpty {
+            view.backgroundColor = UIColor.color(fromHexString: model.color as NSString).withAlphaComponent(0.3)
+        }else {
+            view.backgroundColor = .white
+        }
         view.roundCorners(.allCorners, rect: CGRect(x: 0, y: 0, width: 100, height: 150), radius: 16)
         return view
     }
@@ -164,6 +173,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         let textField = UITextField()
         textField.textColor = .title_color
         textField.font = .f_m_(18)
+        textField.text = categoryModel?.name
         textField.attributedPlaceholder = NSAttributedString.init(string: "分类名称", attributes: [.font: UIFont.f_m_(18), .foregroundColor: UIColor.sub_title_color])
         textField.textAlignment = .center
         return textField
@@ -172,6 +182,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
     private func lazyEmojiControl() -> AddCategoryEmojiControl {
         let control = AddCategoryEmojiControl()
         control.addTarget(self, action: #selector(emojiControlTap), for: .touchUpInside)
+        control.content = categoryModel?.icon
         return control
     }
     
@@ -180,6 +191,9 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         well.addTarget(self, action: #selector(colorWellValueChanged), for: .valueChanged)
         well.supportsAlpha = false
         well.backgroundColor = .clear
+        if let model = categoryModel, !model.color.isEmpty {
+            well.selectedColor = UIColor.color(fromHexString: model.color as NSString)
+        }
         return well
     }
     

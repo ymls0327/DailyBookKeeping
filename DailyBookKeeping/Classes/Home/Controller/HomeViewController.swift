@@ -121,6 +121,15 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+    private func deleteCategory(with id: Int64, name: String) {
+        AlertController.alert(with: self, title: "确定要删除“\(name)”分类吗？", message: "删除分类将会删除该分类所有记录，不可恢复", confirmBlock: { [weak self] in
+            if DBManager.share.delete_category_with(id: id) {
+                DBProgressHUD.show(message: "删除成功")
+                self?.requestNewDatas()
+            }
+        })
+    }
+    
     // MARK: - delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataList.count
@@ -130,6 +139,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         let cell: HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCollectionViewCell
         cell.model = dataList[indexPath.item]
         cell.isEditing = isEditing
+        cell.deleteCategoryBlockToRefresh = { [weak self] id, name in
+            self?.deleteCategory(with: id, name: name)
+        }
         return cell
     }
     
@@ -137,15 +149,12 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         let model = dataList[indexPath.item]
         if isEditing {
             // 进入编辑
-            if model.isAdd {
-                let add = AddCategoryViewController()
-                add.refreshBlock = { [weak self] in
-                    self?.requestNewDatas()
-                }
-                navigationController?.pushViewController(add, animated: true)
-            }else {
-                debugPrint("编辑页面")
+            let add = AddEditCategoryViewController()
+            add.categoryModel = model
+            add.refreshBlock = { [weak self] in
+                self?.requestNewDatas()
             }
+            navigationController?.pushViewController(add, animated: true)
         }else {
             // 添加记录
             let recordExpenses = RecordExpensesViewController()
