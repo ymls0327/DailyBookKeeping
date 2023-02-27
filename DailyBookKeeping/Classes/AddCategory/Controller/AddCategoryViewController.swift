@@ -17,7 +17,7 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
     lazy var shadowView: UIView = lazyShadowView()
     lazy var centerView: UIView = lazyCenterView()
     lazy var titleTextField: UITextField = lazyTitleTextField()
-    lazy var tempTextField: UITextField = lazyTempTextField()
+    lazy var tempTextField: CustomTextField = lazyTempTextField()
     lazy var iconLabel: UILabel = lazyIconLabel()
     lazy var moneyLabel: UILabel = lazyMoneyLabel()
     lazy var colorWell: UIColorWell = lazyColorWell()
@@ -131,6 +131,46 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         shadowView.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
     }
     
+    // MARK: !Property
+    private func inputAccessoryView() -> UIView {
+        let accessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 50))
+        accessoryView.backgroundColor = .white
+        accessoryView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        accessoryView.layer.shadowOffset = .zero
+        accessoryView.layer.shadowRadius = 3
+        accessoryView.layer.shadowOpacity = 0.6
+        let actionOne = UIAction(title: "图标", handler: { [weak self] action in
+            self?.tempTextField.resignFirstResponder()
+            self?.tempTextField.isCustom = true
+            self?.tempTextField.inputView = self?.iconSelectInputView()
+            self?.tempTextField.becomeFirstResponder()
+        })
+        let actionTwo = UIAction(title: "emoji", handler: { [weak self] action in
+            self?.tempTextField.resignFirstResponder()
+            self?.tempTextField.isCustom = false
+            self?.tempTextField.inputView = nil
+            self?.tempTextField.becomeFirstResponder()
+        })
+        let control = UISegmentedControl.init(frame: .zero, actions: [actionOne, actionTwo])
+        control.selectedSegmentIndex = 0
+        accessoryView.addSubview(control)
+        control.snp.makeConstraints { make in
+            make.centerX.equalTo(accessoryView.snp.centerX)
+            make.top.equalTo(10)
+            make.width.equalTo(200)
+            make.height.equalTo(30)
+        }
+        return accessoryView
+    }
+    
+    private func iconSelectInputView() -> IconSelectInputView {
+        let selectView = IconSelectInputView()
+        selectView.didSelectEmojiWithComplete = { [weak self] emoji in
+            self?.iconLabel.text = emoji
+        }
+        return selectView
+    }
+    
     // MARK: - Lazy
     private func lazyShadowView() -> UIView {
         let view = UIView()
@@ -174,10 +214,13 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         return label
     }
     
-    private func lazyTempTextField() -> UITextField {
-        let textField = UITextField()
+    private func lazyTempTextField() -> CustomTextField {
+        let textField = CustomTextField()
+        textField.isCustom = true
         textField.isHidden = true
-        textField.inputView = lazyIconSelectInputView()
+        textField.inputView = nil
+        textField.inputAccessoryView = inputAccessoryView()
+        textField.inputView = iconSelectInputView()
         return textField
     }
     
@@ -200,14 +243,6 @@ class AddCategoryViewController: BaseViewController, UITextFieldDelegate {
         attributedText.addAttributes([.font: UIFont.jdBoldFont(size: 14)], range: NSRange(location: 2, length: 3))
         label.attributedText = attributedText
         return label
-    }
-    
-    private func lazyIconSelectInputView() -> IconSelectInputView {
-        let selectView = IconSelectInputView()
-        selectView.didSelectEmojiWithComplete = { [weak self] emoji in
-            self?.iconLabel.text = emoji
-        }
-        return selectView
     }
     
     private func lazyFinishControl() -> UIControl {

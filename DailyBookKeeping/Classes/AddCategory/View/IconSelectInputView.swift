@@ -43,7 +43,6 @@ class IconSelectInputView: UIView, UICollectionViewDelegate, UICollectionViewDat
 
     open var didSelectEmojiWithComplete:((_ emoji: String) -> Void)?
     
-    private lazy var segmentControl: UISegmentedControl = lazySegmentControl()
     private lazy var collectionView: UICollectionView = lazyCollectionView()
     
     private var dataList: [String]!
@@ -51,11 +50,6 @@ class IconSelectInputView: UIView, UICollectionViewDelegate, UICollectionViewDat
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 300))
         backgroundColor = .white
-        layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.6
-        
         processingData()
         placeSubViews()
     }
@@ -71,17 +65,9 @@ class IconSelectInputView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     private func placeSubViews() {
-        addSubview(segmentControl)
         addSubview(collectionView)
-        
-        segmentControl.snp.makeConstraints { make in
-            make.top.equalTo(5)
-            make.centerX.equalTo(self)
-            make.width.equalTo(200)
-            make.height.equalTo(30)
-        }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(segmentControl.snp.bottom).offset(5)
+            make.top.equalTo(self.snp.top).offset(5)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(0)
@@ -107,12 +93,6 @@ class IconSelectInputView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     // MARK: - Lazy
-    private func lazySegmentControl() -> UISegmentedControl {
-        let control = UISegmentedControl(items: ["emoji", "图标"])
-        control.selectedSegmentIndex = 0
-        return control
-    }
-    
     private func lazyCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
