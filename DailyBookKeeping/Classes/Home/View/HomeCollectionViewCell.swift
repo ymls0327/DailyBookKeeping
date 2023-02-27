@@ -56,20 +56,20 @@ class HomeCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(20)
         }
         iconLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.top.equalTo(titleLabel.snp.bottom).offset(6)
             make.left.right.equalTo(centerView)
             make.height.equalTo(30)
         }
         moneyLabel.snp.makeConstraints { make in
-            make.top.equalTo(iconLabel.snp.bottom).offset(5)
+            make.top.equalTo(iconLabel.snp.bottom).offset(6)
             make.left.right.bottom.equalTo(centerView)
             make.height.equalTo(20)
         }
         deleteControl.snp.makeConstraints { make in
-            make.left.equalTo(10)
-            make.right.equalTo(-10)
-            make.bottom.equalTo(-8)
-            make.height.equalTo(24)
+            make.centerX.equalTo(containerView.snp.centerX)
+            make.bottom.equalTo(-6)
+            make.height.equalTo(28)
+            make.width.equalTo(30)
         }
         addControl.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(containerView)
@@ -86,8 +86,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         didSet {
             if let edit = isEditing, edit, let model = model, !model.isAdd {
                 deleteControl.isHidden = false
+                moneyLabel.isHidden = true
             }else {
                 deleteControl.isHidden = true
+                moneyLabel.isHidden = false
             }
         }
     }
@@ -146,7 +148,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyTitleLabel() -> UILabel {
         let label = UILabel()
         label.textColor = .title_color
-        label.font = .f_m_(13)
+        label.font = .f_sb_(14)
         label.textAlignment = .center
         return label
     }
@@ -169,7 +171,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyDeleteControl() -> UIControl {
         let control = UIControl()
         control.addTarget(self, action: #selector(deleteControlTap), for: .touchUpInside)
-        control.layer.cornerRadius = 12
+        control.layer.cornerRadius = 14
         control.layer.masksToBounds = false
         control.backgroundColor = .red_color
         control.layer.shadowColor = UIColor.black.cgColor
@@ -178,7 +180,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         control.layer.shadowOpacity = 0.6
         
         let shapLayer = CALayer.deleteLayer(width: 20, lineWidth: 1.5, needleWidth: 1.5, rectColor: .white, needleColor: .white)
-        shapLayer.origin(x: (frame.size.width-40)*0.5, y: 2)
+        shapLayer.origin(x: 5, y: 4)
         control.layer.addSublayer(shapLayer)
         
         control.isHidden = true

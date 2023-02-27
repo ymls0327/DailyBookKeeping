@@ -104,7 +104,7 @@ class HomeTopControlView: UIView {
     
     private func lazyTimeArrow() -> UIView {
         let view = UIView()
-        let shaperLayer = CALayer.arrowLayer(width: 15, lineWidth: 2, isLeft: false)
+        let shaperLayer = CALayer.arrowLayer(width: 15, lineWidth: 2, direction: .right)
         view.layer.addSublayer(shaperLayer)
         return view
     }

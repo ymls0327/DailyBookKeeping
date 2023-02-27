@@ -9,13 +9,14 @@ import UIKit
 import SnapKit
 import WidgetKit
 
-class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, HomeTopControlViewDelegate, HomeTopEditControlViewDelegate {
+class HomeViewController: BaseViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, HomeTopControlViewDelegate, HomeTopEditControlViewDelegate {
     
     private lazy var navBar: UIView = lazyNavBar()
     private lazy var controlView: HomeTopControlView = lazyControlView()
     private lazy var editView: HomeTopEditControlView = lazyEditControlView()
     private lazy var collectionView: UICollectionView = lazyCollectionView()
     
+    private var totalMoney: String?
     private var dataList = [HomeCategoryItemModel]()
     
     // MARK: - page life circle
@@ -93,7 +94,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     private func requestNewDatas() {
         if let dictionary = DBManager.share.request_home_datas() {
-            let totalMoney = dictionary["totalMoney"] as! String
+            totalMoney = dictionary["totalMoney"] as? String
             let list = dictionary["list"] as! [[String: String]]
             dataList = []
             for dictionary in list {
@@ -104,8 +105,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             if isEditing {
                 dataList.append(addModel())
             }
-//            addCategoryButton.isHidden = !dataList.isEmpty
-//            navAddButton.isHidden = dataList.isEmpty
             
             if let userdefault = UserDefaults.init(suiteName: "group.com.rileytestut.AltStore.6664853H9Q") {
                 
@@ -115,7 +114,6 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
                 
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            
             
             collectionView.reloadData()
         }
@@ -143,6 +141,22 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
             self?.deleteCategory(with: id, name: name)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: 0, height: 50)
+        }
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if indexPath.section == 0 {
+            let header: HomeCollectionReusableHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! HomeCollectionReusableHeaderView
+            header.totalMoney = totalMoney
+            return header
+        }
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -219,7 +233,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
     private func lazyCollectionView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (kScreenWidth-100)/4, height: (kScreenWidth-100)/4*1.5)
-        layout.sectionInset = UIEdgeInsets(top: 15, left: 20, bottom: 20, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -228,6 +242,7 @@ class HomeViewController: BaseViewController, UICollectionViewDelegate, UICollec
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceVertical = true
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(HomeCollectionReusableHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
         collectionView.bounces = true
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never

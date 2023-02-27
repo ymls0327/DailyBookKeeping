@@ -8,7 +8,7 @@
 import UIKit
 
 extension String {
-    func formatterMoneyStyle() -> NSAttributedString {
+    func formatterMoneyStyle(small: CGFloat = 10, large: CGFloat = 14) -> NSAttributedString {
         var string = self
         if self.count <= 0 {
             string = "0.00"
@@ -24,10 +24,10 @@ extension String {
         }
         let newString = first+last
         let attributeString = NSMutableAttributedString()
-        attributeString.append(NSAttributedString.init(string: "￥", attributes: [.font: UIFont.jdBoldFont(size: 8)]))
+        attributeString.append(NSAttributedString.init(string: "￥", attributes: [.font: UIFont.jdBoldFont(size: small-1)]))
         let attri = NSMutableAttributedString.init(string: newString)
-        attri.addAttributes([.font: UIFont.jdBoldFont(size: 13)], range: NSMakeRange(0, first.count))
-        attri.addAttributes([.font: UIFont.jdBoldFont(size: 9)], range: NSMakeRange(first.count, last.count))
+        attri.addAttributes([.font: UIFont.jdBoldFont(size: large)], range: NSMakeRange(0, first.count))
+        attri.addAttributes([.font: UIFont.jdBoldFont(size: small)], range: NSMakeRange(first.count, last.count))
         attributeString.append(attri)
         return attributeString
     }

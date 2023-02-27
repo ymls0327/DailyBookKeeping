@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum Direction {
+    case top, left, right, bottom
+}
+
 extension CALayer {
     
     func origin(x: CGFloat, y: CGFloat) {
@@ -20,15 +24,15 @@ extension CALayer {
 extension CALayer {
     
     // 箭头
-    static func arrowLayer(width: CGFloat, lineWidth: CGFloat = 2, color: UIColor = .title_color, isLeft: Bool = true) -> CALayer {
+    static func arrowLayer(width: CGFloat, lineWidth: CGFloat = 2, color: UIColor = .title_color, direction: Direction = .left) -> CALayer {
         let shaperLayer = _get_common_shaplayer(width: width, lineWidth: lineWidth, lineColor: color)
         let bezierPath = UIBezierPath()
-        if isLeft {
+        if direction == .left {
             bezierPath.move(to: CGPoint(x: width*0.6, y: 0))
             bezierPath.addLine(to: CGPoint(x: width*0.38, y: width*0.4))
             bezierPath.addQuadCurve(to: CGPoint(x: width*0.38, y: width*0.6), controlPoint: CGPoint(x: width*0.32, y: width*0.5))
             bezierPath.addLine(to: CGPoint(x: width*0.6, y: width))
-        }else {
+        }else if direction == .right {
             bezierPath.move(to: CGPoint(x: width*0.4, y: 0))
             bezierPath.addLine(to: CGPoint(x: width*0.62, y: width*0.4))
             bezierPath.addQuadCurve(to: CGPoint(x: width*0.62, y: width*0.6), controlPoint: CGPoint(x: width*0.68, y: width*0.5))

@@ -10,7 +10,7 @@ import MBProgressHUD
 
 class DBProgressHUD: NSObject {
 
-    static func show(message string: String, duration: TimeInterval = 2, overlay: Bool = true) {
+    static func show(message string: String, duration: TimeInterval = 2, overlay: Bool = true, complete:(() -> Void)? = nil) {
         
         let hud = MBProgressHUD.showAdded(to: (UIApplication.shared.delegate?.window!!)!, animated: true)
         hud.mode = .text
@@ -26,6 +26,7 @@ class DBProgressHUD: NSObject {
         hud.isUserInteractionEnabled = overlay
         hud.bezelView.layer.cornerRadius = 20
         common_shadow_hud_config(hud: hud)
+        hud.completionBlock = complete
         hud.hide(animated: true)
     }
     

@@ -113,11 +113,17 @@ class AddEditCategoryViewController: BaseViewController, UITextFieldDelegate {
         // 存储分类
         if DBManager.share.update_insert_into_category_table_with(id: categoryModel?.categoryId, name: categoryName, color: colorHex, icon: icon) {
             refreshBlock?()
-            AlertController.alert(with: self, title: "添加成功", message: "您可以点击”继续添加“，来添加更多分类", cancleTitle: "取消", confirmTitle: "继续添加", confirmBlock: { [weak self] in
-                self?.reset()
-            }, cancleBlock: { [weak self] in
-                self?.navigationController?.popViewController()
-            })
+            if let model = categoryModel, model.isAdd {
+                AlertController.alert(with: self, title: "添加成功", message: "您可以点击”继续添加“，来添加更多分类", cancleTitle: "取消", confirmTitle: "继续添加", confirmBlock: { [weak self] in
+                    self?.reset()
+                }, cancleBlock: { [weak self] in
+                    self?.navigationController?.popViewController()
+                })
+            }else {
+                DBProgressHUD.show(message: "修改成功", duration: 1, complete: { [weak self] in
+                    self?.navigationController?.popViewController()
+                })
+            }
         }
     }
     
