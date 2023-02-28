@@ -180,8 +180,8 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text.contains("\n"), let content = textView.text, !content.isEmpty {
-            remarkLabel.text = content
+        if text.contains("\n") {
+            remarkLabel.text = textView.text
             textView.resignFirstResponder()
             return false
         }
