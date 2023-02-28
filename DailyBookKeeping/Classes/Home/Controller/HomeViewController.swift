@@ -172,6 +172,9 @@ class HomeViewController: BaseViewController, UICollectionViewDelegateFlowLayout
         }else {
             // 添加记录
             let recordExpenses = RecordExpensesViewController()
+            recordExpenses.refreshBlock = { [weak self] in
+                self?.requestNewDatas()
+            }
             recordExpenses.model = model
             navigationController?.pushViewController(recordExpenses, animated: true)
         }

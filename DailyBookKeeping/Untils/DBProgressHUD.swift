@@ -33,7 +33,7 @@ class DBProgressHUD: NSObject {
     private static func common_shadow_hud_config(hud: MBProgressHUD) {
         hud.label.textColor = .white
         hud.bezelView.style = .solidColor
-        hud.bezelView.backgroundColor = .mainColor
+        hud.bezelView.backgroundColor = .title_color
         hud.bezelView.layer.masksToBounds = false
         hud.bezelView.layer.shadowColor = UIColor.black.cgColor
         hud.bezelView.layer.shadowOffset = .zero

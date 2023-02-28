@@ -72,12 +72,6 @@ extension UIColor {
     // 主红
     static let red_color = color(fromHex: 0xF22A2A)
     
-    // 主题色
-    static let mainColor = UIColor.rgbColor(r: 61, g: 63, b: 96)
-    // 主题色+1
-    static let main1Color = UIColor.rgbColor(r: 51, g: 53, b: 86)
-    // 主题色-10
-    static let main2Color = UIColor.rgbColor(r: 101, g: 103, b: 136)
     // 默认背景色
     static let backgroundColor = UIColor.rgbColor(r: 243, g: 245, b: 247)
     // 自定义RGB
