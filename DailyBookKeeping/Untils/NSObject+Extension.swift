@@ -152,79 +152,6 @@ extension UIFont {
     static func f_sb_(_ size: CGFloat) -> UIFont {
         return UIFont.systemFont(ofSize: size, weight: .semibold)
     }
-    
-    static let f_r_9 = UIFont.systemFont(ofSize: 9)
-    static let f_r_10 = UIFont.systemFont(ofSize: 10)
-    static let f_r_11 = UIFont.systemFont(ofSize: 11)
-    static let f_r_12 = UIFont.systemFont(ofSize: 12)
-    static let f_r_13 = UIFont.systemFont(ofSize: 13)
-    static let f_r_14 = UIFont.systemFont(ofSize: 14)
-    static let f_r_15 = UIFont.systemFont(ofSize: 15)
-    static let f_r_16 = UIFont.systemFont(ofSize: 16)
-    static let f_r_17 = UIFont.systemFont(ofSize: 17)
-    static let f_r_18 = UIFont.systemFont(ofSize: 18)
-    static let f_r_19 = UIFont.systemFont(ofSize: 19)
-    static let f_r_20 = UIFont.systemFont(ofSize: 20)
-    static let f_r_21 = UIFont.systemFont(ofSize: 21)
-    static let f_r_22 = UIFont.systemFont(ofSize: 22)
-    static let f_r_23 = UIFont.systemFont(ofSize: 23)
-    static let f_r_24 = UIFont.systemFont(ofSize: 24)
-    static let f_r_25 = UIFont.systemFont(ofSize: 25)
-    
-    static let f_l_9 = UIFont.systemFont(ofSize: 9, weight: .light)
-    static let f_l_10 = UIFont.systemFont(ofSize: 10, weight: .light)
-    static let f_l_11 = UIFont.systemFont(ofSize: 11, weight: .light)
-    static let f_l_12 = UIFont.systemFont(ofSize: 12, weight: .light)
-    static let f_l_13 = UIFont.systemFont(ofSize: 13, weight: .light)
-    static let f_l_14 = UIFont.systemFont(ofSize: 14, weight: .light)
-    static let f_l_15 = UIFont.systemFont(ofSize: 15, weight: .light)
-    static let f_l_16 = UIFont.systemFont(ofSize: 16, weight: .light)
-    static let f_l_17 = UIFont.systemFont(ofSize: 17, weight: .light)
-    static let f_l_18 = UIFont.systemFont(ofSize: 18, weight: .light)
-    static let f_l_19 = UIFont.systemFont(ofSize: 19, weight: .light)
-    static let f_l_20 = UIFont.systemFont(ofSize: 20, weight: .light)
-    static let f_l_21 = UIFont.systemFont(ofSize: 21, weight: .light)
-    static let f_l_22 = UIFont.systemFont(ofSize: 22, weight: .light)
-    static let f_l_23 = UIFont.systemFont(ofSize: 23, weight: .light)
-    static let f_l_24 = UIFont.systemFont(ofSize: 24, weight: .light)
-    static let f_l_25 = UIFont.systemFont(ofSize: 25, weight: .light)
-    
-    static let f_m_9 = UIFont.systemFont(ofSize: 9, weight: .medium)
-    static let f_m_10 = UIFont.systemFont(ofSize: 10, weight: .medium)
-    static let f_m_11 = UIFont.systemFont(ofSize: 11, weight: .medium)
-    static let f_m_12 = UIFont.systemFont(ofSize: 12, weight: .medium)
-    static let f_m_13 = UIFont.systemFont(ofSize: 13, weight: .medium)
-    static let f_m_14 = UIFont.systemFont(ofSize: 14, weight: .medium)
-    static let f_m_15 = UIFont.systemFont(ofSize: 15, weight: .medium)
-    static let f_m_16 = UIFont.systemFont(ofSize: 16, weight: .medium)
-    static let f_m_17 = UIFont.systemFont(ofSize: 17, weight: .medium)
-    static let f_m_18 = UIFont.systemFont(ofSize: 18, weight: .medium)
-    static let f_m_19 = UIFont.systemFont(ofSize: 19, weight: .medium)
-    static let f_m_20 = UIFont.systemFont(ofSize: 20, weight: .medium)
-    static let f_m_21 = UIFont.systemFont(ofSize: 21, weight: .medium)
-    static let f_m_22 = UIFont.systemFont(ofSize: 22, weight: .medium)
-    static let f_m_23 = UIFont.systemFont(ofSize: 23, weight: .medium)
-    static let f_m_24 = UIFont.systemFont(ofSize: 24, weight: .medium)
-    static let f_m_25 = UIFont.systemFont(ofSize: 25, weight: .medium)
-    
-    static let f_b_9 = UIFont.systemFont(ofSize: 9, weight: .bold)
-    static let f_b_10 = UIFont.systemFont(ofSize: 10, weight: .bold)
-    static let f_b_11 = UIFont.systemFont(ofSize: 11, weight: .bold)
-    static let f_b_12 = UIFont.systemFont(ofSize: 12, weight: .bold)
-    static let f_b_13 = UIFont.systemFont(ofSize: 13, weight: .bold)
-    static let f_b_14 = UIFont.systemFont(ofSize: 14, weight: .bold)
-    static let f_b_15 = UIFont.systemFont(ofSize: 15, weight: .bold)
-    static let f_b_16 = UIFont.systemFont(ofSize: 16, weight: .bold)
-    static let f_b_17 = UIFont.systemFont(ofSize: 17, weight: .bold)
-    static let f_b_18 = UIFont.systemFont(ofSize: 18, weight: .bold)
-    static let f_b_19 = UIFont.systemFont(ofSize: 19, weight: .bold)
-    static let f_b_20 = UIFont.systemFont(ofSize: 20, weight: .bold)
-    static let f_b_21 = UIFont.systemFont(ofSize: 21, weight: .bold)
-    static let f_b_22 = UIFont.systemFont(ofSize: 22, weight: .bold)
-    static let f_b_23 = UIFont.systemFont(ofSize: 23, weight: .bold)
-    static let f_b_24 = UIFont.systemFont(ofSize: 24, weight: .bold)
-    static let f_b_25 = UIFont.systemFont(ofSize: 25, weight: .bold)
-    
     static func jdRegularFont(size: CGFloat) -> UIFont {
         return self.init(name:"JDZhengHT-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
     }
@@ -232,6 +159,14 @@ extension UIFont {
         return self.init(name:"JDLANGZHENGTI-SB--GBK1-0", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     static func chineseFont(size: CGFloat) -> UIFont {
-        return self.init(name:"AppleTsukuBRdGothic-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
+        return self.init(name:"SourceHanSerifSC-Light", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    static func printFonts() {
+        for name in UIFont.familyNames {
+            debugPrint(name)
+            for font in UIFont.fontNames(forFamilyName: name) {
+                debugPrint("--\(font)")
+            }
+        }
     }
 }

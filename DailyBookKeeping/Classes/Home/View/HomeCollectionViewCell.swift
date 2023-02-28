@@ -148,7 +148,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private func lazyTitleLabel() -> UILabel {
         let label = UILabel()
         label.textColor = .title_color
-        label.font = .f_sb_(14)
+        label.font = .f_m_(14)
         label.textAlignment = .center
         return label
     }

@@ -11,12 +11,12 @@ class HomeCollectionReusableHeaderView: UICollectionReusableView {
     
     private lazy var moneyControl: UIControl = lazyMoneyControl()
     private lazy var moneyLabel: UILabel = lazyMoneyLabel()
+    private lazy var tempLabel: UILabel = lazyTempLabel()
     
     var totalMoney: String? {
         didSet {
             if let money = totalMoney, !money.isEmpty {
-                let attribute = NSMutableAttributedString.init(string: "总支出:")
-                attribute.addAttributes([.font: UIFont.chineseFont(size: 14)], range: NSRange(location: 0, length: 4))
+                let attribute = NSMutableAttributedString()
                 attribute.append(money.formatterMoneyStyle(small: 14, large: 18))
                 moneyLabel.attributedText = attribute
             }
@@ -29,11 +29,16 @@ class HomeCollectionReusableHeaderView: UICollectionReusableView {
         backgroundColor = .white
         
         addSubview(moneyControl)
+        moneyControl.addSubview(tempLabel)
         moneyControl.addSubview(moneyLabel)
         
-        moneyLabel.snp.makeConstraints { make in
-            make.top.bottom.equalTo(moneyControl)
+        tempLabel.snp.makeConstraints { make in
             make.left.equalTo(moneyControl.snp.left).offset(3)
+            make.centerY.equalTo(moneyControl.snp.centerY).offset(1)
+        }
+        moneyLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(moneyControl.snp.centerY)
+            make.left.equalTo(tempLabel.snp.right)
             make.right.equalTo(moneyControl.snp.right).offset(-3)
         }
         
@@ -57,6 +62,15 @@ class HomeCollectionReusableHeaderView: UICollectionReusableView {
     private func lazyMoneyLabel() -> UILabel {
         let label = UILabel()
         label.textColor = .title_color
+        return label
+    }
+    
+    private func lazyTempLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = .title_color
+        let attribute = NSMutableAttributedString.init(string: "总支出:")
+        attribute.addAttributes([.font: UIFont.f_r_(12)], range: NSRange(location: 0, length: 4))
+        label.attributedText = attribute
         return label
     }
 }

@@ -98,7 +98,7 @@ class HomeTopControlView: UIView {
         let label = UILabel()
         label.text = "今年"
         label.textColor = .title_color
-        label.font = .f_sb_(30)
+        label.font = .f_m_(30)
         return label
     }
     

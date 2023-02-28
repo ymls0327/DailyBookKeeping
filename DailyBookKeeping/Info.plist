@@ -4,9 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>TsukushiBRoundGothicBold.otf</string>
 		<string>JDLangZhengTi-Semibold.ttf</string>
 		<string>JDZhengHT-Regular.ttf</string>
+		<string>Source_Han_Serif_SC_Light_Light.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
