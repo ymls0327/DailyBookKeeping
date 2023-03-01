@@ -13,7 +13,6 @@ import IQKeyboardManagerSwift
 class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextViewDelegate {
 
     open var model: HomeCategoryItemModel?
-    var refreshBlock: (() -> Void)?
     
     private var currentString: String = ""
     private var dataSource: [String] = []
@@ -138,7 +137,6 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
                             result2 = DBManager.share.insert_into_label_tabel_with(label: remark, category_id: model.categoryId)
                         }
                         if result1, result2 {
-                            refreshBlock?()
                             navigationController?.popViewController()
                         }
                     }

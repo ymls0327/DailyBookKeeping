@@ -52,11 +52,43 @@ class RecordDetailViewController: BaseViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecordDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RecordDetailTableViewCell
+        if let model = model {
+            cell.icon = model.icon
+            cell.category = model.name
+        }
+        cell.money = dataList[indexPath.row].money
+        cell.remark = dataList[indexPath.row].remark
+        cell.time = dataList[indexPath.row].createTime
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        60
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "删除", handler: { [weak self] action, view, hanlder in
+            if let weakSelf = self, DBManager.share.delete_record_with(id: weakSelf.dataList[indexPath.row].recordId) {
+                weakSelf.dataList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .top)
+            }else {
+                hanlder(false)
+            }
+        })
+        action.backgroundColor = .red_color
+        let swipe = UISwipeActionsConfiguration(actions: [action])
+        swipe.performsFirstActionWithFullSwipe = false
+        return swipe
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            debugPrint("123")
+        }
     }
     
     private func lazyTableView() -> UITableView {
@@ -65,6 +97,8 @@ class RecordDetailViewController: BaseViewController, UITableViewDelegate, UITab
         tableView.dataSource = self;
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        tableView.separatorColor = .separator_color
         tableView.register(RecordDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
         if #available(iOS 11.0, *) {
             tableView.estimatedRowHeight = 0

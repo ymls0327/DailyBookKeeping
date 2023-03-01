@@ -32,6 +32,10 @@ class DBManager: NSObject {
         // 创建表&索引
         creatTables()
     }
+    
+    private func notification() {
+        NotificationCenter.default.post(name: Notification.Name("kDataBaseDidChangedNotification"), object: nil)
+    }
 }
 
 // MARK: - CRUD - 分类
@@ -47,6 +51,7 @@ extension DBManager {
         guard let database = db else { return false }
         do{
             try database.execute(sql)
+            notification()
             return true
         }catch {
             return false
@@ -92,6 +97,7 @@ extension DBManager {
         guard let database = db else { return false }
         do{
             try database.execute(sql)
+            notification()
             return true
         }catch {
             return false
@@ -120,6 +126,7 @@ extension DBManager {
         guard let database = db else { return false }
         do{
             try database.execute(sql)
+            notification()
             return true
         }catch {
             debugPrint(error.localizedDescription)
@@ -159,6 +166,7 @@ extension DBManager {
             guard let database = db else { return false }
             do{
                 try database.execute(sql)
+                notification()
                 return true
             }catch {
                 debugPrint(error.localizedDescription)
@@ -200,6 +208,7 @@ extension DBManager {
             guard let database = db else { return false }
             do{
                 try database.execute(sql)
+                notification()
                 return true
             }catch {
                 debugPrint(error.localizedDescription)
@@ -322,7 +331,10 @@ extension DBManager {
         guard let database = db else { return nil }
         
         let sql = """
-        SELECT id, money, remark, update_t, create_t FROM `\(record_table)` WHERE category_id = \(categoryId);
+        SELECT id, money, remark, update_t, create_t
+        FROM `\(record_table)`
+        WHERE category_id = \(categoryId)
+        ORDER BY `create_t` DESC;
         """
         do {
             var list: [[String: String]] = []

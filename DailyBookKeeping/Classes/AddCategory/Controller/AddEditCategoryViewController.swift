@@ -10,8 +10,6 @@ import SnapKit
 
 class AddEditCategoryViewController: BaseViewController, UITextFieldDelegate {
     
-    // 刷新回调
-    open var refreshBlock: (() -> Void)?
     open var categoryModel: HomeCategoryItemModel?
     
     lazy var containerView: UIView = lazyContainerView()
@@ -112,7 +110,6 @@ class AddEditCategoryViewController: BaseViewController, UITextFieldDelegate {
         }
         // 存储分类
         if DBManager.share.update_insert_into_category_table_with(id: categoryModel?.categoryId, name: categoryName, color: colorHex, icon: icon) {
-            refreshBlock?()
             if let model = categoryModel, model.isAdd {
                 AlertController.alert(with: self, title: "添加成功", message: "您可以点击”继续添加“，来添加更多分类", cancleTitle: "取消", confirmTitle: "继续添加", confirmBlock: { [weak self] in
                     self?.reset()

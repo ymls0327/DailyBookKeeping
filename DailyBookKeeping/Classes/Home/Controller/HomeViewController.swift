@@ -23,7 +23,13 @@ class HomeViewController: BaseViewController, UICollectionViewDelegateFlowLayout
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFromNotification), name: Notification.Name("kDataBaseDidChangedNotification"), object: nil)
+        
         // 获取数据，刷新列表
+        self.requestNewDatas()
+    }
+    
+    @objc private func refreshFromNotification(_ notification: Notification) {
         self.requestNewDatas()
     }
     
@@ -165,16 +171,10 @@ class HomeViewController: BaseViewController, UICollectionViewDelegateFlowLayout
             // 进入编辑
             let add = AddEditCategoryViewController()
             add.categoryModel = model
-            add.refreshBlock = { [weak self] in
-                self?.requestNewDatas()
-            }
             navigationController?.pushViewController(add, animated: true)
         }else {
             // 添加记录
             let recordExpenses = RecordExpensesViewController()
-            recordExpenses.refreshBlock = { [weak self] in
-                self?.requestNewDatas()
-            }
             recordExpenses.model = model
             navigationController?.pushViewController(recordExpenses, animated: true)
         }
