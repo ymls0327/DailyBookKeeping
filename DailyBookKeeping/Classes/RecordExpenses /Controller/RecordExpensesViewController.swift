@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 
 class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextViewDelegate {
 
-    var model: HomeCategoryItemModel?
+    open var model: HomeCategoryItemModel?
     var refreshBlock: (() -> Void)?
     
     private var currentString: String = ""
@@ -22,6 +22,8 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
     private lazy var moneyLabel: UILabel = lazyMoneyLabel()
     private lazy var remarkPopView: UIView = lazyRemarkPopView()
     private lazy var remarkTF: UITextView = lazyRemarkTF()
+    private lazy var labelView: RecordLabelView = lazyLabelView()
+    private lazy var historyControl: UIControl = lazyHistoryControl()
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -47,11 +49,13 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
     override func placeSubViews() {
         title = model?.name
         view.backgroundColor = .white
+        navigationController?.navigationBar.addSubview(historyControl)
         
         dataSource = ["1", "2", "3", "删除", "4", "5", "6", "备注", "7", "8", "9", "", "", "0", ".", "确定"]
         view.addSubview(moneyLabel)
         view.addSubview(remarkLabel)
         view.addSubview(keyBoardCollectionView)
+        view.addSubview(labelView)
         view.addSubview(remarkPopView)
         
         moneyLabel.snp.makeConstraints { make in
@@ -72,9 +76,23 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
                 make.height.equalTo(238)
             }
         }
+        labelView.snp.makeConstraints { make in
+            make.bottom.equalTo(keyBoardCollectionView.snp.top)
+            make.left.right.equalTo(view)
+            make.height.equalTo(50)
+        }
         
         // 格式化金钱
         formatterMoney()
+        
+        // 请求标签数据
+        requestLabels()
+    }
+    
+    private func requestLabels() {
+        if let model = model, let list = DBManager.share.request_category_labels_with(categoryId: model.categoryId), list.count > 0 {
+            labelView.dataList = list
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,7 +119,25 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
             else if content == "确定" {
                 if let money = Double(currentString), money > 0 {
                     if let model = model {
-                        if DBManager.share.insert_into_data_table_with(categoryId: model.categoryId, money: currentString, remark: "") {
+                        var remark = ""
+                        if let r = remarkLabel.text, !r.isEmpty {
+                            remark = r
+                        }
+                        
+                        // 保存
+                        let result1 = DBManager.share.insert_into_data_table_with(categoryId: model.categoryId, money: currentString, remark: remark)
+                        
+                        var result2 = false
+                        for item in labelView.dataList {
+                            if item == remark {
+                                result2 = true
+                                break
+                            }
+                        }
+                        if !result2 {
+                            result2 = DBManager.share.insert_into_label_tabel_with(label: remark, category_id: model.categoryId)
+                        }
+                        if result1, result2 {
                             refreshBlock?()
                             navigationController?.popViewController()
                         }
@@ -179,6 +215,12 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
         })
     }
     
+    @objc func historyControlTap() {
+        let detail = RecordDetailViewController()
+        detail.model = model
+        navigationController?.pushViewController(detail, animated: true)
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text.contains("\n") {
             remarkLabel.text = textView.text
@@ -243,5 +285,22 @@ class RecordExpensesViewController: BaseViewController, UICollectionViewDelegate
         textView.returnKeyType = .done
         textView.delegate = self
         return textView
+    }
+    
+    private func lazyLabelView() -> RecordLabelView {
+        let view = RecordLabelView()
+        view.handler = { [weak self] remark in
+            self?.remarkLabel.text = remark
+        }
+        return view
+    }
+    
+    private func lazyHistoryControl() -> UIControl {
+        let control = UIControl(frame: CGRect(x: kScreenWidth-45, y: 0, width: 40, height: 44))
+        control.addTarget(self, action: #selector(historyControlTap), for: .touchUpInside)
+        let shaperLayer = CALayer.lockLayer(width: 20)
+        shaperLayer.origin(x: 10, y: 15)
+        control.layer.addSublayer(shaperLayer)
+        return control
     }
 }

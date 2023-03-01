@@ -15,6 +15,7 @@ class DBManager: NSObject {
 
     private let record_table = "record_table"
     private let category_table = "category_table"
+    private let label_table = "label_table"
     private let current_date = Date().string(withFormat: "YYYY-MM-dd HH:mm:ss")
     private let db_file_path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!+"/dailybook.sqlite"
     
@@ -210,6 +211,38 @@ extension DBManager {
     }
 }
 
+// MARK: - 常用语
+extension DBManager {
+    
+    // 添加一条常用语
+    func insert_into_label_tabel_with(label: String?, category_id: Int64) -> Bool {
+        guard let database = db, let label = label, !label.isEmpty, category_id > 0 else { return false }
+        
+        let sql1 = """
+        SELECT * FROM `\(label_table)` WHERE `label` = '\(label)';
+        """
+        
+        let sql2 = """
+        INSERT INTO `\(label_table)` (`label`, `category_id`, `create_t`)
+        VALUES ('\(label)', \(category_id), '\(current_date)')
+        """
+        
+        do {
+            let result = try database.prepare(sql1)
+            var count = 0
+            for _ in result {
+                count += 1
+            }
+            if count == 0 {
+                try database.execute(sql2)
+            }
+            return true
+        }catch {
+            return false
+        }
+    }
+}
+
 // MARK: - 业务
 extension DBManager {
     // 获取首页数据
@@ -263,6 +296,62 @@ extension DBManager {
             return nil
         }
     }
+    
+    // 查询分类下的常用语
+    func request_category_labels_with(categoryId: Int64) -> [String]? {
+        guard let database = db else { return nil }
+        
+        let sql = """
+                SELECT label FROM `\(label_table)` WHERE `category_id` = \(categoryId);
+        """
+        do {
+            var list: [String] = []
+            for row in try database.prepare(sql) {
+                if let label = row[0] {
+                    list.append(String(describing: label))
+                }
+            }
+            return list
+        }catch {
+            return nil
+        }
+    }
+    
+    // 查询某一分类下面的所有数据
+    func select_record_with(_ categoryId: Int64) -> [[String: String]]? {
+        guard let database = db else { return nil }
+        
+        let sql = """
+        SELECT id, money, remark, update_t, create_t FROM `\(record_table)` WHERE category_id = \(categoryId);
+        """
+        do {
+            var list: [[String: String]] = []
+            for row in try database.prepare(sql) {
+                if let recordId = row[0] {
+                    var map: [String: String] = [:]
+                    map["recordId"] = String(describing: recordId)
+                    if let money = row[1] {
+                        if let double_money = Double(String(describing: money)) {
+                            map["money"] = String(format: "%0.2lf", double_money)
+                        }
+                    }
+                    if let remark = row[2] {
+                        map["remark"] = String(describing: remark)
+                    }
+                    if let updateTime = row[3] {
+                        map["updateTime"] = String(describing: updateTime)
+                    }
+                    if let createTime = row[4] {
+                        map["createTime"] = String(describing: createTime)
+                    }
+                    list.append(map)
+                }
+            }
+            return list
+        }catch {
+            return nil
+        }
+    }
 }
 
 // MARK: - 表相关
@@ -290,6 +379,16 @@ extension DBManager {
                     `create_t` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT ''
                 );
                 CREATE INDEX IF NOT EXISTS `\(record_table)_index` ON `\(record_table)` (
+                    `category_id` ASC
+                );
+                CREATE TABLE IF NOT EXISTS `\(label_table)` (
+                    `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                    `label` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+                    `category_id` INTEGER NOT NULL ON CONFLICT ROLLBACK DEFAULT 0,
+                    `update_t` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT '',
+                    `create_t` TEXT NOT NULL ON CONFLICT ROLLBACK DEFAULT ''
+                );
+                CREATE INDEX IF NOT EXISTS `\(label_table)_index` ON `\(label_table)` (
                     `category_id` ASC
                 );
         """

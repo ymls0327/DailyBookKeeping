@@ -13,6 +13,10 @@
 		3444CE4629A7374800AEA6E3 /* IconLayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE4529A7374800AEA6E3 /* IconLayerFactory.swift */; };
 		3444CE5929AC415A00AEA6E3 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE5829AC415A00AEA6E3 /* AlertController.swift */; };
 		3444CE6729ACADC600AEA6E3 /* AddCategoryEmojiControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE6629ACADC600AEA6E3 /* AddCategoryEmojiControl.swift */; };
+		3444CE6929AF1DDA00AEA6E3 /* RecordLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE6829AF1DDA00AEA6E3 /* RecordLabelView.swift */; };
+		3444CE6D29AF29BF00AEA6E3 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE6C29AF29BF00AEA6E3 /* RecordDetailViewController.swift */; };
+		3444CE7029AF2FC800AEA6E3 /* RecordDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE6F29AF2FC800AEA6E3 /* RecordDetailTableViewCell.swift */; };
+		3444CE7329AF321900AEA6E3 /* RecordDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3444CE7229AF321900AEA6E3 /* RecordDetailModel.swift */; };
 		344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DC39E299A398100B8CF78 /* AppDelegate.swift */; };
 		344DC3A8299A398400B8CF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344DC3A7299A398400B8CF78 /* Assets.xcassets */; };
 		344DC3B9299A39D600B8CF78 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344DC3B8299A39D600B8CF78 /* WidgetKit.framework */; };
@@ -77,6 +81,10 @@
 		3444CE4529A7374800AEA6E3 /* IconLayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLayerFactory.swift; sourceTree = "<group>"; };
 		3444CE5829AC415A00AEA6E3 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		3444CE6629ACADC600AEA6E3 /* AddCategoryEmojiControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryEmojiControl.swift; sourceTree = "<group>"; };
+		3444CE6829AF1DDA00AEA6E3 /* RecordLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordLabelView.swift; sourceTree = "<group>"; };
+		3444CE6C29AF29BF00AEA6E3 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		3444CE6F29AF2FC800AEA6E3 /* RecordDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailTableViewCell.swift; sourceTree = "<group>"; };
+		3444CE7229AF321900AEA6E3 /* RecordDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailModel.swift; sourceTree = "<group>"; };
 		344DC39B299A398100B8CF78 /* DailyBookKeeping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyBookKeeping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DC39E299A398100B8CF78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		344DC3A7299A398400B8CF78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +151,40 @@
 				3444CE6629ACADC600AEA6E3 /* AddCategoryEmojiControl.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3444CE6A29AF296D00AEA6E3 /* RecordDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3444CE7129AF31FB00AEA6E3 /* Model */,
+				3444CE6E29AF29C500AEA6E3 /* View */,
+				3444CE6B29AF29A200AEA6E3 /* Controller */,
+			);
+			path = RecordDetails;
+			sourceTree = "<group>";
+		};
+		3444CE6B29AF29A200AEA6E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3444CE6C29AF29BF00AEA6E3 /* RecordDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3444CE6E29AF29C500AEA6E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3444CE6F29AF2FC800AEA6E3 /* RecordDetailTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3444CE7129AF31FB00AEA6E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3444CE7229AF321900AEA6E3 /* RecordDetailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		344DC392299A398100B8CF78 = {
@@ -320,6 +362,7 @@
 		849E6F81299FBBE700562FC5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3444CE6A29AF296D00AEA6E3 /* RecordDetails */,
 				840FC6B729A08DE500505E56 /* RecordExpenses  */,
 				849E6F88299FC8BD00562FC5 /* Home */,
 				849E6F89299FC8C900562FC5 /* AddCategory */,
@@ -358,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				84F6190D29AE27AE00E1D1FB /* KeyBoardCollectionViewCell.swift */,
+				3444CE6829AF1DDA00AEA6E3 /* RecordLabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -535,12 +579,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3444CE6D29AF29BF00AEA6E3 /* RecordDetailViewController.swift in Sources */,
 				3444CE4029A6F63500AEA6E3 /* HomeTopControlView.swift in Sources */,
 				34F8034C299F26790087829A /* PrefixHeader.swift in Sources */,
 				3444CE6729ACADC600AEA6E3 /* AddCategoryEmojiControl.swift in Sources */,
 				840FC6BA29A08E2200505E56 /* RecordExpensesViewController.swift in Sources */,
+				3444CE7029AF2FC800AEA6E3 /* RecordDetailTableViewCell.swift in Sources */,
 				34F8037229A5AE4C0087829A /* DBProgressHUD.swift in Sources */,
 				34F8034E299F48840087829A /* DBManager.swift in Sources */,
+				3444CE7329AF321900AEA6E3 /* RecordDetailModel.swift in Sources */,
 				344DC39F299A398100B8CF78 /* AppDelegate.swift in Sources */,
 				84F6190E29AE27AE00E1D1FB /* KeyBoardCollectionViewCell.swift in Sources */,
 				849E6F85299FBF6200562FC5 /* HomeCollectionViewCell.swift in Sources */,
@@ -553,6 +600,7 @@
 				849E6F83299FBC0300562FC5 /* HomeViewController.swift in Sources */,
 				849E6F8C29A07E5A00562FC5 /* HomeCategoryItemModel.swift in Sources */,
 				849E6F77299D2AA800562FC5 /* NSObject+Extension.swift in Sources */,
+				3444CE6929AF1DDA00AEA6E3 /* RecordLabelView.swift in Sources */,
 				3444CE4229A6F64F00AEA6E3 /* HomeTopEditControlView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
